@@ -1,9 +1,15 @@
-import Image from 'next/image'
+import Announcements from "./components/announcements";
 
 export default function Home() {
   return (
-    <main>
-      Initial next page
-    </main>
-  )
+    <>
+      {/* // Anouncements */}
+      <Announcements />
+
+      {/* // Nav bar anf hero contatined in a container */}
+      {/* // Nav bar */}
+      {/* // Hero */}
+
+    </>
+  );
 }
