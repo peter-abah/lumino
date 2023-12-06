@@ -10,7 +10,10 @@ export default function Announcements() {
     <section className="bg-black text-white px-4 ">
       <ul className="flex py-3.5 overflow-auto no-scrollbar">
         {announcements.map((announcement) => (
-          <li className="whitespace-nowrap first-of-type:ml-auto last-of-type:mr-auto text-xs font-bold px-16 first-of-type:pl-0 last-of-type:pr-0 relative last-of-type:before:hidden before:absolute before:right-[-2px] before:top-0 before:bottom-0 before:my-auto before:rounded-full before:bg-white before:w-1 before:h-1">
+          <li
+            key={announcement}
+            className="whitespace-nowrap first-of-type:ml-auto last-of-type:mr-auto text-xs font-bold px-16 first-of-type:pl-0 last-of-type:pr-0 relative last-of-type:before:hidden before:absolute before:right-[-2px] before:top-0 before:bottom-0 before:my-auto before:rounded-full before:bg-white before:w-1 before:h-1"
+          >
             {announcement}
           </li>
         ))}
