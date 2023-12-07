@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         text: "rgb(var(--color-text) / <alpha-value>)",
         "hero-headphones-cta": "rgb(var(--color-hero-headphones-cta) / <alpha-value>)",
+        "main-bg": "rgb(var(--color-background-main) / <alpha-value>)",
       },
       backgroundImage: {
         "hero-mw08": "var(--background-hero-mw08)",

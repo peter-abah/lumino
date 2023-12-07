@@ -4,10 +4,20 @@
 import * as Dialog from "@radix-ui/react-dialog";
 
 import Link from "next/link";
+import { useContext } from "react";
+import { NavBarStickyContext, NavBarStickyContextType } from "../contexts/nav_bar_sticky_context";
+import { twMerge } from "tailwind-merge";
 
 export default function NavBar() {
+  const { isNavBarSticky } = useContext(NavBarStickyContext) as NavBarStickyContextType;
+
   return (
-    <nav className="absolute top-0 w-full text-white grid grid-cols-[1fr_max-content_1fr] items-center px-12 py-8">
+    <nav
+      className={twMerge(
+        "absolute z-50 top-0 w-full text-white grid grid-cols-[1fr_max-content_1fr] items-center px-12 py-8",
+        isNavBarSticky && "fixed bg-main-bg text-text"
+      )}
+    >
       <h1 className="font-bold text-2xl uppercase">
         <Link href="/">Lumino</Link>
       </h1>

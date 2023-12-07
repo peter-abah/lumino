@@ -17,6 +17,10 @@
 
 :root {
   --color-text: 26 26 26;
+  --color-background-main: 240 240 240;
+  --color-hero-headphones-cta: 49 63 95;
+
+  /* Gradient background for slides in hero section of landing page */
   --background-hero-mw08: linear-gradient(
     127deg,
     rgba(66, 74, 48, 1) 11%,
@@ -44,9 +48,6 @@
       rgb(36, 49, 80),
       rgba(49, 66, 105, 1)
     )
-    /* rgba(136, 159, 185, 1) 45%,
-    rgba(49, 66, 105, 1) 98% */;
-  --color-hero-headphones-cta: 49 63 95;
 }
 
 *,
@@ -57,5 +58,6 @@
 
 body {
   color: rgb(var(--color-text) / 1);
+  background-color: rgb(var(--color-background-main) / 1);
   min-height: 100vh;
 }
