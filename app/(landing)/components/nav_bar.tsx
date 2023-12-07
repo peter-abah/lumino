@@ -1,3 +1,4 @@
+// TODO: Move use client to down to components that actually are (radix ui)
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
@@ -6,8 +7,8 @@ import Link from "next/link";
 
 export default function NavBar() {
   return (
-    <nav className="grid grid-cols-[1fr_max-content_1fr] items-center px-12 py-8">
-      <h1 className="font-bold text-2xl">
+    <nav className="absolute top-0 w-full text-white grid grid-cols-[1fr_max-content_1fr] items-center px-12 py-8">
+      <h1 className="font-bold text-2xl uppercase">
         <Link href="/">Lumino</Link>
       </h1>
 
@@ -16,7 +17,7 @@ export default function NavBar() {
           <li>
             <Dialog.Root>
               <Dialog.Trigger asChild>
-                <button type="button" className="flex gap-2.5 items-center">
+                <button type="button" className="flex gap-2.5 items-center hover:opacity-70">
                   Shop <ArrowDown />
                 </button>
               </Dialog.Trigger>
@@ -71,18 +72,24 @@ export default function NavBar() {
             </Dialog.Root>
           </li>
           <li>
-            <button type="button" className="flex gap-2.5 items-center">
+            <button type="button" className="flex gap-2.5 items-center hover:opacity-70">
               Collaboration <ArrowDown />
             </button>
           </li>
           <li>
-            <Link href="#">Compare</Link>
+            <Link href="#" className="hover:opacity-70">
+              Compare
+            </Link>
           </li>
           <li>
-            <Link href="#">Blog</Link>
+            <Link href="#" className="hover:opacity-70">
+              Blog
+            </Link>
           </li>
           <li>
-            <Link href="#">About</Link>
+            <Link href="#" className="hover:opacity-70">
+              About
+            </Link>
           </li>
         </ul>
       </nav>

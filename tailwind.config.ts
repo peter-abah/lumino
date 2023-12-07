@@ -10,19 +10,29 @@ const config: Config = {
     extend: {
       colors: {
         text: "rgb(var(--color-text) / <alpha-value>)",
+        "hero-headphones-cta": "rgb(var(--color-hero-headphones-cta) / <alpha-value>)",
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "hero-mw08": "var(--background-hero-mw08)",
+        "hero-earphones": "var(--background-hero-earphones)",
+        "hero-headphones": "var(--background-hero-headphones)",
+
+        "hero-inner-mw08": "var(--background-hero-inner-mw08)",
+        "hero-inner-earphones": "var(--background-hero-inner-earphones)",
+        "hero-inner-headphones": "var(--background-hero-inner-headphones)",
       },
       spacing: {
-        "3.5": "0.875rem",
         "2.5": "0.625rem",
+        "3.5": "0.875rem",
+        "7.5": "1.875rem",
       },
       borderColor: ({ theme }) => ({
         ...theme("colors"),
         DEFAULT: "rgb(var(--color-border) / <alpha-value>)",
       }),
+      borderRadius: {
+        "cta-button": "3.75rem",
+      },
     },
   },
   plugins: [],
