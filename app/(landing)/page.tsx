@@ -1,6 +1,7 @@
 import Announcements from "./components/announcements";
 import CategoriesList from "./components/categories_list";
 import Hero from "./components/hero";
+import MarqueeText from "./components/marquee_text";
 import NavBar from "./components/nav_bar";
 import { NavBarStickyProvider } from "./contexts/nav_bar_sticky_context";
 
@@ -15,6 +16,7 @@ export default function Home() {
         </div>
         <CategoriesList />
       </NavBarStickyProvider>
+      <MarqueeText />
     </>
   );
 }
