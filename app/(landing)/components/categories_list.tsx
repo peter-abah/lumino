@@ -32,7 +32,7 @@ export default function CategoriesList() {
             >
               <Image
                 src={category.imageLink}
-                className="hover:scale-105 duration-1000"
+                className="hover:scale-105 duration-[1.5s]"
                 alt=""
                 fill
                 aria-hidden
