@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer components {
+  .best-seller-grid {
+    display: grid;
+    grid: auto / auto-flow 300px;
+  }
+
   .marquee-text {
     position: absolute;
     left: 100%;

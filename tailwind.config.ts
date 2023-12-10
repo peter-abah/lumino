@@ -26,6 +26,7 @@ const config: Config = {
         "2.5": "0.625rem",
         "3.5": "0.875rem",
         "7.5": "1.875rem",
+        '4.5': "1.125rem"
       },
       borderColor: ({ theme }) => ({
         ...theme("colors"),

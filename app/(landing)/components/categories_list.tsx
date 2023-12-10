@@ -2,9 +2,6 @@
 
 import clsx from "clsx";
 import Image from "next/image";
-import { useInView } from "react-intersection-observer";
-import { NavBarStickyContext, NavBarStickyContextType } from "../contexts/nav_bar_sticky_context";
-import { useContext } from "react";
 
 const CATEGORIES = [
   { name: "Headphones", link: "#", imageLink: "/images/category-headphones.jpg" },
