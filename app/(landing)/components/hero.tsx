@@ -88,7 +88,7 @@ export default function Hero() {
               <h1 className="my-8 text-5xl font-bold">{slide.title}</h1>
               <Link
                 className={clsx(
-                  "inline-block rounded-cta-button px-10 py-4 font-bold",
+                  "inline-block rounded-button px-10 py-4 font-bold",
                   slide.stylesClasses.cta
                 )}
                 href={slide.ctaLink}

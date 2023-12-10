@@ -12,6 +12,7 @@ const config: Config = {
         text: "rgb(var(--color-text) / <alpha-value>)",
         "hero-headphones-cta": "rgb(var(--color-hero-headphones-cta) / <alpha-value>)",
         "main-bg": "rgb(var(--color-background-main) / <alpha-value>)",
+        "button-bg": "rgb(var(--color-button-background) / <alpha-value>)",
       },
       backgroundImage: {
         "hero-mw08": "var(--background-hero-mw08)",
@@ -26,14 +27,14 @@ const config: Config = {
         "2.5": "0.625rem",
         "3.5": "0.875rem",
         "7.5": "1.875rem",
-        '4.5': "1.125rem"
+        "4.5": "1.125rem",
       },
       borderColor: ({ theme }) => ({
         ...theme("colors"),
         DEFAULT: "rgb(var(--color-border) / <alpha-value>)",
       }),
       borderRadius: {
-        "cta-button": "3.75rem",
+        "button": "3.75rem",
       },
     },
   },

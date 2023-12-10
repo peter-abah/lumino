@@ -61,12 +61,23 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  /* Add text gradient to text based on css variable gradient set on the element */
+  .text-gradient {
+    background-image: var(--gradient);
+    color: #0000;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
 }
 
 :root {
   --color-text: 26 26 26;
   --color-background-main: 240 240 240;
   --color-hero-headphones-cta: 49 63 95;
+  --color-button-background: 26 26 26;
 
   /* Gradient background for slides in hero section of landing page */
   --background-hero-mw08: linear-gradient(

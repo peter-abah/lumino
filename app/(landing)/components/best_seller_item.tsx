@@ -12,8 +12,11 @@ type BestSellerItemProps = {
 export default function BestSellerItem({ item }: BestSellerItemProps) {
   const [currentVariant, setCurrentVariant] = useState(item.variants[0]);
   return (
-    <li className="bg-white snap-start ">
-      <Link href={item.link} className="w-[20rem] inline-block relative aspect-square group">
+    <li className="bg-white snap-start rounded-md">
+      <Link
+        href={item.link}
+        className="w-[20rem] rounded-md overflow-hidden inline-block relative aspect-square group"
+      >
         <Image
           src={item.images[currentVariant].normal}
           fill
