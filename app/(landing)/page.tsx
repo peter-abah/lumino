@@ -7,6 +7,7 @@ import ProductShowcase from "./components/product_showcase";
 import MarqueeText from "./components/marquee_text";
 import NavBar from "./components/nav_bar";
 import { NavBarStickyProvider } from "./contexts/nav_bar_sticky_context";
+import CollectionsMediaGrid from "./components/collections_media_grid";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <CollectionCards />
       <BestSellers />
       <ProductShowcase />
+      <CollectionsMediaGrid />
     </>
   );
 }
