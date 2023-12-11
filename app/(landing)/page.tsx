@@ -8,6 +8,7 @@ import MarqueeText from "./components/marquee_text";
 import NavBar from "./components/nav_bar";
 import { NavBarStickyProvider } from "./contexts/nav_bar_sticky_context";
 import CollectionsMediaGrid from "./components/collections_media_grid";
+import SliderSection from "./components/slider_section";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
       <BestSellers />
       <ProductShowcase />
       <CollectionsMediaGrid />
+      <SliderSection />
     </>
   );
 }

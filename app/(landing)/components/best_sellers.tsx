@@ -142,8 +142,8 @@ export default function BestSellers() {
       </header>
 
       <ul className="flex overflow-auto gap-6 no-scrollbar snap-x snap-mandatory">
-        {BEST_SELLER_ITEMS.map((bestSellerItem) => (
-          <BestSellerItem key={bestSellerItem.name} item={bestSellerItem} />
+        {BEST_SELLER_ITEMS.map((bestSellerItem, index) => (
+          <BestSellerItem key={index} item={bestSellerItem} />
         ))}
       </ul>
     </section>
