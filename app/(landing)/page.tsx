@@ -11,6 +11,7 @@ import CollectionsMediaGrid from "./components/collections_media_grid";
 import SliderSection from "./components/slider_section";
 import Reviews from "./components/reviews";
 import ProductShowcaseWithHotspots from "./components/product_showcase_with_hotspots";
+import AboutUs from "./components/about_us";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
       <SliderSection />
       <Reviews />
       <ProductShowcaseWithHotspots />
+      <AboutUs />
     </>
   );
 }
