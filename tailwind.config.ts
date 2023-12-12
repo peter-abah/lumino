@@ -31,7 +31,7 @@ const config: Config = {
       },
       borderColor: ({ theme }) => ({
         ...theme("colors"),
-        DEFAULT: "rgb(var(--color-border) / <alpha-value>)",
+        DEFAULT: "rgb(var(--color-text) / .12)",
       }),
       borderRadius: {
         "button": "3.75rem",

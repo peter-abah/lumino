@@ -1,11 +1,12 @@
 // TODO: Move use client to down to components that actually are (radix ui)
 "use client";
 
-import * as Dialog from "@radix-ui/react-dialog";
-
-import Link from "next/link";
 import { useContext } from "react";
 import { NavBarStickyContext, NavBarStickyContextType } from "../contexts/nav_bar_sticky_context";
+import Link from "next/link";
+import * as Dialog from "@radix-ui/react-dialog";
+import ArrowDownIcon from "@/app/components/icons/arrow_down_icon";
+import CloseIcon from "@/app/components/icons/close_icon";
 import { twMerge } from "tailwind-merge";
 
 export default function NavBar() {
@@ -28,7 +29,7 @@ export default function NavBar() {
             <Dialog.Root>
               <Dialog.Trigger asChild>
                 <button type="button" className="flex gap-2.5 items-center hover:opacity-70">
-                  Shop <ArrowDown />
+                  Shop <ArrowDownIcon />
                 </button>
               </Dialog.Trigger>
               <Dialog.Portal>
@@ -45,7 +46,7 @@ export default function NavBar() {
                       >
                         Headphones
                         <span className="w-6 h-6 rounded-full bg-text/10 grid place-items-center group-hover:bg-text group-hover:text-white">
-                          <ArrowDown className="-rotate-90" width={8} />
+                          <ArrowDownIcon className="-rotate-90" width={8} />
                         </span>
                       </button>
                     </li>
@@ -56,7 +57,7 @@ export default function NavBar() {
                       >
                         Earphones
                         <span className="w-6 h-6 rounded-full bg-text/10 grid place-items-center group-hover:bg-text group-hover:text-white">
-                          <ArrowDown className="-rotate-90" width={8} />
+                          <ArrowDownIcon className="-rotate-90" width={8} />
                         </span>
                       </button>
                     </li>
@@ -83,7 +84,7 @@ export default function NavBar() {
           </li>
           <li>
             <button type="button" className="flex gap-2.5 items-center hover:opacity-70">
-              Collaboration <ArrowDown />
+              Collaboration <ArrowDownIcon />
             </button>
           </li>
           <li>
@@ -177,30 +178,5 @@ export default function NavBar() {
         </li>
       </ul>
     </nav>
-  );
-}
-
-interface IconProps extends React.ComponentPropsWithoutRef<"svg"> {}
-function ArrowDown(props: IconProps) {
-  return (
-    <svg role="presentation" focusable="false" width="10" height="7" viewBox="0 0 10 7" {...props}>
-      <path d="m1 1 4 4 4-4" fill="none" stroke="currentColor" strokeWidth="2"></path>
-    </svg>
-  );
-}
-
-function CloseIcon(props: IconProps) {
-  return (
-    <svg
-      role="presentation"
-      strokeWidth="2"
-      focusable="false"
-      width="19"
-      height="19"
-      viewBox="0 0 24 24"
-      {...props}
-    >
-      <path d="M17.658 6.343 6.344 17.657M17.658 17.657 6.344 6.343" stroke="currentColor"></path>
-    </svg>
   );
 }

@@ -9,6 +9,7 @@ import NavBar from "./components/nav_bar";
 import { NavBarStickyProvider } from "./contexts/nav_bar_sticky_context";
 import CollectionsMediaGrid from "./components/collections_media_grid";
 import SliderSection from "./components/slider_section";
+import Reviews from "./components/reviews";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       <ProductShowcase />
       <CollectionsMediaGrid />
       <SliderSection />
+      <Reviews />
     </>
   );
 }
