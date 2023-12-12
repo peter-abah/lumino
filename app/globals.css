@@ -70,7 +70,11 @@
     box-decoration-break: clone;
     -webkit-background-clip: text;
     background-clip: text;
-}
+  }
+
+  .bg-gradient {
+    background-image: var(--gradient);
+  }
 }
 
 :root {
@@ -103,6 +107,12 @@
     rgba(60, 65, 68, 1) 98%
   );
   --background-hero-inner-headphones: linear-gradient(90deg, rgb(36, 49, 80), rgba(49, 66, 105, 1));
+
+  --background-hotspot-shadow: radial-gradient(
+    50% 50% at 50% 50%,
+    rgb(255 255 255 / 0) 0%,
+    rgb(255 255 255 / 0.3) 100%
+  );
 }
 
 *,

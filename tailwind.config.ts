@@ -7,7 +7,16 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    keyframes: {
+      ping: {
+        "0%": { transform: "scale(1)" },
+        "100%": { transform: "scale(0.8)" },
+      },
+    },
     extend: {
+      animation: {
+        ping: "2s ease-in-out infinite alternate ping",
+      },
       colors: {
         text: "rgb(var(--color-text) / <alpha-value>)",
         "hero-headphones-cta": "rgb(var(--color-hero-headphones-cta) / <alpha-value>)",
@@ -22,6 +31,8 @@ const config: Config = {
         "hero-inner-mw08": "var(--background-hero-inner-mw08)",
         "hero-inner-earphones": "var(--background-hero-inner-earphones)",
         "hero-inner-headphones": "var(--background-hero-inner-headphones)",
+
+        "hotspot-shadow": "var(--background-hotspot-shadow)",
       },
       spacing: {
         "2.5": "0.625rem",
@@ -34,7 +45,7 @@ const config: Config = {
         DEFAULT: "rgb(var(--color-text) / .12)",
       }),
       borderRadius: {
-        "button": "3.75rem",
+        button: "3.75rem",
       },
     },
   },

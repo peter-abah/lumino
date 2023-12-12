@@ -7,3 +7,12 @@ export interface BestSellerItem {
   link: string;
   styles: Record<string, { selectVariantButton: string }>;
 }
+
+export interface ProductHotspot {
+  location: {
+    x: `${number}%`;
+    y: `${number}%`;
+  };
+  heading: string;
+  text: string;
+}
