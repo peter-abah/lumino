@@ -5,7 +5,7 @@ export default function PlusIcon(props: IconProps) {
     <svg
       role="presentation"
       focusable="false"
-      stroke-width="2"
+      strokeWidth="2"
       width="8"
       height="8"
       viewBox="0 0 12 12"

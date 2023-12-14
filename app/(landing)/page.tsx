@@ -12,6 +12,7 @@ import SliderSection from "./components/slider_section";
 import Reviews from "./components/reviews";
 import ProductShowcaseWithHotspots from "./components/product_showcase_with_hotspots";
 import AboutUs from "./components/about_us";
+import FeaturedProduct from "./components/featured_product";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
       <Reviews />
       <ProductShowcaseWithHotspots />
       <AboutUs />
+      <FeaturedProduct />
     </>
   );
 }
