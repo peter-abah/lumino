@@ -22,6 +22,7 @@ const config: Config = {
         "hero-headphones-cta": "rgb(var(--color-hero-headphones-cta) / <alpha-value>)",
         "main-bg": "rgb(var(--color-background-main) / <alpha-value>)",
         "button-bg": "rgb(var(--color-button-background) / <alpha-value>)",
+        "feature-table": "rgb(var(--color-feature-table-background) / <alpha-value>)",
       },
       backgroundImage: {
         "hero-mw08": "var(--background-hero-mw08)",
@@ -33,6 +34,9 @@ const config: Config = {
         "hero-inner-headphones": "var(--background-hero-inner-headphones)",
 
         "hotspot-shadow": "var(--background-hotspot-shadow)",
+      },
+      lineHeight: {
+        heading: "1.1",
       },
       spacing: {
         "2.5": "0.625rem",

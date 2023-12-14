@@ -13,6 +13,7 @@ import Reviews from "./components/reviews";
 import ProductShowcaseWithHotspots from "./components/product_showcase_with_hotspots";
 import AboutUs from "./components/about_us";
 import FeaturedProduct from "./components/featured_product";
+import CompareProducts from "./components/compare_products";
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
       <ProductShowcaseWithHotspots />
       <AboutUs />
       <FeaturedProduct />
+      <CompareProducts />
     </>
   );
 }

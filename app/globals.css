@@ -82,6 +82,7 @@
   --color-background-main: 240 240 240;
   --color-hero-headphones-cta: 49 63 95;
   --color-button-background: 26 26 26;
+  --color-feature-table-background: 229 229 229;
 
   /* Gradient background for slides in hero section of landing page */
   --background-hero-mw08: linear-gradient(
