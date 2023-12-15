@@ -14,6 +14,7 @@ import ProductShowcaseWithHotspots from "./components/product_showcase_with_hots
 import AboutUs from "./components/about_us";
 import FeaturedProduct from "./components/featured_product";
 import CompareProducts from "./components/compare_products";
+import ImageReveal from "./components/image_reveal";
 
 export default function Home() {
   return (
@@ -37,6 +38,7 @@ export default function Home() {
       <AboutUs />
       <FeaturedProduct />
       <CompareProducts />
+      <ImageReveal />
     </>
   );
 }
