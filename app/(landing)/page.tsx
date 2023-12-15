@@ -15,6 +15,7 @@ import AboutUs from "./components/about_us";
 import FeaturedProduct from "./components/featured_product";
 import CompareProducts from "./components/compare_products";
 import ImageReveal from "./components/image_reveal";
+import Story from "./components/story";
 
 export default function Home() {
   return (
@@ -39,6 +40,9 @@ export default function Home() {
       <FeaturedProduct />
       <CompareProducts />
       <ImageReveal />
+      <div className="bg-main-bg">
+        <Story />
+      </div>
     </>
   );
 }
