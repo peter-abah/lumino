@@ -12,10 +12,28 @@ const config: Config = {
         "0%": { transform: "scale(1)" },
         "100%": { transform: "scale(0.8)" },
       },
+      slideDown: {
+        from: {
+          height: "0",
+        },
+        to: {
+          height: "var(--radix-accordion-content-height)",
+        },
+      },
+      slideUp: {
+        from: {
+          height: "var(--radix-accordion-content-height)",
+        },
+        to: {
+          height: "0",
+        },
+      },
     },
     extend: {
       animation: {
         ping: "2s ease-in-out infinite alternate ping",
+        slideDown: "300ms slideDown ease-in-out",
+        slideUp: "300ms slideUp ease-in-out",
       },
       colors: {
         text: "rgb(var(--color-text) / <alpha-value>)",
