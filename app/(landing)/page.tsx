@@ -17,6 +17,7 @@ import CompareProducts from "./components/compare_products";
 import ImageReveal from "./components/image_reveal";
 import Story from "./components/story";
 import FAQ from "./components/FAQ";
+import AdditionalBenefits from "./components/additional_benefits";
 
 export default function Home() {
   return (
@@ -44,6 +45,7 @@ export default function Home() {
       <div className="bg-main-bg">
         <Story />
         <FAQ />
+        <AdditionalBenefits />
       </div>
     </>
   );

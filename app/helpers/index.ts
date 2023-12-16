@@ -4,3 +4,7 @@ export function convertStringToTitleCase(str: string) {
     .map((w) => w[0].toUpperCase() + w.substring(1).toLowerCase())
     .join(" ");
 }
+
+export function nullFunction() {
+  return null;
+}
