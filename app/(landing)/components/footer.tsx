@@ -1,5 +1,5 @@
 import { IconComponent } from "@/app/components/icons";
-import ArrowLeft from "@/app/components/icons/arrow_left_icon";
+import ArrowRight from "@/app/components/icons/arrow_right_icon";
 import Link from "next/link";
 
 export default function Footer() {
@@ -42,7 +42,7 @@ function Newsletter() {
           type="submit"
           className="absolute top-4 right-5 rounded-full w-6 aspect-square bg-text/10 grid place-items-center hover:bg-text hover:text-white"
         >
-          <ArrowLeft className="w-[5px]" />
+          <ArrowRight className="w-[5px]" />
           <span className="sr-only">Submit</span>
         </button>
       </form>

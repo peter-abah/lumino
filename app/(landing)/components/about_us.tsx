@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import ArrowLeftIcon from "@/app/components/icons/arrow_left_icon";
+import ArrowRightIcon from "@/app/components/icons/arrow_right_icon";
 import { useState } from "react";
 import clsx from "clsx";
 
@@ -65,7 +65,7 @@ export default function AboutUs() {
             onClick={goToPreviousSlide}
             className="w-12 h-12 rounded-full border grid place-items-center group hover:bg-text/5 transition-all duration-300"
           >
-            <ArrowLeftIcon className="w-2 h-auto rotate-180 group-hover:scale-110" />
+            <ArrowRightIcon className="w-2 h-auto rotate-180 group-hover:scale-110" />
             <span className="sr-only">Previous review</span>
           </button>
 
@@ -74,7 +74,7 @@ export default function AboutUs() {
             onClick={goToNextSlide}
             className="w-12 h-12 rounded-full border grid place-items-center group hover:bg-text/5 transition-all duration-300"
           >
-            <ArrowLeftIcon className="w-2 h-auto group-hover:scale-110" />
+            <ArrowRightIcon className="w-2 h-auto group-hover:scale-110" />
             <span className="sr-only">Previous review</span>
           </button>
         </div>

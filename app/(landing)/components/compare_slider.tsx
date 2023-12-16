@@ -55,7 +55,7 @@ export default function CompareSlider({ item1, item2 }: Props) {
       const { offsetLeft } = handleRef.current;
       const offsetParent = handleRef.current.offsetParent as HTMLElement;
 
-      if (e.code === "ArrowLeft") {
+      if (e.code === "ArrowRight") {
         setPositioning(offsetLeft + offsetParent.offsetLeft - 10);
       }
 
