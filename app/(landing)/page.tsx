@@ -18,6 +18,7 @@ import ImageReveal from "./components/image_reveal";
 import Story from "./components/story";
 import FAQ from "./components/FAQ";
 import AdditionalBenefits from "./components/additional_benefits";
+import Footer from "./components/footer";
 
 export default function Home() {
   return (
@@ -47,6 +48,7 @@ export default function Home() {
         <FAQ />
         <AdditionalBenefits />
       </div>
+      <Footer />
     </>
   );
 }

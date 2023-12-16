@@ -1,5 +1,4 @@
-import { ICON_NAME_TO_COMPONENT } from "@/app/components/icons";
-import { nullFunction } from "@/app/helpers";
+import { IconComponent } from "@/app/components/icons";
 
 const BENEFITS = [
   {
@@ -30,11 +29,9 @@ type BenefitProps = {
   benefit: (typeof BENEFITS)[0];
 };
 function Benefit({ benefit }: BenefitProps) {
-  const IconComponent = ICON_NAME_TO_COMPONENT.get(benefit.iconName) || nullFunction;
-
   return (
     <div>
-      <IconComponent />
+      <IconComponent name={benefit.iconName} />
       <h3 className="mt-6 mb-4 text-lg font-bold">{benefit.heading}</h3>
       <p>{benefit.text}</p>
     </div>
