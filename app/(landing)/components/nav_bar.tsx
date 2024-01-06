@@ -34,7 +34,7 @@ export default function NavBar() {
               </Dialog.Trigger>
               <Dialog.Portal>
                 <Dialog.Overlay className="bg-black/60 fixed inset-0 h-screen" />
-                <Dialog.Content className="p-10 absolute top-4 left-4 bottom-4 w-96 bg-white rounded-md">
+                <Dialog.Content className="p-10 absolute top-4 left-4 bottom-4 w-96 bg-white rounded-md z-10">
                   <Dialog.Close className="mb-8 w-12 h-12 grid place-items-center border border-text/10 rounded-full hover:rotate-90 transition-transform duration-200">
                     <CloseIcon />
                   </Dialog.Close>
@@ -105,14 +105,15 @@ export default function NavBar() {
         </ul>
       </nav>
 
-      <ul className="flex gap-6 w-full justify-end">
+      <ul className="flex gap-6 w-full justify-end items-center">
         <li>
-          <button type="button" className="hover:scale-105">
-            $Cur
+          <button type="button" className="font-bold flex items-center gap-2">
+            <span className="text-sm">USD $</span>
+            <ArrowDownIcon />
           </button>
         </li>
         <li>
-          <a href="#" className="hover:scale-105 inline-block">
+          <a href="#" className="inline-block">
             <span className="sr-only">Open Search</span>
             <svg
               role="presentation"
@@ -134,7 +135,7 @@ export default function NavBar() {
         </li>
 
         <li>
-          <a href="#" className="hover:scale-105 inline-block">
+          <a href="#" className="inline-block">
             <span className="sr-only">Open Account Page</span>
             <svg
               role="presentation"

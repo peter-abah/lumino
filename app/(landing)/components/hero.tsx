@@ -139,7 +139,7 @@ function SlidesButtons({ slidesNo, currentSlideIndex, onButtonClick }: SlideButt
           type="button"
           onClick={() => onButtonClick(i)}
           className={twMerge(
-            "w-7 h-7 rounded-full border-2 border-white/50 text-white/50 grid place-items-center",
+            "w-7.5 h-7.5 rounded-full border-2 border-white/50 text-white/50 grid place-items-center font-bold",
             i === currentSlideIndex && "border-white text-white"
           )}
         >
