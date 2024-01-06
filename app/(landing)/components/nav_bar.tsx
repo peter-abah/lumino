@@ -8,6 +8,10 @@ import * as Dialog from "@radix-ui/react-dialog";
 import ArrowDownIcon from "@/app/components/icons/arrow_down_icon";
 import CloseIcon from "@/app/components/icons/close_icon";
 import { twMerge } from "tailwind-merge";
+import Image from "next/image";
+import useSlideShow from "@/app/hooks/use_slide_show";
+import clsx from "clsx";
+import ArrowRight from "@/app/components/icons/arrow_right_icon";
 
 export default function NavBar() {
   const { isNavBarSticky } = useContext(NavBarStickyContext) as NavBarStickyContextType;
@@ -32,54 +36,7 @@ export default function NavBar() {
                   Shop <ArrowDownIcon />
                 </button>
               </Dialog.Trigger>
-              <Dialog.Portal>
-                <Dialog.Overlay className="bg-black/60 fixed inset-0 h-screen" />
-                <Dialog.Content className="p-10 absolute top-4 left-4 bottom-4 w-96 bg-white rounded-md z-10">
-                  <Dialog.Close className="mb-8 w-12 h-12 grid place-items-center border border-text/10 rounded-full hover:rotate-90 transition-transform duration-200">
-                    <CloseIcon />
-                  </Dialog.Close>
-                  <ul className="flex flex-col gap-4 text-2xl font-bold">
-                    <li>
-                      <button
-                        type="button"
-                        className="group flex w-full items-center justify-between"
-                      >
-                        Headphones
-                        <span className="w-6 h-6 rounded-full bg-text/10 grid place-items-center group-hover:bg-text group-hover:text-white">
-                          <ArrowDownIcon className="-rotate-90" width={8} />
-                        </span>
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        type="button"
-                        className="group flex w-full items-center justify-between"
-                      >
-                        Earphones
-                        <span className="w-6 h-6 rounded-full bg-text/10 grid place-items-center group-hover:bg-text group-hover:text-white">
-                          <ArrowDownIcon className="-rotate-90" width={8} />
-                        </span>
-                      </button>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="relative before:h-0.5 before:absolute before:bottom-0 before:bg-text hover:before:w-full hover:before:scale-x-100 before:scale-x-0 before:origin-left"
-                      >
-                        Accessories
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="relative before:h-0.5 before:absolute before:bottom-0 before:bg-text hover:before:w-full hover:before:scale-x-100 before:scale-x-0 before:origin-left"
-                      >
-                        Speaker
-                      </Link>
-                    </li>
-                  </ul>
-                </Dialog.Content>
-              </Dialog.Portal>
+              <ShopSection />
             </Dialog.Root>
           </li>
           <li>
@@ -179,5 +136,107 @@ export default function NavBar() {
         </li>
       </ul>
     </nav>
+  );
+}
+
+function ShopSection() {
+  return (
+    <Dialog.Portal>
+      <Dialog.Overlay className="bg-black/60 fixed inset-0 h-screen" />
+      <Dialog.Content className="p-10 absolute top-4 left-4 h-[calc(100vh_-_2rem)] w-[440px] bg-white rounded-md z-50 overflow-y-auto">
+        <Dialog.Close className="mb-8 w-12 h-12 grid place-items-center border border-text/10 rounded-full hover:rotate-90 transition-transform duration-200">
+          <CloseIcon />
+        </Dialog.Close>
+        <ul className="flex flex-col gap-4 text-2xl font-bold">
+          <li>
+            <button type="button" className="group flex w-full items-center justify-between">
+              Headphones
+              <span className="w-6 h-6 rounded-full bg-text/10 grid place-items-center group-hover:bg-text group-hover:text-white">
+                <ArrowDownIcon className="-rotate-90" width={8} />
+              </span>
+            </button>
+          </li>
+          <li>
+            <button type="button" className="group flex w-full items-center justify-between">
+              Earphones
+              <span className="w-6 h-6 rounded-full bg-text/10 grid place-items-center group-hover:bg-text group-hover:text-white">
+                <ArrowDownIcon className="-rotate-90" width={8} />
+              </span>
+            </button>
+          </li>
+          <li>
+            <Link
+              href="#"
+              className="relative before:h-0.5 before:absolute before:bottom-0 before:bg-text hover:before:w-full hover:before:scale-x-100 before:scale-x-0 before:origin-left"
+            >
+              Accessories
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="#"
+              className="relative before:h-0.5 before:absolute before:bottom-0 before:bg-text hover:before:w-full hover:before:scale-x-100 before:scale-x-0 before:origin-left"
+            >
+              Speaker
+            </Link>
+          </li>
+        </ul>
+
+        <NavigationPromo />
+      </Dialog.Content>
+    </Dialog.Portal>
+  );
+}
+
+const NAV_PROMO_PRODUCTS = [
+  { name: "MG20: Next Level Sound", link: "#", image: "/images/nav-shop-mg20.jpg" },
+  { name: "MW08: Design for Comfort", link: "#", image: "/images/nav-shop-mw08.jpg" },
+  { name: "MC100: Recharge with Style", link: "#", image: "/images/nav-shop-mc100.jpg" },
+];
+
+function NavigationPromo() {
+  const { currentIndex, goToNext, goToPrev } = useSlideShow(NAV_PROMO_PRODUCTS.length);
+
+  return (
+    <div className="mt-4 relative">
+      {NAV_PROMO_PRODUCTS.map((product, index) => (
+        <Link
+          href={product.link}
+          key={product.name}
+          className={clsx(
+            "group relative aspect-square text-white px-8 py-6 flex items-end rounded-md overflow-hidden",
+            currentIndex !== index && "hidden"
+          )}
+        >
+          <span className="text-2xl font-bold max-w-[75%]">{product.name}</span>
+          <Image
+            src={product.image}
+            fill
+            alt=""
+            className="-z-10 group-hover:scale-105 duration-300"
+            aria-hidden
+          />
+        </Link>
+      ))}
+
+      <div className="absolute bottom-6 right-8 flex gap-2">
+        <button
+          type="button"
+          aria-label="Go to Previous"
+          onClick={goToPrev}
+          className="w-7 h-7 bg-white grid place-items-center rounded-full hover:scale-110"
+        >
+          <ArrowRight className="rotate-180" />
+        </button>
+        <button
+          type="button"
+          aria-label="Go to Next"
+          onClick={goToNext}
+          className="w-7 h-7 bg-white grid place-items-center rounded-full hover:scale-110"
+        >
+          <ArrowRight />
+        </button>
+      </div>
+    </div>
   );
 }
