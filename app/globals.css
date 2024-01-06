@@ -76,6 +76,26 @@
   .bg-gradient {
     background-image: var(--gradient);
   }
+
+  .fancy-hover-underline {
+    position: relative;
+  }
+  
+  .fancy-hover-underline::before {
+    content: "";
+    height: 1px;
+    position: absolute;
+    bottom: 0px;
+    background: rgb(var(--color-text) / 1);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  
+  .fancy-hover-underline:hover::before {
+    width: 100%;
+    content: "";
+    transform: scaleX(1);
+  }
 }
 
 :root {
