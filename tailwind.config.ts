@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 const config: Config = {
   content: [
@@ -55,6 +56,9 @@ const config: Config = {
         "hero-inner-headphones": "var(--background-hero-inner-headphones)",
 
         "hotspot-shadow": "var(--background-hotspot-shadow)",
+      },
+      fontFamily: {
+        sans: ["var(--font-din-next), var(--font-inter)", ...defaultTheme.fontFamily.sans]
       },
       lineHeight: {
         heading: "1.1",
