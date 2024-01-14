@@ -35,6 +35,9 @@ const config: Config = {
         slideDown: "300ms slideDown ease-in-out",
         slideUp: "300ms slideUp ease-in-out",
       },
+      boxShadow: {
+        overlay: "0 9999px 0 9999px #0006",
+      },
       colors: {
         text: "rgb(var(--color-text) / <alpha-value>)",
         "hero-headphones-cta": "rgb(var(--color-hero-headphones-cta) / <alpha-value>)",

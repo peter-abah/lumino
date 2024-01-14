@@ -6,7 +6,6 @@ import Hero from "./components/hero";
 import ProductShowcase from "./components/product_showcase";
 import MarqueeText from "./components/marquee_text";
 import NavBar from "./components/nav_bar";
-import { NavBarStickyProvider } from "./contexts/nav_bar_sticky_context";
 import CollectionsMediaGrid from "./components/collections_media_grid";
 import SliderSection from "./components/slider_section";
 import Reviews from "./components/reviews";
@@ -24,13 +23,11 @@ export default function Home() {
   return (
     <>
       <Announcements />
-      <NavBarStickyProvider>
-        <div className="relative">
-          <NavBar />
-          <Hero />
-        </div>
-        <CategoriesList />
-      </NavBarStickyProvider>
+      <div className="relative">
+        <NavBar />
+        <Hero />
+      </div>
+      <CategoriesList />
       <MarqueeText />
       <CollectionCards />
       <BestSellers />

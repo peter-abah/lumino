@@ -2,10 +2,8 @@
 
 import clsx from "clsx";
 import Link from "next/link";
-import { useContext, useState } from "react";
-import { useInView } from "react-intersection-observer";
+import { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { NavBarStickyContext, NavBarStickyContextType } from "../contexts/nav_bar_sticky_context";
 import Image from "next/image";
 
 const HERO_SLIDES = [
@@ -20,6 +18,7 @@ const HERO_SLIDES = [
       innerBg: "bg-hero-inner-mw08",
       cta: "bg-white text-text",
     },
+    orientation: "LEFT",
   },
   {
     title: "Premium Audio Products",
@@ -32,6 +31,7 @@ const HERO_SLIDES = [
       innerBg: "bg-hero-inner-earphones",
       cta: "bg-white text-text",
     },
+    orientation: "LEFT",
   },
   {
     title: "High-Performance Sound Tools",
@@ -44,29 +44,13 @@ const HERO_SLIDES = [
       innerBg: "bg-hero-inner-headphones",
       cta: "bg-hero-headphones-cta text-white",
     },
+    orientation: "RIGHT",
   },
 ];
 
 // TODO: Make this accessible
 export default function Hero() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const { setIsNavBarSticky } = useContext(NavBarStickyContext) as NavBarStickyContextType;
-  const [previousObserverTop, setPreviousObserverTop] = useState(0);
-
-  // TODO: Maybe move it to a custom hook
-  const { ref: stickyObserverRef } = useInView({
-    onChange: (inView, entry) => {
-      if (entry.boundingClientRect.top < previousObserverTop && !inView) {
-        // User scrolls down and observer is hidden
-        setIsNavBarSticky(true);
-      } else if (entry.boundingClientRect.top > previousObserverTop && inView) {
-        // User scrolls up and observer is shown
-        setIsNavBarSticky(false);
-      }
-
-      setPreviousObserverTop(entry.boundingClientRect.top);
-    },
-  });
 
   const onSlideButtonClick = (slideIndex: number) => {
     setCurrentSlideIndex(slideIndex);
@@ -89,12 +73,18 @@ export default function Hero() {
             )}
           >
             <Image src={slide.image} fill alt="" className="object-center object-cover" />
-            <div className="max-w-[40rem] ml-24 z-10">
+            <div
+              className={clsx(
+                "max-w-[40rem] z-10 flex flex-col",
+                slide.orientation === "LEFT" && "ml-24 items-start",
+                slide.orientation === "RIGHT" && "mr-24 ml-auto items-end"
+              )}
+            >
               <p className="font-bold">{slide.subtitle}</p>
               <h1 className="my-8 text-5xl font-bold">{slide.title}</h1>
               <Link
                 className={clsx(
-                  "inline-block rounded-button px-10 py-4 font-bold hover:bg-opacity-80",
+                  "inline-block w-fit rounded-button px-10 py-4 font-bold hover:bg-opacity-80",
                   slide.stylesClasses.cta
                 )}
                 href={slide.ctaLink}
@@ -111,15 +101,6 @@ export default function Hero() {
           </div>
         </section>
       ))}
-
-      {/* Nav becomes sticky when scrolls down past an observer and changes back to normal when the
-          user scrolls up past the observer. 
-        */}
-      <div
-        className="absolute bottom-[40%] h-4 bg-transparent w-8"
-        aria-hidden
-        ref={stickyObserverRef}
-      />
     </div>
   );
 }
