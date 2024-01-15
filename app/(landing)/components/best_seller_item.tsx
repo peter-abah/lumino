@@ -5,6 +5,7 @@ import { useState } from "react";
 import { type BestSellerItem } from "@/app/types/definition";
 import clsx from "clsx";
 import Link from "next/link";
+import StarIcon from "@/app/components/icons/star";
 
 type BestSellerItemProps = {
   item: BestSellerItem;
@@ -36,9 +37,10 @@ export default function BestSellerItem({ item }: BestSellerItemProps) {
           <Link href={item.link} className="font-bold">
             {item.name}
           </Link>
-          <span className="text-sm leading-6">
-            {item.rating} {/* TODO: Add star icon here*/}
-          </span>
+          <p className="flex gap-1.5 h-fit">
+            <span className="text-sm leading-6">{item.rating}</span>
+            <StarIcon className="text-star" />
+          </p>
         </div>
         <p className="text-text/70">${item.price}</p>
         <div className="flex items-center gap-1 mt-1">

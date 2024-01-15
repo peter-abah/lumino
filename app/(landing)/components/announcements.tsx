@@ -17,7 +17,7 @@ export default function Announcements() {
 
   return (
     <section className="bg-black text-white px-4 py-3.5">
-      <div className="flex gap-4 max-w-[450px] justify-between mx-auto">
+      <div className="flex gap-4 max-w-[32rem] justify-between mx-auto">
         <button
           type="button"
           aria-controls="announcement-bar"

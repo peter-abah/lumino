@@ -107,7 +107,7 @@ function Socials() {
   return (
     <ul className="flex gap-6 items-center">
       {SOCIALS.map((social) => (
-        <li key={social.link}>
+        <li key={social.name}>
           <a href="#">
             <span className="sr-only">{social.name}</span>
             <IconComponent name={social.iconName} />

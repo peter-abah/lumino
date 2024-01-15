@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import defaultTheme from 'tailwindcss/defaultTheme';
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
   content: [
@@ -41,6 +41,7 @@ const config: Config = {
       },
       colors: {
         text: "rgb(var(--color-text) / <alpha-value>)",
+        star: "rgb(var(--color-star) / <alpha-value>)",
         "hero-headphones-cta": "rgb(var(--color-hero-headphones-cta) / <alpha-value>)",
         "main-bg": "rgb(var(--color-background-main) / <alpha-value>)",
         "button-bg": "rgb(var(--color-button-background) / <alpha-value>)",
@@ -58,7 +59,7 @@ const config: Config = {
         "hotspot-shadow": "var(--background-hotspot-shadow)",
       },
       fontFamily: {
-        sans: ["var(--font-din-next), var(--font-inter)", ...defaultTheme.fontFamily.sans]
+        sans: ["var(--font-din-next), var(--font-inter)", ...defaultTheme.fontFamily.sans],
       },
       lineHeight: {
         heading: "1.1",

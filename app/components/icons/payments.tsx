@@ -21,7 +21,7 @@ export default function Payments(props: IconProps) {
       <path
         d="M22.286 9.588H1.714V7.02c0-1.305 1.02-2.378 2.306-2.597.235-.04.466-.08.703-.124 1.584-.288 3.351-.605 7.277-.605 3.69 0 6.617.352 8.39.638 1.12.182 1.896 1.162 1.896 2.297v2.959Z"
         fill="currentColor"
-        fill-opacity=".12"
+        fillOpacity=".12"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"

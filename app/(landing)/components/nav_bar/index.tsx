@@ -2,19 +2,21 @@
 "use client";
 
 import ArrowDownIcon from "@/app/components/icons/arrow_down_icon";
+import useIsMounted from "@/app/hooks/use_is_mounted";
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { useInView } from "react-intersection-observer";
+import { twMerge } from "tailwind-merge";
 import CollaborationsSubsection from "./collaborations_subsection";
 import { ShopSubsection } from "./shop_subsection";
-import { twMerge } from "tailwind-merge";
-import { useInView } from "react-intersection-observer";
-import { createPortal } from "react-dom";
 
 export default function NavBar() {
   const [previousObserverTop, setPreviousObserverTop] = useState(0);
   const [isCollabMenuOpen, setIsCollabMenuOpen] = useState(false);
   const [isNavBarSticky, setIsNavBarSticky] = useState(false);
+  const isMounted = useIsMounted();
 
   const navRef = useRef<HTMLDivElement>(null);
   const isHomePage = true; // TODO: This will be changed to a prop
@@ -40,21 +42,22 @@ export default function NavBar() {
   const handleCollabMenuChange = (menuVisibility: boolean) => {
     setIsCollabMenuOpen(menuVisibility);
     setIsNavBarSticky(menuVisibility);
-  }
+  };
 
   // TODO: nav sticky still has some issues
   return (
     <>
-      {createPortal(
-        // Nav becomes sticky when scrolls down past an observer and changes back to normal when the
-        // user scrolls up past the observer.
-        <div
-          className="absolute top-[32rem] h-4 bg-transparent w-8"
-          aria-hidden
-          ref={stickyObserverRef}
-        ></div>,
-        document.body
-      )}
+      {isMounted &&
+        createPortal(
+          // Nav becomes sticky when scrolls down past an observer and changes back to normal when the
+          // user scrolls up past the observer.
+          <div
+            className="absolute top-[32rem] h-4 bg-transparent w-8"
+            aria-hidden
+            ref={stickyObserverRef}
+          ></div>,
+          document.body
+        )}
       <nav
         className={twMerge(
           "absolute z-50 top-0 w-full grid grid-cols-[1fr_max-content_1fr] items-center px-12 py-8 bg-main-bg text-text",
@@ -63,7 +66,7 @@ export default function NavBar() {
         )}
         ref={navRef}
       >
-        <h1 className="font-bold text-2xl uppercase">
+        <h1 className="font-black tracking-wide text-3xl uppercase">
           <Link href="/">Lumino</Link>
         </h1>
 
@@ -113,9 +116,9 @@ export default function NavBar() {
 
         <ul className="flex gap-6 w-full justify-end items-center">
           <li>
-            <button type="button" className="font-bold flex items-center gap-2">
+            <button type="button" className="font-bold flex gap-2">
               <span className="text-sm">USD $</span>
-              <ArrowDownIcon />
+              <ArrowDownIcon className="mt-1 inline-block" />
             </button>
           </li>
           <li>

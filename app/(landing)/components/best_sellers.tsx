@@ -1,6 +1,7 @@
 import Link from "next/link";
 import BestSellerItem from "./best_seller_item";
 import { BestSellerItem as TBestSellerItem } from "@/app/types/definition";
+import ArrowRight from "@/app/components/icons/arrow_right_icon";
 
 const BEST_SELLER_ITEMS: TBestSellerItem[] = [
   {
@@ -138,7 +139,13 @@ export default function BestSellers() {
   return (
     <section className="px-12 pb-20">
       <header className="flex justify-between items-end mb-12">
-        <h2 className="text-[2.5rem] font-bold">Best sellers</h2> <Link href="#">View all</Link>
+        <h2 className="text-[2.5rem] font-bold">Best sellers</h2>{" "}
+        <Link href="#" className="flex gap-3 items-center">
+          <span>View all</span>
+          <span className="grid place-items-center w-6 h-6 rounded-full bg-text/10">
+            <ArrowRight />
+          </span>
+        </Link>
       </header>
 
       <ul className="flex overflow-auto gap-6 no-scrollbar snap-x snap-mandatory">
