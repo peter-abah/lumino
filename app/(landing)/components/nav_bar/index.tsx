@@ -11,6 +11,8 @@ import { useInView } from "react-intersection-observer";
 import { twMerge } from "tailwind-merge";
 import CollaborationsSubsection from "./collaborations_subsection";
 import { ShopSubsection } from "./shop_subsection";
+import Hamburger from "@/app/components/icons/hamburger";
+import Search from "@/app/components/icons/search";
 
 export default function NavBar() {
   const [previousObserverTop, setPreviousObserverTop] = useState(0);
@@ -60,17 +62,37 @@ export default function NavBar() {
         )}
       <nav
         className={twMerge(
-          "absolute z-50 top-0 w-full grid grid-cols-[1fr_max-content_1fr] items-center px-12 py-8 bg-main-bg text-text",
+          "absolute z-50 top-0 w-full grid grid-cols-[1fr_max-content_1fr] items-center p-5 md:p-8 lg:px-12 lg:py-8 bg-main-bg text-text",
           isHomePage && "bg-opacity-0 text-white",
           isNavBarSticky && "fixed bg-opacity-100 text-text"
         )}
         ref={navRef}
       >
-        <h1 className="font-black tracking-wide text-3xl uppercase">
-          <Link href="/">Lumino</Link>
-        </h1>
+        {/* Mobile Hamburger */}
+        <div className="flex gap-4 items-center lg:hidden">
+          <button type="button">
+            <Hamburger />
+          </button>
 
-        <nav className="relative">
+          <button type="button" className="md:hidden">
+            <Search />
+          </button>
+        </div>
+
+        {/* Logo and heading */}
+        <div className="h-5">
+          <h1 aria-hidden className="sr-only">
+            Lumino
+          </h1>
+          <Link href="/">
+            <span className="font-black tracking-wide text-2xl h-5 uppercase leading-none">
+              Lumino
+            </span>
+          </Link>
+        </div>
+
+        {/* Main nav */}
+        <nav className="relative hidden lg:block">
           <ul className="flex gap-6 font-bold">
             <li>
               <Dialog.Root modal>
@@ -114,36 +136,22 @@ export default function NavBar() {
           </ul>
         </nav>
 
+        {/* Secondary nav */}
         <ul className="flex gap-6 w-full justify-end items-center">
-          <li>
+          <li className="hidden lg:list-item">
             <button type="button" className="font-bold flex gap-2">
               <span className="text-sm">USD $</span>
               <ArrowDownIcon className="mt-1 inline-block" />
             </button>
           </li>
-          <li>
-            <a href="#" className="inline-block">
+          <li className="hidden md:list-item">
+            <button type="button" className="inline-block">
               <span className="sr-only">Open Search</span>
-              <svg
-                role="presentation"
-                strokeWidth="2"
-                focusable="false"
-                width="22"
-                height="22"
-                viewBox="0 0 22 22"
-              >
-                <circle cx="11" cy="10" r="7" fill="none" stroke="currentColor"></circle>
-                <path
-                  d="m16 15 3 3"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-              </svg>
-            </a>
+              <Search />
+            </button>
           </li>
 
-          <li>
+          <li className="hidden md:list-item">
             <a href="#" className="inline-block">
               <span className="sr-only">Open Account Page</span>
               <svg

@@ -18,14 +18,14 @@ const CATEGORIES = [
 
 export default function CategoriesList() {
   return (
-    <section className="px-12 py-20">
-      <ul className="flex overflow-auto gap-6 no-scrollbar snap-x snap-mandatory">
+    <section className="px-5 md:px-8 lg:px-12 py-12 md:16 lg:py-20">
+      <ul className="flex overflow-auto gap-2 md:gap-6 no-scrollbar snap-x snap-mandarory">
         {CATEGORIES.map((category) => (
           <li key={category.name} className="snap-start">
             {/* TODO: move arbitary values to tailwind config */}
             <a
               href={category.link}
-              className="inline-block relative w-[300px] h-[300px] rounded-lg overflow-hidden"
+              className="inline-block relative w-[48vw] md:w-[26vw] aspect-square rounded-lg overflow-hidden"
             >
               <Image
                 src={category.imageLink}
@@ -34,7 +34,12 @@ export default function CategoriesList() {
                 fill
                 aria-hidden
               />
-              <span className={clsx("absolute bottom-6 left-5 font-bold", category.styles?.name)}>
+              <span
+                className={clsx(
+                  "text-sm md:text-base absolute bottom-6 left-5 font-bold",
+                  category.styles?.name
+                )}
+              >
                 {category.name}
               </span>
             </a>

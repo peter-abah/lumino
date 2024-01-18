@@ -14,10 +14,7 @@ export function FeatureTableRoot({
 }: FeatureTableProps) {
   return (
     <table
-      className={twMerge(
-        "px-12 py-4 bg-feature-table border-separate rounded-xl w-full",
-        className
-      )}
+      className={twMerge("bg-feature-table border-separate w-full", className)}
       {...otherProps}
     >
       <thead>{tableHead}</thead>
@@ -31,7 +28,7 @@ export function FeatureTableRow({ className, ...otherProps }: FeatureTableRowPro
   return (
     <tr
       className={twMerge(
-        "grid grid-cols-[180px_1fr_1fr] py-6 gap-x-5 border-b last-of-type:border-b-0",
+        "grid grid-cols-[repeat(2,minmax(150px,1fr))] md:grid-rows-1 md:grid-cols-[180px_1fr_1fr] py-4 md:py-6 gap-x-5 gap-y-1 border-b last-of-type:border-b-0",
         className
       )}
       {...otherProps}
@@ -44,12 +41,17 @@ interface FeatureTableColumnProps extends ComponentPropsWithRef<"td"> {
 }
 
 export function FeatureTableColumn({ type, className, ...otherProps }: FeatureTableColumnProps) {
-  const columnClassName = "text-left";
+  const columnClassName = "text-left text-sm md:text-base";
 
   if (type === "header")
     return <th className={twMerge("font-bold", columnClassName, className)} {...otherProps} />;
 
-  return <td className={twMerge("text-text/70", columnClassName, className)} {...otherProps} />;
+  return (
+    <td
+      className={twMerge("row-start-2 md:row-start-auto text-text/70", columnClassName, className)}
+      {...otherProps}
+    />
+  );
 }
 
 const FeatureTable = { Root: FeatureTableRoot, Column: FeatureTableColumn, Row: FeatureTableRow };

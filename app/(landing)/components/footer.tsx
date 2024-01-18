@@ -4,15 +4,15 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="py-16 px-12 bg-white">
-      <div className="flex gap-24 justify-between mb-16">
+    <footer className="py-12 px-5 lg:py-16 lg:px-12 bg-white">
+      <div className="flex flex-col lg:flex-row gap-10 md:gap-24 justify-between mb-10 md:mb-24">
         <Newsletter />
         <Links />
       </div>
       <Socials />
-      <div className="flex justify-between items-start mt-12">
-        <Copywright />
+      <div className="flex flex-col gap-8 md:flex-row justify-between items-start mt-10 md:mt-12">
         <PaymentOptions />
+        <Copywright />
       </div>
     </footer>
   );
@@ -21,10 +21,10 @@ export default function Footer() {
 function Newsletter() {
   return (
     <div className="basis-1/3">
-      <span aria-hidden className="text-2xl font-bold">
+      <span aria-hidden className="font-black tracking-wide text-3xl h-5 uppercase leading-none">
         LUMINO
       </span>
-      <p className="text-4xl font-bold mb-6 mt-8">
+      <p className="text-2xl md:text-4xl font-bold mb-6 mt-8 leading-tight">
         Sign up for news, updates & 10% off your first order.
       </p>
       <form action="#" method="POST" className="relative">
@@ -36,7 +36,7 @@ function Newsletter() {
           name="email"
           id="newsletter-email"
           placeholder="E-mail"
-          className="w-full py-4 px-5 rounded-lg border"
+          className="w-full py-4 px-5 rounded-lg border placeholder:text-sm md:placeholder:text-base placeholder:text-text/50"
         />
         <button
           type="submit"
@@ -79,21 +79,25 @@ const LINKS = [
   },
 ];
 function Links() {
-  return LINKS.map((linkCategory) => (
-    <div key={linkCategory.heading} className="last:mr-10">
-      <p className="font-bold mb-6">{linkCategory.heading}</p>
+  return (
+    <div className="grid grid-cols-2 gap-10">
+      {LINKS.map((linkCategory) => (
+        <div key={linkCategory.heading} className="last:mr-10 max-w-[250px] text-sm md:text-base">
+          <p className="font-bold mb-3 md:mb-6">{linkCategory.heading}</p>
 
-      <ul className="flex flex-col gap-3">
-        {linkCategory.links.map((link) => (
-          <li key={link.name}>
-            <Link href={link.link} className="opacity-70">
-              {link.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+          <ul className="flex flex-col gap-3">
+            {linkCategory.links.map((link) => (
+              <li key={link.name}>
+                <Link href={link.link} className="opacity-70">
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
-  ));
+  );
 }
 
 const SOCIALS = [
@@ -120,7 +124,7 @@ function Socials() {
 
 function Copywright() {
   return (
-    <div className="text-sm text-text/70 max-w-sm">
+    <div className="text-sm text-text/70 max-w-sm md:-order-1">
       <p className="mb-1">
         Made by{" "}
         <a href="https://github.com/peter-abah" className="text-text hover:underline">

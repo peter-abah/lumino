@@ -30,22 +30,33 @@ const ACCORDION_ITEMS = [
 
 export default function FAQ() {
   return (
-    <section className="p-16 mx-12 mb-20 rounded-3xl bg-white flex gap-12">
-      <div className="w-1/2">
-        <h2 className="text-[2.5rem] leading-heading mb-8 font-bold">
-          Have a question ? We are here to help.
-        </h2>
-        <p className="mb-10">
-          Check out the most common questions our customers asked. Still have questions? Contact our
-          customer support.
-        </p>
+    <section className="px-5 py-12 md:p-16 md:mx-8 lg:mx-12 md:mb-16 lg:mb-20 rounded-none md:rounded-3xl bg-white flex flex-col lg:flex-row gap-12">
+      <div className="lg:w-1/2 flex flex-col gap-10">
+        <div>
+          <h2 className="text-[2rem] md:text-[2.5rem] leading-heading mb-8 font-bold">
+            Have a question ? We are here to help.
+          </h2>
+          <p className="text-sm md:text-base leading-normal">
+            Check out the most common questions our customers asked. Still have questions? Contact
+            our customer support.
+          </p>
+        </div>
+
+        <div className="hidden lg:block">
+          <Image src="/images/customer-support.png" alt="" width={160} height={44} />
+          <p className="mt-4">Our customer support is available monday to friday: 8am-8:30pm.</p>
+          <p className="text-text/70">Average answer time: 24h</p>
+        </div>
+      </div>
+
+      <div className="lg:w-1/2">
+        <Accordion items={ACCORDION_ITEMS} />
+      </div>
+
+      <div className="lg:hidden flex flex-col items-center text-center lg:text-left text-sm md:text-base">
         <Image src="/images/customer-support.png" alt="" width={160} height={44} />
         <p className="mt-4">Our customer support is available monday to friday: 8am-8:30pm.</p>
         <p className="text-text/70">Average answer time: 24h</p>
-      </div>
-
-      <div className="w-1/2">
-        <Accordion items={ACCORDION_ITEMS} />
       </div>
     </section>
   );

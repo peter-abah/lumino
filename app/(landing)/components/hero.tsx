@@ -62,13 +62,17 @@ export default function Hero() {
       {HERO_SLIDES.map((slide, slideIndex) => (
         <section
           key={slide.title}
-          className={clsx("pt-24 px-12 pb-16 text-white", slide.stylesClasses.containerBg, {
-            hidden: slideIndex !== currentSlideIndex,
-          })}
+          className={clsx(
+            "pt-16 lg:pt-24 px-5 md:px-8 lg:px-12 pb-10 md:pb-12 lg:pb-16 text-white",
+            slide.stylesClasses.containerBg,
+            {
+              hidden: slideIndex !== currentSlideIndex,
+            }
+          )}
         >
           <div
             className={clsx(
-              "relative flex h-[560px] rounded-xl items-center overflow-hidden",
+              "relative flex h-[560px] rounded-xl items-center p-5 md:p-16 lg:p-24 overflow-hidden",
               slide.stylesClasses.innerBg
             )}
           >
@@ -76,15 +80,17 @@ export default function Hero() {
             <div
               className={clsx(
                 "max-w-[40rem] z-10 flex flex-col",
-                slide.orientation === "LEFT" && "ml-24 items-start",
-                slide.orientation === "RIGHT" && "mr-24 ml-auto items-end"
+                slide.orientation === "LEFT" && "items-start",
+                slide.orientation === "RIGHT" && "ml-auto items-end"
               )}
             >
-              <p className="font-bold">{slide.subtitle}</p>
-              <h1 className="my-8 text-5xl font-bold">{slide.title}</h1>
+              <p className="font-bold text-sm lg:text-base">{slide.subtitle}</p>
+              <h1 className="lg:my-8 mt-4 mb-6 lg:text-5xl text-[40px] leading-[1.1] font-bold">
+                {slide.title}
+              </h1>
               <Link
                 className={clsx(
-                  "inline-block w-fit rounded-button px-10 py-4 font-bold hover:bg-opacity-80",
+                  "inline-block w-fit rounded-button px-8 lg:px-10 py-4 text-sm lg:text-base font-bold hover:bg-opacity-80",
                   slide.stylesClasses.cta
                 )}
                 href={slide.ctaLink}
@@ -130,5 +136,9 @@ function SlidesButtons({ slidesNo, currentSlideIndex, onButtonClick }: SlideButt
     }
     return buttons;
   };
-  return <div className="absolute bottom-12 right-12 gap-2 flex">{createButtons()}</div>;
+  return (
+    <div className="absolute bottom-5 right-5 md:right-8 md:bottom-8 lg:bottom-12 lg:right-12 gap-2 flex">
+      {createButtons()}
+    </div>
+  );
 }

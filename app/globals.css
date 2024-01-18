@@ -7,18 +7,24 @@
     display: grid;
     grid: auto / auto-flow 300px;
   }
-  
+
   .marquee-text {
     display: inline-block;
     line-height: 1;
     background-image: linear-gradient(90deg, rgba(77, 82, 60, 1), rgba(133, 141, 103, 1) 100%);
     background-clip: text;
-    font-size: 8.75rem;
+    font-size: 5rem;
     font-weight: 700;
     padding: 0 4rem;
     text-wrap: nowrap;
     color: transparent;
     animation: marquee 16s linear infinite;
+  }
+
+  @media screen and (min-width: 48rem) {
+    .marquee-text {
+      font-size: 8.75rem;
+    }
   }
 
   @keyframes marquee {
@@ -61,7 +67,7 @@
   .fancy-hover-underline {
     position: relative;
   }
-  
+
   .fancy-hover-underline::before {
     content: "";
     height: 1px;
@@ -71,7 +77,7 @@
     transform: scaleX(0);
     transform-origin: left;
   }
-  
+
   .fancy-hover-underline:hover::before {
     width: 100%;
     content: "";

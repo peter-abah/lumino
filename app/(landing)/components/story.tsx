@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import ArrowRightIcon from "@/app/components/icons/arrow_right_icon";
+import useSlideShow from "@/app/hooks/use_slide_show";
 
 const STORIES = [
   {
@@ -40,49 +41,51 @@ const STORIES = [
 ];
 
 export default function Stories() {
-  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
-
-  const goToNextStory = () => {
-    setCurrentStoryIndex((prev) => (prev === STORIES.length - 1 ? 0 : prev + 1));
-  };
-
-  const goToPreviousStory = () => {
-    setCurrentStoryIndex((prev) => (prev === 0 ? STORIES.length - 1 : prev - 1));
-  };
+  const {
+    currentIndex: currentStoryIndex,
+    setCurrentIndex: setCurrentStoryIndex,
+    goToNext: goToNextStory,
+    goToPrev: goToPreviousStory,
+  } = useSlideShow(STORIES.length);
 
   return (
-    <section className="px-12 py-20">
+    <section className="px-5 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20">
       {STORIES.map((story, index) => (
         <div
           key={story.year}
-          className={clsx("grid grid-cols-2", index !== currentStoryIndex && "hidden")}
+          className={twMerge("lg:grid lg:grid-cols-2", index !== currentStoryIndex && "!hidden")}
         >
-          <div className="relative mr-[16.5%] aspect-square rounded-xl overflow-hidden">
-            <Image src={story.image} fill alt="" />
+          <div className="max-w-[25rem] lg:max-w-none mx-auto lg:pr-[16.5%] w-full mb-6 lg:mb-0">
+            <div className="w-full relative aspect-square rounded-xl overflow-hidden">
+              <Image src={story.image} fill alt="" />
+            </div>
           </div>
 
-          <div className="mr-[16.5%]">
-            <p className="font-bold">Story</p>
-            <p className="mt-6 text-[2.5rem] leading-heading font-bold">{story.text}</p>
+          <div className="min-[1200px]:pr-[16.5%] min-[1200px]:pl-0 md:px-14 text-center lg:text-start">
+            <p className="font-bold text-sm md:text-base">Story</p>
+            <p className="mt-4 md:mt-6 text-[2rem] md:text-[2.5rem] leading-heading font-bold">
+              {story.text}
+            </p>
           </div>
         </div>
       ))}
 
-      <div className="mt-14 flex gap-10 items-start">
-        <div className="relative flex w-full">
-          <span className="absolute w-full bg-text/10 h-0.5 top-2.5  left-0"></span>
+      <div className="mt-14 flex gap-10 items-start overflow-x-auto no-scrollbar">
+        <div className="relative flex w-full min-w-[600px]">
+          <span className="absolute w-full bg-text/10 h-0.5 top-2 md:top-2.5  left-0"></span>
+
           {STORIES.map((story, index) => (
             <button
               key={story.year}
               onClick={() => setCurrentStoryIndex(index)}
               className={twMerge(
-                "z-10 flex flex-col gap-3 w-full text-left font-bold before:w-5 before:aspect-square before:border-2 before:rounded-full before:box-border before:bg-main-bg",
+                "z-10 flex flex-col gap-3 w-full text-left font-bold before:w-4 md:before:w-5 before:aspect-square before:border-2 before:rounded-full before:box-border before:bg-main-bg",
                 index === currentStoryIndex && "before:bg-black before:border-black"
               )}
             >
               <span
                 className={twMerge(
-                  "font-bold text-sm opacity-50",
+                  "font-bold text-xs md:text-sm opacity-50",
                   index === currentStoryIndex && "opacity-100"
                 )}
               >
@@ -92,7 +95,7 @@ export default function Stories() {
           ))}
         </div>
 
-        <div className="flex gap-4">
+        <div className="lg:flex lg:gap-4 hidden">
           <button
             type="button"
             onClick={goToPreviousStory}

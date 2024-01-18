@@ -88,7 +88,7 @@ export default function CompareSlider({ item1, item2 }: Props) {
   }, [isSliding, handleSlide, handleSlideEnd, handleSlideForKeyboard]);
 
   return (
-    <div className="w-2/3 relative aspect-[17/10] mx-auto" ref={parentRef}>
+    <div className="w-full lg:w-2/3 relative aspect-[17/10] mx-auto" ref={parentRef}>
       <div
         className="select-none pointer-events-none z-10 w-full h-full absolute top-0 left-0 rounded-xl overflow-hidden"
         style={leftItemStyle}

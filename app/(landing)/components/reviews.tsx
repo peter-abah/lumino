@@ -36,17 +36,19 @@ export default function Reviews() {
   };
 
   return (
-    <section className="px-12 pb-20 mx-auto">
+    <section className="px-5 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20 mx-auto">
       <ul>
         {REVIEWS.map((review, index) => (
           <li
             key={review.text}
             className={clsx(
-              "text-center max-w-[62.5rem] px-8 mx-auto",
+              "text-center max-w-[62.5rem] md:px-8 mx-auto",
               index !== currentReviewIndex && "hidden"
             )}
           >
-            <blockquote className="text-4xl font-bold mb-10">{review.text}</blockquote>
+            <blockquote className="text-2xl md:text-[2rem] leading-tight font-bold mb-8 md:mb-10">
+              {review.text}
+            </blockquote>
             <div className="relative max-w-[6.25rem] h-10 mx-auto">
               <Image
                 src={review.reviewerImage}

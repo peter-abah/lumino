@@ -16,7 +16,7 @@ export default function BestSellerItem({ item }: BestSellerItemProps) {
     <li className="bg-white snap-start rounded-md">
       <Link
         href={item.link}
-        className="w-[20rem] rounded-md overflow-hidden inline-block relative aspect-square group"
+        className="w-[72vw] md:w-[36vw] lg:w-[20vw] rounded-md overflow-hidden inline-block relative aspect-square group"
       >
         <Image
           src={item.images[currentVariant].normal}

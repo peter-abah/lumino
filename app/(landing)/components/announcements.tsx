@@ -16,7 +16,7 @@ export default function Announcements() {
   const { currentIndex, goToNext, goToPrev } = useSlideShow(announcements.length);
 
   return (
-    <section className="bg-black text-white px-4 py-3.5">
+    <section className="bg-black text-white p-2.5 md:px-4 md:py-3.5">
       <div className="flex gap-4 max-w-[32rem] justify-between mx-auto">
         <button
           type="button"
