@@ -16,7 +16,7 @@ export default function Accordion({ items }: Props) {
           className="border-b last:border-b-0"
         >
           <AccordionRadix.Header className="py-5 font-bold">
-            <AccordionRadix.Trigger className="group flex justify-between gap-4 w-full text-sm md:text-base">
+            <AccordionRadix.Trigger className="group flex justify-between gap-4 w-full text-sm md:text-base text-left">
               <span>{item.heading}</span>
               <span
                 aria-hidden

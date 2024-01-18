@@ -4,7 +4,7 @@ export default function Hamburger(props: IconProps) {
   return (
     <svg
       role="presentation"
-      stroke-width="2"
+      strokeWidth="2"
       focusable="false"
       width="22"
       height="22"

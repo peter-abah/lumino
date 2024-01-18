@@ -80,7 +80,7 @@ export default function CompareSlider({ item1, item2 }: Props) {
       return () => {
         window.removeEventListener("mousemove", handleSlide);
         window.removeEventListener("mouseup", handleSlideEnd);
-        window.removeEventListener("touchstart", handleSlide);
+        window.removeEventListener("touchmove", handleSlide);
         window.removeEventListener("touchend", handleSlideEnd);
         window.removeEventListener("keydown", handleSlideForKeyboard);
       };
