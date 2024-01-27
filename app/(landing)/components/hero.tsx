@@ -63,7 +63,7 @@ export default function Hero() {
         <section
           key={slide.title}
           className={clsx(
-            "pt-16 lg:pt-24 px-5 md:px-8 lg:px-12 pb-10 md:pb-12 lg:pb-16 text-white",
+            "pt-16 md:pt-24 px-5 md:px-8 lg:px-12 pb-10 md:pb-12 lg:pb-16 text-white",
             slide.stylesClasses.containerBg,
             {
               hidden: slideIndex !== currentSlideIndex,
