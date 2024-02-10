@@ -1,5 +1,5 @@
-import { IconComponent } from "@/app/components/icons";
-import ArrowRight from "@/app/components/icons/arrow_right_icon";
+import { IconComponent } from "@/components/icons";
+import ArrowRight from "@/components/icons/arrow_right_icon";
 import Link from "next/link";
 
 export default function Footer() {

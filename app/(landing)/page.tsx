@@ -19,7 +19,7 @@ import FAQ from "./components/FAQ";
 import AdditionalBenefits from "./components/additional_benefits";
 import Footer from "./components/footer";
 import { client } from "@/sanity/lib/client";
-import { Announcement, NavBarData, SanityArray } from "../types/definition";
+import { Announcement, NavBarData, SanityArray } from "../../types/definition";
 
 const getData = async () => {
   const data = await client.fetch<{

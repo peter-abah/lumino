@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { type BestSellerItem } from "@/app/types/definition";
+import { type BestSellerItem } from "@/types/definition";
 import clsx from "clsx";
 import Link from "next/link";
-import StarIcon from "@/app/components/icons/star";
+import StarIcon from "@/components/icons/star";
 
 type BestSellerItemProps = {
   item: BestSellerItem;

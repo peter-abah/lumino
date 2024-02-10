@@ -1,11 +1,11 @@
 "use client";
 
-import useSlideShow from "@/app/hooks/use_slide_show";
+import useSlideShow from "@/hooks/use_slide_show";
 import {
   SanityArray,
   Announcement as TAnnouncement,
-} from "@/app/types/definition";
-import ArrowRight from "@/app/components/icons/arrow_right_icon";
+} from "@/types/definition";
+import ArrowRight from "@/components/icons/arrow_right_icon";
 import Announcement from "./announcement";
 
 type Props = {

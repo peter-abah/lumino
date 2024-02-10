@@ -4,8 +4,8 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import ArrowRightIcon from "@/app/components/icons/arrow_right_icon";
-import useSlideShow from "@/app/hooks/use_slide_show";
+import ArrowRightIcon from "@/components/icons/arrow_right_icon";
+import useSlideShow from "@/hooks/use_slide_show";
 
 const STORIES = [
   {

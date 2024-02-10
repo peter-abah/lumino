@@ -1,7 +1,7 @@
 "use client";
 
-import PlusIcon from "@/app/components/icons/plus_icon";
-import { ProductHotspot } from "@/app/types/definition";
+import PlusIcon from "@/components/icons/plus_icon";
+import { ProductHotspot } from "@/types/definition";
 import * as Dialog from "@radix-ui/react-dialog";
 
 type Props = {

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import useSlideShow from "@/app/hooks/use_slide_show";
-import ArrowRight from "@/app/components/icons/arrow_right_icon";
+import useSlideShow from "@/hooks/use_slide_show";
+import ArrowRight from "@/components/icons/arrow_right_icon";
 import clsx from "clsx";
-import { Product, SanityArray } from "@/app/types/definition";
+import { Product, SanityArray } from "@/types/definition";
 import { urlForImage } from "@/sanity/lib/image";
 
 // const NAV_PROMO_PRODUCTS = [

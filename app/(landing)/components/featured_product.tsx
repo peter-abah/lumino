@@ -1,7 +1,7 @@
 "use client";
 
-import Share from "@/app/components/icons/share";
-import StarIcon from "@/app/components/icons/star";
+import Share from "@/components/icons/share";
+import StarIcon from "@/components/icons/star";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";

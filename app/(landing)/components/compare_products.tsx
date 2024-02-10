@@ -1,5 +1,5 @@
-import FeatureTable from "@/app/components/feature_table";
-import { convertStringToTitleCase } from "@/app/helpers";
+import FeatureTable from "@/components/feature_table";
+import { convertStringToTitleCase } from "@/helpers";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";

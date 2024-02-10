@@ -2,7 +2,7 @@ import { CSSProperties } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ShowcaseHotspot from "./showcase_hotspot";
-import { ProductHotspot } from "@/app/types/definition";
+import { ProductHotspot } from "@/types/definition";
 
 const SHOWCASE_PRODUCT = {
   title: "MW08 Sport: inspire movement",

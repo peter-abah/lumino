@@ -1,7 +1,7 @@
 "use client";
 
-import ArrowDownIcon from "@/app/components/icons/arrow_down_icon";
-import CloseIcon from "@/app/components/icons/close_icon";
+import ArrowDownIcon from "@/components/icons/arrow_down_icon";
+import CloseIcon from "@/components/icons/close_icon";
 import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +12,7 @@ import {
   NavBarData,
   NavProductLink,
   SanityArray,
-} from "@/app/types/definition";
+} from "@/types/definition";
 import { urlForImage } from "@/sanity/lib/image";
 
 // const EARPHONES_LINKS = [

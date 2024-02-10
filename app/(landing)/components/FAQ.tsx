@@ -1,4 +1,4 @@
-import Accordion from "@/app/components/accordion";
+import Accordion from "@/components/accordion";
 import Image from "next/image";
 
 const ACCORDION_ITEMS = [

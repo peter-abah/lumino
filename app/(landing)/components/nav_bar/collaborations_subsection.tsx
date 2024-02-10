@@ -1,7 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import Image from "next/image";
-import { NavBarData } from "@/app/types/definition";
+import { NavBarData } from "@/types/definition";
 import { urlForImage } from "@/sanity/lib/image";
 
 // const NEW_COLLABORATIONS_LINKS = [

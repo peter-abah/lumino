@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import ArrowRightIcon from "@/app/components/icons/arrow_right_icon";
+import ArrowRightIcon from "@/components/icons/arrow_right_icon";
 import { useState } from "react";
 import clsx from "clsx";
 

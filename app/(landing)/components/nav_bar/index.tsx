@@ -1,8 +1,8 @@
 // TODO: Move use client to down to components that actually are (radix ui)
 "use client";
 
-import ArrowDownIcon from "@/app/components/icons/arrow_down_icon";
-import useIsMounted from "@/app/hooks/use_is_mounted";
+import ArrowDownIcon from "@/components/icons/arrow_down_icon";
+import useIsMounted from "@/hooks/use_is_mounted";
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -11,9 +11,9 @@ import { useInView } from "react-intersection-observer";
 import { twMerge } from "tailwind-merge";
 import CollaborationsSubsection from "./collaborations_subsection";
 import { ShopSubsection } from "./shop_subsection";
-import Hamburger from "@/app/components/icons/hamburger";
-import Search from "@/app/components/icons/search";
-import { NavBarData } from "@/app/types/definition";
+import Hamburger from "@/components/icons/hamburger";
+import Search from "@/components/icons/search";
+import { NavBarData } from "@/types/definition";
 
 type Props = {
   data: NavBarData;

@@ -1,4 +1,4 @@
-import { type Announcement as TAnnouncement } from "@/app/types/definition";
+import { type Announcement as TAnnouncement } from "@/types/definition";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 

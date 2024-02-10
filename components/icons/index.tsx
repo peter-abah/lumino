@@ -3,7 +3,7 @@ import Location from "./location";
 import Globe from "./globe";
 import Support from "./support";
 import Payments from "./payments";
-import { nullFunction } from "@/app/helpers";
+import { nullFunction } from "@/helpers";
 import Facebook from "./facebook";
 import Twitter from "./twitter";
 import Instagram from "./instagram";

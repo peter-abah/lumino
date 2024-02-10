@@ -1,5 +1,5 @@
 "use client";
-import { IconComponent } from "@/app/components/icons";
+import { IconComponent } from "@/components/icons";
 import clsx from "clsx";
 import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
