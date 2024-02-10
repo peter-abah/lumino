@@ -5,51 +5,56 @@ import Link from "next/link";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import Image from "next/image";
+import { HeroSlide, SanityArray } from "@/types/definition";
+import { urlForImage } from "@/sanity/lib/image";
 
-const HERO_SLIDES = [
-  {
-    title: "High-Performance & Elegant Design",
-    subtitle: "Introducing the MW08 sport",
-    cta: "Shop the MW08 Sport",
-    image: "/images/hero-mw08.jpg",
-    ctaLink: "#",
-    stylesClasses: {
-      containerBg: "bg-hero-mw08",
-      innerBg: "bg-hero-inner-mw08",
-      cta: "bg-white text-text",
-    },
-    orientation: "LEFT",
-  },
-  {
-    title: "Premium Audio Products",
-    subtitle: "High-end earphones",
-    cta: "Discover collection",
-    ctaLink: "#",
-    image: "/images/hero-earphones.jpg",
-    stylesClasses: {
-      containerBg: "bg-hero-earphones",
-      innerBg: "bg-hero-inner-earphones",
-      cta: "bg-white text-text",
-    },
-    orientation: "LEFT",
-  },
-  {
-    title: "High-Performance Sound Tools",
-    subtitle: "High-end headphones",
-    cta: "Discover collection",
-    ctaLink: "#",
-    image: "/images/hero-headphones.jpg",
-    stylesClasses: {
-      containerBg: "bg-hero-headphones",
-      innerBg: "bg-hero-inner-headphones",
-      cta: "bg-hero-headphones-cta text-white",
-    },
-    orientation: "RIGHT",
-  },
-];
+// const HERO_SLIDES = [
+//   {
+//     title: "High-Performance & Elegant Design",
+//     subtitle: "Introducing the MW08 sport",
+//     cta: "Shop the MW08 Sport",
+//     image: "/images/hero-mw08.jpg",
+//     ctaLink: "#",
+//     stylesClasses: {
+//       containerBg: "bg-hero-mw08",
+//       innerBg: "bg-hero-inner-mw08",
+//       cta: "bg-white text-text",
+//     },
+//     orientation: "LEFT",
+//   },
+//   {
+//     title: "Premium Audio Products",
+//     subtitle: "High-end earphones",
+//     cta: "Discover collection",
+//     ctaLink: "#",
+//     image: "/images/hero-earphones.jpg",
+//     stylesClasses: {
+//       containerBg: "bg-hero-earphones",
+//       innerBg: "bg-hero-inner-earphones",
+//       cta: "bg-white text-text",
+//     },
+//     orientation: "LEFT",
+//   },
+//   {
+//     title: "High-Performance Sound Tools",
+//     subtitle: "High-end headphones",
+//     cta: "Discover collection",
+//     ctaLink: "#",
+//     image: "/images/hero-headphones.jpg",
+//     stylesClasses: {
+//       containerBg: "bg-hero-headphones",
+//       innerBg: "bg-hero-inner-headphones",
+//       cta: "bg-hero-headphones-cta text-white",
+//     },
+//     orientation: "RIGHT",
+//   },
+// ];
 
+type Props = {
+  slides: SanityArray<HeroSlide>;
+};
 // TODO: Make this accessible
-export default function Hero() {
+export default function Hero({ slides }: Props) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   const onSlideButtonClick = (slideIndex: number) => {
@@ -59,48 +64,55 @@ export default function Hero() {
   return (
     // TODO: Move arbitary values to tailwind config
     <div className="relative">
-      {HERO_SLIDES.map((slide, slideIndex) => (
+      {slides.map((slide, slideIndex) => (
         <section
-          key={slide.title}
+          key={slide._key}
           className={clsx(
             "pt-16 md:pt-24 px-5 md:px-8 lg:px-12 pb-10 md:pb-12 lg:pb-16 text-white",
-            slide.stylesClasses.containerBg,
             {
               hidden: slideIndex !== currentSlideIndex,
             }
           )}
+          style={{
+            background: slide.colors.backgroundGradient,
+          }}
         >
           <div
             className={clsx(
-              "relative flex h-[560px] rounded-xl items-center p-5 md:p-16 lg:p-24 overflow-hidden",
-              slide.stylesClasses.innerBg
+              "relative flex h-[560px] rounded-xl items-center p-5 md:p-16 lg:p-24 overflow-hidden"
             )}
           >
-            <Image src={slide.image} fill alt="" className="object-center object-cover" />
+            <Image
+              src={urlForImage(slide.image)}
+              fill
+              alt=""
+              className="object-center object-cover"
+            />
             <div
-              className={clsx(
-                "max-w-[40rem] z-10 flex flex-col",
-                slide.orientation === "LEFT" && "items-start",
-                slide.orientation === "RIGHT" && "ml-auto items-end"
-              )}
+              className={clsx("max-w-[40rem] z-10 flex flex-col items-start")}
             >
-              <p className="font-bold text-sm lg:text-base">{slide.subtitle}</p>
+              <p className="font-bold text-sm lg:text-base">
+                {slide.subheading}
+              </p>
               <h1 className="lg:my-8 mt-4 mb-6 lg:text-5xl text-[40px] leading-[1.1] font-bold">
-                {slide.title}
+                {slide.heading}
               </h1>
               <Link
                 className={clsx(
-                  "inline-block w-fit rounded-button px-8 lg:px-10 py-4 text-sm lg:text-base font-bold hover:bg-opacity-80",
-                  slide.stylesClasses.cta
+                  "inline-block w-fit rounded-button px-8 lg:px-10 py-4 text-sm lg:text-base font-bold hover:bg-opacity-80 text-text"
                 )}
-                href={slide.ctaLink}
+                style={{
+                  color: slide.colors.buttonTextColor,
+                  background: slide.colors.buttonBackground,
+                }}
+                href={slide.buttonURL}
               >
-                {slide.cta}
+                {slide.buttonText}
               </Link>
             </div>
 
             <SlidesButtons
-              slidesNo={HERO_SLIDES.length}
+              slidesNo={slides.length}
               onButtonClick={onSlideButtonClick}
               currentSlideIndex={currentSlideIndex}
             />
@@ -116,7 +128,11 @@ type SlideButtonsProps = {
   currentSlideIndex: number;
   onButtonClick: (slideIndex: number) => void;
 };
-function SlidesButtons({ slidesNo, currentSlideIndex, onButtonClick }: SlideButtonsProps) {
+function SlidesButtons({
+  slidesNo,
+  currentSlideIndex,
+  onButtonClick,
+}: SlideButtonsProps) {
   const createButtons = () => {
     const buttons = [];
     for (let i = 0; i < slidesNo; i++) {

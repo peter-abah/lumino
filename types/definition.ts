@@ -53,3 +53,20 @@ export interface NavBarData {
   newCollaborations: SanityArray<{ name: string; url: string }>;
   collaborationsFeaturedProduct: Product;
 }
+
+export interface HeroSlide {
+  heading: string;
+  subheading: string;
+  image: Image;
+  buttonText: string;
+  buttonURL: string;
+  colors: {
+    backgroundGradient: string;
+    buttonBackground: string;
+    buttonTextColor: string;
+  }
+}
+
+export interface HomePage {
+  heroSlides: SanityArray<HeroSlide>;
+}

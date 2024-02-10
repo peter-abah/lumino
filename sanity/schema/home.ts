@@ -75,3 +75,21 @@ export const navBarData = {
     },
   ],
 };
+
+export const homePage = {
+  name: "homePage",
+  title: "Home Page",
+  type: "document",
+  fields: [
+    { name: "name", type: "string", title: "Name" },
+    {
+      name: "heroSlides",
+      title: "Hero Slides",
+      type: "array",
+      of: [{ type: "heroSlide" }],
+    },
+  ],
+  initialValue: {
+    name: "Home Page",
+  },
+};
