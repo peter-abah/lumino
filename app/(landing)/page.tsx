@@ -18,13 +18,32 @@ import Story from "./components/story";
 import FAQ from "./components/FAQ";
 import AdditionalBenefits from "./components/additional_benefits";
 import Footer from "./components/footer";
+import { client } from "@/sanity/lib/client";
+import { Announcement, NavBarData, SanityArray } from "../types/definition";
 
-export default function Home() {
+const getData = async () => {
+  const data = await client.fetch<{
+    navBarData: NavBarData;
+    announcements: SanityArray<Announcement>;
+  }>(
+    `
+    {
+      'navBarData': *[_type == "navBarData"][0],
+      'announcements': *[_type == "announcement"]
+    }
+  `,
+  );
+  return data;
+};
+
+export default async function Home() {
+  const { announcements, navBarData } = await getData();
+
   return (
     <>
-      <Announcements />
+      <Announcements announcements={announcements} />
       <div className="relative">
-        <NavBar />
+        <NavBar data={navBarData} />
         <Hero />
       </div>
       <CategoriesList />

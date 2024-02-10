@@ -59,7 +59,7 @@ const config: Config = {
         "hotspot-shadow": "var(--background-hotspot-shadow)",
       },
       fontFamily: {
-        sans: ["var(--font-din-next), var(--font-inter)", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-din-next)", ...defaultTheme.fontFamily.sans],
       },
       lineHeight: {
         heading: "1.1",

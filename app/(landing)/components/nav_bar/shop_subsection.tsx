@@ -1,45 +1,58 @@
+"use client";
+
 import ArrowDownIcon from "@/app/components/icons/arrow_down_icon";
 import CloseIcon from "@/app/components/icons/close_icon";
 import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { NavigationPromo } from "./nav_promo";
+import {
+  NavBarData,
+  NavProductLink,
+  SanityArray,
+} from "@/app/types/definition";
+import { urlForImage } from "@/sanity/lib/image";
 
-const EARPHONES_LINKS = [
-  { name: "MW08 Sport", link: "#", image: "/images/nav-earphones-MW08Sport.png" },
-  { name: "MW08", link: "#", image: "/images/nav-earphones-MW08BU.png" },
-  { name: "MW07 Plus", link: "#", image: "/images/nav-earphones-MW07TS.png" },
-  { name: "MW07 Plus Leica", link: "#", image: "/images/nav-earphones-MW07PlusLeica.png" },
-  {
-    name: "MW07 Plus Paris Saint-Germain",
-    link: "#",
-    image: "/images/nav-earphones-MW07PlusParis.png",
-  },
-  { name: "View all", link: "#", image: "/images/nav-earphones-MW07-LAM2.png" },
-];
+// const EARPHONES_LINKS = [
+//   { name: "MW08 Sport", link: "#", image: "/images/nav-earphones-MW08Sport.png" },
+//   { name: "MW08", link: "#", image: "/images/nav-earphones-MW08BU.png" },
+//   { name: "MW07 Plus", link: "#", image: "/images/nav-earphones-MW07TS.png" },
+//   { name: "MW07 Plus Leica", link: "#", image: "/images/nav-earphones-MW07PlusLeica.png" },
+//   {
+//     name: "MW07 Plus Paris Saint-Germain",
+//     link: "#",
+//     image: "/images/nav-earphones-MW07PlusParis.png",
+//   },
+//   { name: "View all", link: "#", image: "/images/nav-earphones-MW07-LAM2.png" },
+// ];
 
-const HEADPHONES_LINKS = [
-  { name: "MW65", link: "#", image: "/images/nav-headphones-MW65.png" },
-  { name: "MG20", link: "#", image: "/images/nav-headphones-MG20.png" },
-  { name: "MH40 Wireless", link: "#", image: "/images/nav-headphones-MH40.png" },
-  { name: "MW50+", link: "#", image: "/images/nav-headphones-MW50.png" },
-  { name: "View all", link: "#", image: "/images/nav-headphones-MH40WP.png" },
-];
+// const HEADPHONES_LINKS = [
+//   { name: "MW65", link: "#", image: "/images/nav-headphones-MW65.png" },
+//   { name: "MG20", link: "#", image: "/images/nav-headphones-MG20.png" },
+//   { name: "MH40 Wireless", link: "#", image: "/images/nav-headphones-MH40.png" },
+//   { name: "MW50+", link: "#", image: "/images/nav-headphones-MW50.png" },
+//   { name: "View all", link: "#", image: "/images/nav-headphones-MH40WP.png" },
+// ];
 
-type PanelLinks = typeof EARPHONES_LINKS;
+// type PanelLinks = typeof EARPHONES_LINKS;
 
-export function ShopSubsection() {
+type Props = {
+  data: NavBarData;
+};
+export function ShopSubsection({ data }: Props) {
   const [secondPanelState, setSecondPanelState] = useState<{
     isOpen: boolean;
-    links: PanelLinks;
+    links: SanityArray<NavProductLink>;
     heading: string;
   }>({
     isOpen: false,
     links: [],
     heading: "",
   });
+
+  useEffect(() => console.log(data), [data]);
 
   return (
     <>
@@ -62,7 +75,7 @@ export function ShopSubsection() {
                 onClick={() =>
                   setSecondPanelState({
                     isOpen: true,
-                    links: HEADPHONES_LINKS,
+                    links: data.headphonesLinks,
                     heading: "Headphones",
                   })
                 }
@@ -80,7 +93,7 @@ export function ShopSubsection() {
                 onClick={() =>
                   setSecondPanelState({
                     isOpen: true,
-                    links: EARPHONES_LINKS,
+                    links: data.earphonesLinks,
                     heading: "Headphones",
                   })
                 }
@@ -109,7 +122,7 @@ export function ShopSubsection() {
             </li>
           </ul>
 
-          <NavigationPromo />
+          <NavigationPromo products={data.shopPromoProducts} />
         </div>
 
         {secondPanelState.isOpen && (
@@ -117,10 +130,18 @@ export function ShopSubsection() {
             <h3 className="sr-only">{secondPanelState.heading}</h3>
             <ul className="flex flex-col gap-4">
               {secondPanelState.links.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.link} className="flex gap-4 items-center">
-                    <Image src={link.image} alt="" width={60} height={60} aria-hidden />
-                    <span className="text-xl font-bold fancy-hover-underline">{link.name}</span>
+                <li key={link._key}>
+                  <Link href={link.url} className="flex gap-4 items-center">
+                    <Image
+                      src={urlForImage(link.imageIcon)}
+                      alt=""
+                      width={60}
+                      height={60}
+                      aria-hidden
+                    />
+                    <span className="text-xl font-bold fancy-hover-underline">
+                      {link.name}
+                    </span>
                   </Link>
                 </li>
               ))}

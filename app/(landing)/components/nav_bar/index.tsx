@@ -13,8 +13,12 @@ import CollaborationsSubsection from "./collaborations_subsection";
 import { ShopSubsection } from "./shop_subsection";
 import Hamburger from "@/app/components/icons/hamburger";
 import Search from "@/app/components/icons/search";
+import { NavBarData } from "@/app/types/definition";
 
-export default function NavBar() {
+type Props = {
+  data: NavBarData;
+};
+export default function NavBar({ data }: Props) {
   const [previousObserverTop, setPreviousObserverTop] = useState(0);
   const [isCollabMenuOpen, setIsCollabMenuOpen] = useState(false);
   const [isNavBarSticky, setIsNavBarSticky] = useState(false);
@@ -97,24 +101,30 @@ export default function NavBar() {
             <li>
               <Dialog.Root modal>
                 <Dialog.Trigger asChild>
-                  <button type="button" className="flex gap-2.5 items-center hover:opacity-70">
+                  <button
+                    type="button"
+                    className="flex gap-2.5 items-center hover:opacity-70"
+                  >
                     Shop <ArrowDownIcon />
                   </button>
                 </Dialog.Trigger>
                 <Dialog.Portal>
-                  <ShopSubsection />
+                  <ShopSubsection data={data} />
                 </Dialog.Portal>
               </Dialog.Root>
             </li>
             <li>
               <Dialog.Root modal onOpenChange={handleCollabMenuChange}>
                 <Dialog.Trigger asChild>
-                  <button type="button" className="flex gap-2.5 items-center hover:opacity-70">
+                  <button
+                    type="button"
+                    className="flex gap-2.5 items-center hover:opacity-70"
+                  >
                     Collaboration <ArrowDownIcon />
                   </button>
                 </Dialog.Trigger>
                 <Dialog.Portal container={navRef.current}>
-                  <CollaborationsSubsection />
+                  <CollaborationsSubsection data={data} />
                 </Dialog.Portal>
               </Dialog.Root>
             </li>
@@ -162,7 +172,13 @@ export default function NavBar() {
                 height="22"
                 viewBox="0 0 22 22"
               >
-                <circle cx="11" cy="7" r="4" fill="none" stroke="currentColor"></circle>
+                <circle
+                  cx="11"
+                  cy="7"
+                  r="4"
+                  fill="none"
+                  stroke="currentColor"
+                ></circle>
                 <path
                   d="M3.5 19c1.421-2.974 4.247-5 7.5-5s6.079 2.026 7.5 5"
                   fill="none"
