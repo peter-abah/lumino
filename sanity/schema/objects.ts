@@ -20,6 +20,25 @@ export const imageLink = {
         },
       ],
     },
+    {
+      name: "colors",
+      title: "Colors",
+      type: "object",
+      fields: [
+        {
+          name: "textColor",
+          title: "Text Color",
+          description: "Must be a valid CSS color",
+          type: "string",
+        },
+        {
+          name: "background",
+          title: "Text Color",
+          description: "Must be a valid CSS color",
+          type: "string",
+        },
+      ],
+    },
   ],
 };
 
