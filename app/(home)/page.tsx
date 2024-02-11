@@ -24,7 +24,7 @@ import {
   NavBarData,
   SanityArray,
   HomePage as SanityHomePage,
-} from "../../types/definition";
+} from "../../types/sanity";
 
 const getData = async () => {
   const data = await client.fetch<{
