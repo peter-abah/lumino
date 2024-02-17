@@ -1,20 +1,8 @@
-import * as Dialog from "@radix-ui/react-dialog";
-import Link from "next/link";
-import Image from "next/image";
-import { NavBarData } from "@/types/definition";
 import { urlForImage } from "@/sanity/lib/image";
-
-// const NEW_COLLABORATIONS_LINKS = [
-//   { name: "Leica 0.95", link: "#" },
-//   { name: "Paris Saint-Germain", link: "#" },
-//   { name: "Automobili Lamborghini", link: "#" },
-//   { name: "View all", link: "#" },
-// ];
-
-// const COLLABORATIONS_PROMO_PRODUCTS = [
-//   { name: "Leica 0.95", link: "#", image: "/images/leica-cover_mobile.jpg" },
-//   { name: "Paris Saint-Germain", link: "#", image: "/images/psg.jpg" },
-// ];
+import { NavBarData } from "@/types/sanity";
+import * as Dialog from "@radix-ui/react-dialog";
+import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
   data: NavBarData;

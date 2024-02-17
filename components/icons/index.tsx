@@ -1,21 +1,21 @@
-import { ReactNode } from "react";
-import Location from "./location";
-import Globe from "./globe";
-import Support from "./support";
-import Payments from "./payments";
 import { nullFunction } from "@/helpers";
+import { ReactNode } from "react";
 import Facebook from "./facebook";
-import Twitter from "./twitter";
+import Globe from "./globe";
 import Instagram from "./instagram";
-import Youtube from "./youtube";
+import Location from "./location";
+import Payments from "./payments";
 import Spotify from "./spotify";
+import Support from "./support";
+import Twitter from "./twitter";
+import Youtube from "./youtube";
 
-import VisaCard from "./visa_card";
-import Mastercard from "./mastercard";
 import AmexCard from "./amex_card";
-import PaypalCard from "./paypal_card";
 import DinersCard from "./diners_card";
 import DiscoverCard from "./discover_card";
+import Mastercard from "./mastercard";
+import PaypalCard from "./paypal_card";
+import VisaCard from "./visa_card";
 
 export interface IconProps extends React.ComponentPropsWithRef<"svg"> {}
 

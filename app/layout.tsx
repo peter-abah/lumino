@@ -1,8 +1,8 @@
+import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import clsx from "clsx";
 
 const dinNext = localFont({
   src: [

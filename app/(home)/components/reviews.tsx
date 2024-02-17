@@ -8,24 +8,6 @@ import clsx from "clsx";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 
-// const REVIEWS = [
-//   {
-//     text: "Master & Dynamic is known for providing a first-class audio listening experience with the most stylish, unexpected designs.",
-//     reviewer: "Men's health",
-//     reviewerImage: "/images/mens-health.png",
-//   },
-//   {
-//     text: "If you’re the sort of person who takes their sport seriously and loves to own beautiful objects, the Master & Dynamic MW08 Sport were made for you",
-//     reviewer: "Forbes",
-//     reviewerImage: "/images/forbes.png",
-//   },
-//   {
-//     text: "The design is spectacular, the fit is precise, the ANC is industry-leading, the battery life is fantastic, and the audio is clear and powerful",
-//     reviewer: "LUXE DIGITAL",
-//     reviewerImage: "/images/luxe-digital.png",
-//   },
-// ];
-
 type Props = {
   data: SanityArray<Quote>;
 };

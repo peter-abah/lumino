@@ -1,7 +1,7 @@
 "use client";
 
-import { type PortableTextBlock } from "sanity";
 import { PortableText } from "@portabletext/react";
+import { type PortableTextBlock } from "sanity";
 
 type Props = {
   copywright: PortableTextBlock[];

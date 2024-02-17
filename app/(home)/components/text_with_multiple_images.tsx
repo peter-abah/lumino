@@ -1,17 +1,17 @@
 "use client";
 
-import Image from "next/image";
 import ArrowRightIcon from "@/components/icons/arrow_right_icon";
-import clsx from "clsx";
-import { HomePage } from "@/types/sanity";
 import useSlideShow from "@/hooks/use_slide_show";
 import { urlForImage } from "@/sanity/lib/image";
+import { HomePage } from "@/types/sanity";
+import clsx from "clsx";
+import Image from "next/image";
 
 const MAX_LENGTH_OF_DATA = 3;
 type Props = {
   data: HomePage["textWithMultipleImages"];
 };
-export default function AboutUs({ data }: Props) {
+export default function TextWithMultipleImages({ data }: Props) {
   data = data.slice(0, MAX_LENGTH_OF_DATA);
   const { currentIndex, goToNext, goToPrev } = useSlideShow(data.length);
 

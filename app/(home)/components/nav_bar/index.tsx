@@ -2,7 +2,10 @@
 "use client";
 
 import ArrowDownIcon from "@/components/icons/arrow_down_icon";
+import Hamburger from "@/components/icons/hamburger";
+import Search from "@/components/icons/search";
 import useIsMounted from "@/hooks/use_is_mounted";
+import { NavBarData } from "@/types/sanity";
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -11,9 +14,6 @@ import { useInView } from "react-intersection-observer";
 import { twMerge } from "tailwind-merge";
 import CollaborationsSubsection from "./collaborations_subsection";
 import { ShopSubsection } from "./shop_subsection";
-import Hamburger from "@/components/icons/hamburger";
-import Search from "@/components/icons/search";
-import { NavBarData } from "@/types/definition";
 
 type Props = {
   data: NavBarData;

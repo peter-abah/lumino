@@ -1,50 +1,17 @@
 "use client";
 
-import Image from "next/image";
-import { twMerge } from "tailwind-merge";
 import ArrowRightIcon from "@/components/icons/arrow_right_icon";
 import useSlideShow from "@/hooks/use_slide_show";
-import { Timeline } from "@/types/sanity";
 import { urlForImage } from "@/sanity/lib/image";
-
-// const STORIES = [
-//   {
-//     text: "Master & Dynamic launches in NYC with a core collection of premium on, over and in-ear headphones.",
-//     year: 2014,
-//     image: "/images/story-2014.jpg",
-//   },
-//   {
-//     text: "Master & Dynamic partners with renowned architect Sir David Adjaye to launch a new concrete wireless speaker for the home.",
-//     year: 2017,
-//     image: "/images/story-2017.jpg",
-//   },
-//   {
-//     text: "We introduce the MW07 True Wireless Earphones, built on cutting-edge technology and crafted with premium materials.",
-//     year: 2018,
-//     image: "/images/story-2018.jpg",
-//   },
-//   {
-//     text: "Master & Dynamic partners with Automobili Lamborghini on a collection of high-performance sound tools.",
-//     year: 2019,
-//     image: "/images/story-2019.jpg",
-//   },
-//   {
-//     text: "Master & Dynamic partners with the iconic football club Paris Saint-Germain to create a limited-edition collection of sound tools",
-//     year: 2020,
-//     image: "/images/story-2020.jpg",
-//   },
-//   {
-//     text: "Master & Dynamic partners with Leica Camera AG to introduce the MH40 Wireless Headphones to the 0.95 capsule collection.",
-//     year: 2021,
-//     image: "/images/story-2021.jpg",
-//   },
-// ];
+import { Timeline as ISanityTimeline } from "@/types/sanity";
+import Image from "next/image";
+import { twMerge } from "tailwind-merge";
 
 type Props = {
-  data: Timeline;
+  data: ISanityTimeline;
 };
 
-export default function Stories({ data }: Props) {
+export default function Timeline({ data }: Props) {
   const {
     currentIndex: currentStoryIndex,
     setCurrentIndex: setCurrentStoryIndex,

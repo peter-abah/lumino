@@ -1,8 +1,8 @@
 "use client";
 
 import * as AccordionRadix from "@radix-ui/react-accordion";
-import ArrowDownIcon from "./icons/arrow_down_icon";
 import { type Key } from "react";
+import ArrowDownIcon from "./icons/arrow_down_icon";
 
 type Props = {
   items: { heading: string; text: string; key: Key }[];

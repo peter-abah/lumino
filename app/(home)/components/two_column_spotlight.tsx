@@ -1,4 +1,3 @@
-import { spotlight } from "@/sanity/schema/objects";
 import { HomePage } from "@/types/sanity";
 
 type Props = {

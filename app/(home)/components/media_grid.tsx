@@ -7,7 +7,7 @@ import Link from "next/link";
 type Props = {
   gridItems: SanityArray<ImageLink>;
 };
-export default function CollectionsMediaGrid({ gridItems }: Props) {
+export default function MediaGrid({ gridItems }: Props) {
   return (
     <section className="px-5 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20 grid-flow-dense auto-rows-[150px] md:auto-rows-[calc(100vw_/_5)] grid-cols-2 md:grid-cols-4 grid-rows grid gap-2.5 lg:gap-6">
       {gridItems.map((gridItem, itemIndex) => (

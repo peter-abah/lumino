@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import { useState } from "react";
-import { type BestSellerItem } from "@/types/definition";
-import clsx from "clsx";
-import Link from "next/link";
 import StarIcon from "@/components/icons/star";
+import { type BestSellerItem } from "@/types/sanity";
+import clsx from "clsx";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 type BestSellerItemProps = {
   item: BestSellerItem;

@@ -1,21 +1,21 @@
 import { type SchemaTypeDefinition } from "sanity";
-import homePage from "./home";
 import announcement from "./announcement";
+import homePage from "./home";
 import navBarData from "./nav_bar";
 import socialLink from "./social_link";
 
 import {
-  linkWithIcon,
-  imageLink,
+  featureChart,
   featuredProduct,
   heroSlide,
   hotspot,
-  spotlight,
-  quote,
-  featureChart,
-  timeline,
-  newsletter,
+  imageLink,
+  linkWithIcon,
   menu,
+  newsletter,
+  quote,
+  spotlight,
+  timeline,
 } from "./objects";
 
 export const schema: { types: SchemaTypeDefinition[] } = {

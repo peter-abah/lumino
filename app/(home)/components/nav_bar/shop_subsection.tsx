@@ -2,14 +2,14 @@
 
 import ArrowDownIcon from "@/components/icons/arrow_down_icon";
 import CloseIcon from "@/components/icons/close_icon";
+import { urlForImage } from "@/sanity/lib/image";
+import { LinkWithIcon, NavBarData, SanityArray } from "@/types/sanity";
 import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { NavigationPromo } from "./nav_promo";
-import { NavBarData, SanityArray, LinkWithIcon } from "@/types/sanity";
-import { urlForImage } from "@/sanity/lib/image";
+import NavigationPromo from "./nav_promo";
 
 // const EARPHONES_LINKS = [
 //   { name: "MW08 Sport", link: "#", image: "/images/nav-earphones-MW08Sport.png" },

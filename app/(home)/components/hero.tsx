@@ -1,54 +1,13 @@
 "use client";
 
+import { urlForImage } from "@/sanity/lib/image";
+import { HeroSlide, SanityArray } from "@/types/sanity";
 import clsx from "clsx";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import Image from "next/image";
-import { HeroSlide, SanityArray } from "@/types/definition";
-import { urlForImage } from "@/sanity/lib/image";
 
-// const HERO_SLIDES = [
-//   {
-//     title: "High-Performance & Elegant Design",
-//     subtitle: "Introducing the MW08 sport",
-//     cta: "Shop the MW08 Sport",
-//     image: "/images/hero-mw08.jpg",
-//     ctaLink: "#",
-//     stylesClasses: {
-//       containerBg: "bg-hero-mw08",
-//       innerBg: "bg-hero-inner-mw08",
-//       cta: "bg-white text-text",
-//     },
-//     orientation: "LEFT",
-//   },
-//   {
-//     title: "Premium Audio Products",
-//     subtitle: "High-end earphones",
-//     cta: "Discover collection",
-//     ctaLink: "#",
-//     image: "/images/hero-earphones.jpg",
-//     stylesClasses: {
-//       containerBg: "bg-hero-earphones",
-//       innerBg: "bg-hero-inner-earphones",
-//       cta: "bg-white text-text",
-//     },
-//     orientation: "LEFT",
-//   },
-//   {
-//     title: "High-Performance Sound Tools",
-//     subtitle: "High-end headphones",
-//     cta: "Discover collection",
-//     ctaLink: "#",
-//     image: "/images/hero-headphones.jpg",
-//     stylesClasses: {
-//       containerBg: "bg-hero-headphones",
-//       innerBg: "bg-hero-inner-headphones",
-//       cta: "bg-hero-headphones-cta text-white",
-//     },
-//     orientation: "RIGHT",
-//   },
-// ];
 
 type Props = {
   slides: SanityArray<HeroSlide>;

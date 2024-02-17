@@ -1,57 +1,16 @@
-import { CSSProperties } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import ShowcaseHotspot from "./showcase_hotspot";
-import { HomePage } from "@/types/sanity";
-import { urlForImage } from "@/sanity/lib/image";
 import { parseAssetID } from "@/helpers/sanity";
+import { urlForImage } from "@/sanity/lib/image";
+import { HomePage } from "@/types/sanity";
+import Image from "next/image";
+import Link from "next/link";
+import ShowcaseHotspot from "./showcase_hotspot";
 
-// const SHOWCASE_PRODUCT = {
-//   title: "MW08 Sport: inspire movement",
-//   text: "Designed with shatter-resistant sapphire glass and a custom Kevlar® fiber charging case.",
-//   link: "#",
-//   linkText: "Learn more",
-//   images: {
-//     desktop: "/images/mw08-showcase-hotspot.png",
-//     mobile: "/images/mw08-showcase-hotspot-mobile.png",
-//   },
-//   imageAspectRatio: {
-//     desktop: "25 / 8",
-//     mobile: "15 / 8",
-//   },
-//   hotspots: [
-//     {
-//       location: {
-//         x: "45%",
-//         y: "28%",
-//       },
-//       heading: "External Aluminum Antennas",
-//       text: "Coupled with Bluetooth 5.2 connectivity, aluminum antennas provide a secure wireless connection and prevent drops for a seamless wireless experience.",
-//     },
-//     {
-//       location: {
-//         x: "51%",
-//         y: "53%",
-//       },
-//       heading: "External Aluminum Antennas",
-//       text: "Coupled with Bluetooth 5.2 connectivity, aluminum antennas provide a secure wireless connection and prevent drops for a seamless wireless experience.",
-//     },
-//     {
-//       location: {
-//         x: "45%",
-//         y: "86%",
-//       },
-//       heading: "External Aluminum Antennas",
-//       text: "Coupled with Bluetooth 5.2 connectivity, aluminum antennas provide a secure wireless connection and prevent drops for a seamless wireless experience.",
-//     },
-//   ] as ProductHotspot[],
-// };
 
 type Props = {
   data: HomePage["hotspots"];
 };
 // TODO: some buttons/links have similar styles (like the one in the file), move them to a component
-export default function ProductShowcaseWithHotspots({ data }: Props) {
+export default function Hotspots({ data }: Props) {
   const imageData = parseAssetID(data.image.asset?._ref || "");
   const mobileImageData = parseAssetID(data.mobileImage.asset?._ref || "");
 

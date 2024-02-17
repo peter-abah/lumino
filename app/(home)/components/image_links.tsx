@@ -1,39 +1,16 @@
-import Image from "next/image";
-import Link from "next/link";
 import { urlForImage } from "@/sanity/lib/image";
 import { ImageLink, SanityArray } from "@/types/sanity";
 import clsx from "clsx";
+import Image from "next/image";
+import Link from "next/link";
 
-// const CATEGORIES = [
-//   {
-//     name: "Headphones",
-//     link: "#",
-//     imageLink: "/images/category-headphones.jpg",
-//   },
-//   { name: "Earphones", link: "#", imageLink: "/images/category-earphones.jpg" },
-//   { name: "Speakers", link: "#", imageLink: "/images/category-speakers.jpg" },
-//   {
-//     name: "Collaborations",
-//     link: "#",
-//     imageLink: "/images/category-collaborations.jpg",
-//     styles: { name: "text-white" },
-//   },
-//   {
-//     name: "Accessories",
-//     link: "#",
-//     imageLink: "/images/category-accessories.jpg",
-//   },
-// ];
-
-const DEFAULT_BACKGROUND = '#004';
+const DEFAULT_BACKGROUND = "#004";
 
 type Props = {
   imageLinks: SanityArray<ImageLink>;
 };
 
-// TODO: rename to ImageLInks
-export default function CategoriesList({ imageLinks }: Props) {
-
+export default function ImageLinks({ imageLinks }: Props) {
   return (
     <section className="px-5 md:px-8 lg:px-12 py-12 md:16 lg:py-20">
       <ul className="flex overflow-auto gap-2 md:gap-6 no-scrollbar snap-x snap-mandarory">
@@ -55,9 +32,7 @@ export default function CategoriesList({ imageLinks }: Props) {
                 aria-hidden
               />
               <span
-                className={clsx(
-                  "text-sm md:text-base absolute bottom-6 left-5 font-bold"
-                )}
+                className={clsx("text-sm md:text-base absolute bottom-6 left-5 font-bold")}
                 style={{
                   color: imageLink.colors?.textColor || "current",
                 }}

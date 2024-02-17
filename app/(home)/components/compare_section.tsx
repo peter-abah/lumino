@@ -1,12 +1,12 @@
+import { urlForImage } from "@/sanity/lib/image";
+import { HomePage } from "@/types/sanity";
 import Image from "next/image";
 import CompareSlider from "./compare_slider";
-import { HomePage } from "@/types/sanity";
-import { urlForImage } from "@/sanity/lib/image";
 
 type Props = {
   data: HomePage["compareSection"];
 };
-export default function SliderSection({ data }: Props) {
+export default function CompareSection({ data }: Props) {
   return (
     <section className="px-5 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20">
       <div className="lg:max-w-[50%] text-center mb-12 mx-auto">

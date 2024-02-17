@@ -1,7 +1,7 @@
+import ArrowRight from "@/components/icons/arrow_right_icon";
+import { BestSellerItem as TBestSellerItem } from "@/types/sanity";
 import Link from "next/link";
 import BestSellerItem from "./best_seller_item";
-import { BestSellerItem as TBestSellerItem } from "@/types/definition";
-import ArrowRight from "@/components/icons/arrow_right_icon";
 
 const BEST_SELLER_ITEMS: TBestSellerItem[] = [
   {

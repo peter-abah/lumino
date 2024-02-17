@@ -1,11 +1,10 @@
 "use client";
 
+import ArrowRight from "@/components/icons/arrow_right_icon";
 import useSlideShow from "@/hooks/use_slide_show";
 import {
-  SanityArray,
-  Announcement as TAnnouncement,
+  Announcement as TAnnouncement
 } from "@/types/sanity";
-import ArrowRight from "@/components/icons/arrow_right_icon";
 import Announcement from "./announcement";
 
 type Props = {

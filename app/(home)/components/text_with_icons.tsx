@@ -2,31 +2,14 @@
 
 import { IconComponent } from "@/components/icons";
 import DefaultIcon from "@/components/icons/default_icon";
-import { urlForImage } from "@/sanity/lib/image";
 import { HomePage } from "@/types/sanity";
-import Image from "next/image";
 import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-
-// const BENEFITS = [
-//   {
-//     heading: "Designed in NYC",
-//     text: "Products designed and developed in New York City.",
-//     iconName: "location",
-//   },
-//   {
-//     heading: "Free Shipping",
-//     text: "Free worldwide shipping on all orders of $99",
-//     iconName: "globe",
-//   },
-//   { heading: "Support", text: "Our support team is available 24/7", iconName: "support" },
-//   { heading: "Secure Payment", text: "All payments are processed securely", iconName: "payments" },
-// ];
 
 type Props = {
   data: HomePage["textWithIcons"];
 };
-export default function AdditionalBenefits({ data }: Props) {
+export default function TexWithIcons({ data }: Props) {
   const divRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [currentBenefitIndex, setCurrentBenefitIndex] = useState(0);
 
