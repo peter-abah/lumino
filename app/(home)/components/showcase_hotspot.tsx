@@ -1,16 +1,28 @@
 "use client";
 
 import PlusIcon from "@/components/icons/plus_icon";
-import { ProductHotspot } from "@/types/definition";
+import { Hotspot } from "@/types/sanity";
 import * as Dialog from "@radix-ui/react-dialog";
+import { CSSProperties } from "styled-components";
 
 type Props = {
-  hotspot: ProductHotspot;
+  hotspot: Hotspot;
 };
 export default function ShowcaseHotspot({ hotspot }: Props) {
-  const { location } = hotspot;
+  const { heading, content, xPosition, xPositionMobile, yPosition, yPositionMobile } = hotspot;
+
   return (
-    <div className="absolute flex" style={{ top: location.y, left: location.x }}>
+    <div
+      className="absolute flex top-[var(--top-mobile)] left-[var(--left-mobile)] lg:top-[var(--top)] lg:left-[var(--left)]"
+      style={
+        {
+          "--top": `${yPosition}%`,
+          "--left": `${xPosition}%`,
+          "--top-mobile": `${yPositionMobile}%`,
+          "--left-mobile": `${xPositionMobile}%`,
+        } as CSSProperties
+      }
+    >
       <Dialog.Root>
         <Dialog.Trigger asChild>
           <button
@@ -25,9 +37,11 @@ export default function ShowcaseHotspot({ hotspot }: Props) {
         <Dialog.Content className="fixed bottom-0 lg:bottom-auto left-0 p-2 lg:absolute lg:-top-10 lg:left-16 h-fit w-full lg:w-[380px] lg:p-0 z-10">
           <div className="p-6 lg:p-8 backdrop-blur-sm bg-white lg:bg-white/90 rounded-lg text-text">
             <Dialog.Title asChild>
-              <h6 className="md:text-lg font-bold mb-4">{hotspot.heading}</h6>
+              <h6 className="md:text-lg font-bold mb-4">{heading}</h6>
             </Dialog.Title>
-            <Dialog.Description className="text-sm md:text-base leading-normal">{hotspot.text}</Dialog.Description>
+            <Dialog.Description className="text-sm md:text-base leading-normal">
+              {content}
+            </Dialog.Description>
           </div>
         </Dialog.Content>
       </Dialog.Root>

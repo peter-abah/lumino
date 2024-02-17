@@ -2,17 +2,21 @@
 
 import * as AccordionRadix from "@radix-ui/react-accordion";
 import ArrowDownIcon from "./icons/arrow_down_icon";
+import { type Key } from "react";
 
 type Props = {
-  items: { heading: string; text: string }[];
+  items: { heading: string; text: string; key: Key }[];
 };
 export default function Accordion({ items }: Props) {
   return (
-    <AccordionRadix.Root type="multiple" className="px-6 py-1 lg:px-12 lg:py-5 bg-text/5 rounded-xl">
+    <AccordionRadix.Root
+      type="multiple"
+      className="px-6 py-1 lg:px-12 lg:py-5 bg-text/5 rounded-xl"
+    >
       {items.map((item) => (
         <AccordionRadix.Item
-          key={item.heading}
-          value={item.heading}
+          key={item.key}
+          value={item.key.toString()}
           className="border-b last:border-b-0"
         >
           <AccordionRadix.Header className="py-5 font-bold">

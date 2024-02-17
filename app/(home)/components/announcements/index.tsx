@@ -4,12 +4,12 @@ import useSlideShow from "@/hooks/use_slide_show";
 import {
   SanityArray,
   Announcement as TAnnouncement,
-} from "@/types/definition";
+} from "@/types/sanity";
 import ArrowRight from "@/components/icons/arrow_right_icon";
 import Announcement from "./announcement";
 
 type Props = {
-  announcements: SanityArray<TAnnouncement>;
+  announcements: TAnnouncement[];
 };
 export default function Announcements({ announcements }: Props) {
   const { currentIndex, goToNext, goToPrev } = useSlideShow(
@@ -36,7 +36,7 @@ export default function Announcements({ announcements }: Props) {
           {announcements.map((announcement, index) => (
             <Announcement
               announcement={announcement}
-              key={announcement._key}
+              key={announcement._id}
               isVisible={currentIndex === index}
             />
           ))}

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 
 type Options = {
-  wrapAround?: boolean;
+  wrapAround?: boolean; // default = true
 };
 export default function useSlideShow(length: number, options: Options = {}) {
   const [currentIndex, setCurrentIndex] = useState(0);

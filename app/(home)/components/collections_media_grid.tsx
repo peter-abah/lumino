@@ -1,58 +1,44 @@
+import { urlForImage } from "@/sanity/lib/image";
+import { ImageLink, SanityArray } from "@/types/sanity";
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CollectionsMediaGrid() {
+type Props = {
+  gridItems: SanityArray<ImageLink>;
+};
+export default function CollectionsMediaGrid({ gridItems }: Props) {
   return (
     <section className="px-5 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20 grid-flow-dense auto-rows-[150px] md:auto-rows-[calc(100vw_/_5)] grid-cols-2 md:grid-cols-4 grid-rows grid gap-2.5 lg:gap-6">
-      <Link
-        href="#"
-        className="col-span-2 row-span-2 flex flex-col justify-center md:justify-end relative p-[8%] rounded-xl overflow-hidden"
-      >
-        <Image
-          src="/images/accessories-media.jpg"
-          alt=""
-          fill
-          className="object-cover object-center"
-        />
-        <span className="text-2xl md:text-[32px] text-center md:text-left font-bold text-white z-10 relative">
-          MG20 Gaming Headphones
-        </span>
-      </Link>
-
-      <Link
-        href="#"
-        className="flex flex-col justify-end relative p-4 md:p-8 lg:p-[8%] rounded-xl overflow-hidden"
-      >
-        <Image src="/images/mw08-media.jpg" alt="" fill className="object-cover object-center" />
-        <span className="text-lg leading-tight md:text-xl font-bold text-white z-10 relative">
-          MW08 Sport
-        </span>
-      </Link>
-
-      <Link
-        href="#"
-        className="flex flex-col justify-end relative p-4 md:p-8 lg:p-[8%] rounded-xl overflow-hidden"
-      >
-        <Image
-          src="/images/accessories-media.jpg"
-          alt=""
-          fill
-          className="object-cover object-center"
-        />
-        <span className="text-lg leading-tight md:text-xl font-bold text-white z-10 relative">
-          Accesories
-        </span>
-      </Link>
-
-      <Link
-        href="#"
-        className="col-span-2 flex flex-col justify-end relative p-4 md:p-8 lg:p-[8%] rounded-xl overflow-hidden"
-      >
-        <Image src="/images/mh40-media.jpg" alt="" fill className="object-cover object-center" />
-        <span className="text-2xl md:text-[32px] font-bold text-white z-10 relative">
-          MH40 Wireless
-        </span>
-      </Link>
+      {gridItems.map((gridItem, itemIndex) => (
+        <Link
+          key={gridItem._key}
+          href={gridItem.url}
+          className={clsx("flex flex-col rounded-xl overflow-hidden relative group", {
+            // set height of grid item based on position (first is the largest, next two are the smallest,
+            // and the 4th (last) item is a rectangular)
+            "col-span-2 row-span-2 justify-center md:justify-end p-[8%]": itemIndex === 0,
+            "justify-end p-4 md:p-8 lg:p-[8%]": itemIndex > 0,
+            "col-span-2": itemIndex === 3,
+          })}
+        >
+          <Image
+            src={urlForImage(gridItem.image)}
+            alt=""
+            fill
+            className="object-cover object-center group-hover:scale-105 duration-[1.5s]"
+          />
+          <span
+            className={clsx("font-bold text-white z-10 relative", {
+              "text-center md:text-left": itemIndex === 0,
+              "text-2xl md:text-[32px]": itemIndex === 0 || itemIndex === 3,
+              "text-lg leading-tight md:text-xl": itemIndex === 1 || itemIndex === 2,
+            })}
+          >
+            {gridItem.name}
+          </span>
+        </Link>
+      ))}
     </section>
   );
 }

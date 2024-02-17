@@ -378,18 +378,11 @@ const homePage = {
           type: "object",
           fields: [
             {
-              name: "icon",
-              title: "Icon",
-              type: "image",
-              options: { hotspot: true },
-              validation: (Rule: Rule) => Rule.required(),
-              fields: [
-                {
-                  name: "alt",
-                  title: "Alt",
-                  type: "string",
-                },
-              ],
+              name: "iconID",
+              title: "Icon ID",
+              type: "string",
+              description:
+                "Used in code to display appropriate icon, (TODO: include available icon IDs)",
             },
             {
               name: "heading",

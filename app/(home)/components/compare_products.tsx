@@ -1,64 +1,63 @@
 import FeatureTable from "@/components/feature_table";
 import { convertStringToTitleCase } from "@/helpers";
-import clsx from "clsx";
-import Image from "next/image";
+import { FeatureChart } from "@/types/sanity";
 import Link from "next/link";
 
-const PRODUCT1 = {
-  name: "MW65 (Silver Metal / Brown Leather)",
-  price: "499",
-  color: "Silver Metal / Brown Leather",
-  image: "/images/mw65-compare.png",
-  driver: "40mm Beryllium",
-  weight: "245g",
-  dimensions: "165mm x 190mm x 66mm",
-  battery: "24 hours",
-  link: "#",
-  styles: {
-    colorButton: "bg-[linear-gradient(135deg,brown_50%,lightgrey_50%)]",
-  },
-};
+// const PRODUCT1 = {
+//   name: "MW65 (Silver Metal / Brown Leather)",
+//   price: "499",
+//   color: "Silver Metal / Brown Leather",
+//   image: "/images/mw65-compare.png",
+//   driver: "40mm Beryllium",
+//   weight: "245g",
+//   dimensions: "165mm x 190mm x 66mm",
+//   battery: "24 hours",
+//   link: "#",
+//   styles: {
+//     colorButton: "bg-[linear-gradient(135deg,brown_50%,lightgrey_50%)]",
+//   },
+// };
 
-const PRODUCT2 = {
-  name: "MW50+ (Silver Metal / Black Leather)",
-  price: "299",
-  color: "Silver Metal / Black Leather",
-  image: "/images/mw50-compare.png",
-  driver: "40mm Beryllium",
-  weight: "205g (On-Ear), 239g (Over-Ear)",
-  dimensions: "190mm x 155mm x 34mm (On-Ear), 200mm x 165mm x 40mm (Over-Ear)",
-  battery: "16 hours",
-  link: "#",
-  styles: {
-    colorButton: "bg-[linear-gradient(135deg,black_50%,lightgrey_50%)]",
-  },
-};
+// const PRODUCT2 = {
+//   name: "MW50+ (Silver Metal / Black Leather)",
+//   price: "299",
+//   color: "Silver Metal / Black Leather",
+//   image: "/images/mw50-compare.png",
+//   driver: "40mm Beryllium",
+//   weight: "205g (On-Ear), 239g (Over-Ear)",
+//   dimensions: "190mm x 155mm x 34mm (On-Ear), 200mm x 165mm x 40mm (Over-Ear)",
+//   battery: "16 hours",
+//   link: "#",
+//   styles: {
+//     colorButton: "bg-[linear-gradient(135deg,black_50%,lightgrey_50%)]",
+//   },
+// };
 
-export default function CompareProducts() {
-  const normalTableColumns = ["driver", "weight", "dimensions", "battery"] as const;
+type Props = {
+  data: FeatureChart;
+};
+export default function CompareProducts({ data }: Props) {
+  const { heading, subheading, content, headings, valuesColumns, buttonText, buttonURL } = data;
 
   return (
     <section className="md:px-8 lg:px-12 my-12 md:mb-16 md:mt-0 lg:mb-20">
       <div className="max-w-[750px] mb-8 md:mb-16 px-5 md:px-0">
-        <p className="font-bold text-sm md:text-base">Compare</p>
+        <p className="font-bold text-sm md:text-base">{subheading}</p>
         <h2 className="mt-4 md:mt-6 text-[2rem] md:text-[2.5rem] font-bold leading-heading">
-          Which wireless headphones are made for you ?
+          {heading}
         </h2>
-        <p className="mt-5 md:mt-8 text-sm md:text-base leading-normal">
-          Not sure which one to choose? We selected our most popular wireless headphones. Compare
-          them and choose the best version for your needs.
-        </p>
+        <p className="mt-5 md:mt-8 text-sm md:text-base leading-normal">{content}</p>
         <Link
-          href="#"
+          href={buttonURL}
           className="inline-block mt-6 md:mt-8 px-6 md:px-8 py-3.5 rounded-button font-bold bg-black text-white text-sm md:text-base"
         >
-          Learn more
+          {buttonText}
         </Link>
       </div>
 
       <div className="overflow-x-auto">
         <FeatureTable.Root className="rounded-none px-5 md:px-12 py-4 md:rounded-xl">
-          <FeatureTable.Row className="grid-rows-1">
+          {/* <FeatureTable.Row className="grid-rows-1">
             <FeatureTable.Column className="hidden md:block" />
             {[PRODUCT1, PRODUCT2].map((product) => (
               <FeatureTable.Column key={product.name}>
@@ -95,15 +94,16 @@ export default function CompareProducts() {
                 </div>
               </FeatureTable.Column>
             ))}
-          </FeatureTable.Row>
+          </FeatureTable.Row> */}
 
-          {normalTableColumns.map((column) => (
+          {headings.map((column, index) => (
             <FeatureTable.Row key={column}>
               <FeatureTable.Column type="header">
                 {convertStringToTitleCase(column)}
               </FeatureTable.Column>
-              <FeatureTable.Column>{PRODUCT1[column]}</FeatureTable.Column>
-              <FeatureTable.Column>{PRODUCT2[column]}</FeatureTable.Column>
+              {valuesColumns.map((values) => (
+                <FeatureTable.Column key={values._key}>{values.array[index]}</FeatureTable.Column>
+              ))}
             </FeatureTable.Row>
           ))}
         </FeatureTable.Root>

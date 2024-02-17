@@ -5,14 +5,10 @@ import CloseIcon from "@/components/icons/close_icon";
 import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { NavigationPromo } from "./nav_promo";
-import {
-  NavBarData,
-  NavProductLink,
-  SanityArray,
-} from "@/types/definition";
+import { NavBarData, SanityArray, LinkWithIcon } from "@/types/sanity";
 import { urlForImage } from "@/sanity/lib/image";
 
 // const EARPHONES_LINKS = [
@@ -44,16 +40,13 @@ type Props = {
 export function ShopSubsection({ data }: Props) {
   const [secondPanelState, setSecondPanelState] = useState<{
     isOpen: boolean;
-    links: SanityArray<NavProductLink>;
+    links: SanityArray<LinkWithIcon>;
     heading: string;
   }>({
     isOpen: false,
     links: [],
     heading: "",
   });
-
-  useEffect(() => console.log(data), [data]);
-
   return (
     <>
       <Dialog.Overlay className="bg-black/60 fixed inset-0 h-screen" />
@@ -139,9 +132,7 @@ export function ShopSubsection({ data }: Props) {
                       height={60}
                       aria-hidden
                     />
-                    <span className="text-xl font-bold fancy-hover-underline">
-                      {link.name}
-                    </span>
+                    <span className="text-xl font-bold fancy-hover-underline">{link.name}</span>
                   </Link>
                 </li>
               ))}

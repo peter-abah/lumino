@@ -33,7 +33,7 @@ export const imageLink = {
         },
         {
           name: "background",
-          title: "Text Color",
+          title: "Background",
           description: "Must be a valid CSS color",
           type: "string",
         },

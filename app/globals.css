@@ -21,6 +21,10 @@
     animation: marquee 16s linear infinite;
   }
 
+  .copywright a {
+    text-decoration: underline;
+  }
+
   @media screen and (min-width: 48rem) {
     .marquee-text {
       font-size: 8.75rem;

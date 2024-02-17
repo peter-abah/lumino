@@ -22,21 +22,24 @@ import { client } from "@/sanity/lib/client";
 import {
   Announcement,
   NavBarData,
-  SanityArray,
   HomePage as SanityHomePage,
+  SocialLink,
 } from "../../types/sanity";
+import TwoColumnSpotlight from "./components/two_column_spotlight";
 
 const getData = async () => {
   const data = await client.fetch<{
     navBarData: NavBarData;
-    announcements: SanityArray<Announcement>;
+    announcements: Announcement[];
     homePage: SanityHomePage;
+    socialLinks: SocialLink[];
   }>(
     `
     {
       'navBarData': *[_type == "navBarData"][0],
       'announcements': *[_type == "announcement"],
       'homePage': *[_type == "homePage"][0],
+      'socialLinks': *[_type == "socialLink"],
     }
   `
   );
@@ -44,7 +47,7 @@ const getData = async () => {
 };
 
 export default async function Home() {
-  const { announcements, navBarData, homePage } = await getData();
+  const { announcements, navBarData, homePage, socialLinks } = await getData();
 
   return (
     <>
@@ -53,25 +56,37 @@ export default async function Home() {
         <NavBar data={navBarData} />
         <Hero slides={homePage.heroSlides} />
       </div>
-      <CategoriesList />
-      <MarqueeText />
-      <CollectionCards />
+      {/* TODO: Rename to Image links */}
+      <CategoriesList imageLinks={homePage.imageLinks} />
+      <MarqueeText scrollingText={homePage.scrollingText} />
+      <CollectionCards collections={homePage.collectionList} />
       <BestSellers />
-      <ProductShowcase />
-      <CollectionsMediaGrid />
-      <SliderSection />
-      <Reviews />
-      <ProductShowcaseWithHotspots />
-      <AboutUs />
+      {/* TODO: rename to spotlight */}
+      <ProductShowcase spotlight={homePage.spotlight} />
+      {/* TODO: rename to media grid */}
+      <CollectionsMediaGrid gridItems={homePage.mediaGrid} />
+
+      {/* TODO: ranme to compare section */}
+      <SliderSection data={homePage.compareSection} />
+      <Reviews data={homePage.press} />
+
+      {/* TODO: rename to Hotspots */}
+      <ProductShowcaseWithHotspots data={homePage.hotspots} />
+      <TwoColumnSpotlight data={homePage.twoColumnSpotlight} />
+      {/* TODO: Rename to text with multiple images */}
+      <AboutUs data={homePage.textWithMultipleImages} />
       <FeaturedProduct />
-      <CompareProducts />
-      <ImageReveal />
+      {/* TODO: rename */}
+      <CompareProducts data={homePage.featureChart} />
+      <ImageReveal data={homePage.revealedImageOnScroll} />
       <div className="bg-main-bg">
-        <Story />
-        <FAQ />
-        <AdditionalBenefits />
+        {/* TODO: Rename to Timeline */}
+        <Story data={homePage.timeline} />
+        <FAQ data={homePage.faq} />
+        {/* TODO: Rename to TextWithICons */}
+        <AdditionalBenefits data={homePage.textWithIcons} />
       </div>
-      <Footer />
+      <Footer footer={homePage.footer} socialLinks={socialLinks} />
     </>
   );
 }
