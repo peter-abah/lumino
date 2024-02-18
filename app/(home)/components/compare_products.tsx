@@ -1,5 +1,5 @@
 import FeatureTable from "@/components/feature_table";
-import { convertStringToTitleCase } from "@/helpers";
+import { convertStringToTitleCase } from "@/lib";
 import { FeatureChart } from "@/types/sanity";
 import Link from "next/link";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import ArrowRight from "@/components/icons/arrow_right_icon";
-import useSlideShow from "@/hooks/use_slide_show";
+import useSlideShow from "@/lib/hooks/use_slide_show";
 import {
   Announcement as TAnnouncement
 } from "@/types/sanity";

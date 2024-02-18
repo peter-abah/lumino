@@ -1,4 +1,4 @@
-import { nullFunction } from "@/helpers";
+import { nullFunction } from "@/lib";
 import { ReactNode } from "react";
 import Facebook from "./facebook";
 import Globe from "./globe";

@@ -1,7 +1,7 @@
 "use client";
 
 import ArrowRightIcon from "@/components/icons/arrow_right_icon";
-import useSlideShow from "@/hooks/use_slide_show";
+import useSlideShow from "@/lib/hooks/use_slide_show";
 import { urlForImage } from "@/sanity/lib/image";
 import { Timeline as ISanityTimeline } from "@/types/sanity";
 import Image from "next/image";

@@ -1,4 +1,4 @@
-import { parseAssetID } from "@/helpers/sanity";
+import { parseAssetID } from "@/lib/sanity";
 import { urlForImage } from "@/sanity/lib/image";
 import { HomePage } from "@/types/sanity";
 import Image from "next/image";
