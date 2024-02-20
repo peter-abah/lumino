@@ -8,3 +8,6 @@ export function convertStringToTitleCase(str: string) {
 export function nullFunction() {
   return null;
 }
+
+export const ensureStartsWith = (stringToCheck: string, startsWith: string) =>
+  stringToCheck.startsWith(startsWith) ? stringToCheck : `${startsWith}${stringToCheck}`;
