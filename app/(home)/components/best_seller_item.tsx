@@ -1,62 +1,61 @@
 "use client";
 
-import StarIcon from "@/components/icons/star";
-import { type BestSellerItem } from "@/types/sanity";
+import { SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND } from "@/lib/constants";
+import { Product, ProductVariant } from "@/types/shopify";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 type BestSellerItemProps = {
-  item: BestSellerItem;
+  product: Product;
 };
-export default function BestSellerItem({ item }: BestSellerItemProps) {
-  const [currentVariant, setCurrentVariant] = useState(item.variants[0]);
+export default function BestSellerItem({ product }: BestSellerItemProps) {
+  const [currentVariant, setCurrentVariant] = useState<ProductVariant>(product.variants[0]);
+
   return (
     <li className="bg-white snap-start rounded-md">
       <Link
-        href={item.link}
+        href={`products/${product.handle}`}
         className="w-[72vw] md:w-[36vw] lg:w-[20vw] rounded-md overflow-hidden inline-block relative aspect-square group"
       >
         <Image
-          src={item.images[currentVariant].normal}
+          src={currentVariant.image?.url || product.featuredImage.url}
           fill
-          alt={item.name}
-          className="group-hover:opacity-0 transition-opacity"
-        />
-        <Image
-          src={item.images[currentVariant].onHover}
-          fill
-          alt={item.name}
-          className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          aria-hidden
+          alt={currentVariant.image?.altText || product.featuredImage.altText}
+          className="group-hover:scale-105 duration-[1s]"
         />
       </Link>
+
       <div className="p-5 flex flex-col gap-0.5">
         <div className="flex gap-2 justify-between">
-          <Link href={item.link} className="font-bold">
-            {item.name}
+          <Link href={`products/${product.handle}`} className="font-bold">
+            {product.title}
           </Link>
-          <p className="flex gap-1.5 h-fit">
-            <span className="text-sm leading-6">{item.rating}</span>
-            <StarIcon className="text-star" />
-          </p>
         </div>
-        <p className="text-text/70">${item.price}</p>
+        <p className="text-text/70 flex gap-1">
+          <span>{currentVariant.price.currencyCode}</span>
+          <span>{currentVariant.price.amount}</span>
+        </p>
+
         <div className="flex items-center gap-1 mt-1">
-          {item.variants.map((variant) => (
+          {product.variants.map((variant) => (
             <button
               type="button"
-              key={variant}
+              key={variant.id}
               onClick={() => setCurrentVariant(variant)}
               className={clsx(
                 "w-3.5 h-3.5 aspect-square rounded-full relative",
-                item.styles[variant].selectVariantButton,
-                currentVariant === variant &&
+                currentVariant.id === variant.id &&
                   "m-1 before:shadow-[0_0_0_2px] before:absolute before:-inset-0.5 before:rounded-full"
               )}
+              style={{
+                background: SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND.get(
+                  variant.selectedOptions.find(({ name }) => name === "Color")?.value || ""
+                ),
+              }}
             >
-              <span className="sr-only">{variant}</span>
+              <span className="sr-only">{variant.title}</span>
             </button>
           ))}
         </div>
