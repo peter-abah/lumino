@@ -5,7 +5,8 @@ import ArrowDownIcon from "@/components/icons/arrow_down_icon";
 import Hamburger from "@/components/icons/hamburger";
 import Search from "@/components/icons/search";
 import useIsMounted from "@/lib/hooks/use_is_mounted";
-import { NavBarData } from "@/types/sanity";
+import { NavBar as INavBar } from "@/types/sanity";
+import { Maybe, Product } from "@/types/shopify";
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -13,7 +14,11 @@ import { createPortal } from "react-dom";
 import { useInView } from "react-intersection-observer";
 import { twMerge } from "tailwind-merge";
 import CollaborationsSubsection from "./collaborations_subsection";
-import { ShopSubsection } from "./shop_subsection";
+import ShopSubsection from "./shop_subsection";
+
+export interface NavBarData extends INavBar {
+  collaborationsFeaturedProduct: Maybe<Product>;
+}
 
 type Props = {
   data: NavBarData;
@@ -101,10 +106,7 @@ export default function NavBar({ data }: Props) {
             <li>
               <Dialog.Root modal>
                 <Dialog.Trigger asChild>
-                  <button
-                    type="button"
-                    className="flex gap-2.5 items-center hover:opacity-70"
-                  >
+                  <button type="button" className="flex gap-2.5 items-center hover:opacity-70">
                     Shop <ArrowDownIcon />
                   </button>
                 </Dialog.Trigger>
@@ -113,13 +115,11 @@ export default function NavBar({ data }: Props) {
                 </Dialog.Portal>
               </Dialog.Root>
             </li>
+
             <li>
               <Dialog.Root modal onOpenChange={handleCollabMenuChange}>
                 <Dialog.Trigger asChild>
-                  <button
-                    type="button"
-                    className="flex gap-2.5 items-center hover:opacity-70"
-                  >
+                  <button type="button" className="flex gap-2.5 items-center hover:opacity-70">
                     Collaboration <ArrowDownIcon />
                   </button>
                 </Dialog.Trigger>
@@ -128,6 +128,7 @@ export default function NavBar({ data }: Props) {
                 </Dialog.Portal>
               </Dialog.Root>
             </li>
+
             <li>
               <Link href="#" className="hover:opacity-70">
                 Compare
@@ -172,13 +173,7 @@ export default function NavBar({ data }: Props) {
                 height="22"
                 viewBox="0 0 22 22"
               >
-                <circle
-                  cx="11"
-                  cy="7"
-                  r="4"
-                  fill="none"
-                  stroke="currentColor"
-                ></circle>
+                <circle cx="11" cy="7" r="4" fill="none" stroke="currentColor"></circle>
                 <path
                   d="M3.5 19c1.421-2.974 4.247-5 7.5-5s6.079 2.026 7.5 5"
                   fill="none"

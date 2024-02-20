@@ -37,7 +37,7 @@ import NavigationPromo from "./nav_promo";
 type Props = {
   data: NavBarData;
 };
-export function ShopSubsection({ data }: Props) {
+export default function ShopSubsection({ data }: Props) {
   const [secondPanelState, setSecondPanelState] = useState<{
     isOpen: boolean;
     links: SanityArray<LinkWithIcon>;

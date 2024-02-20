@@ -24,6 +24,7 @@ const productFragment = /* GraphQL */ `
         currencyCode
       }
     }
+    vendor
     variants(first: 250) {
       edges {
         node {

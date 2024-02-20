@@ -1,81 +1,90 @@
 "use client";
 
 import Share from "@/components/icons/share";
-import StarIcon from "@/components/icons/star";
+import { SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND } from "@/lib/constants";
+import { Maybe, Product } from "@/types/shopify";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-const FEATURED_PRODUCT = {
-  name: "MW07 Plus (Tortoiseshell / Stainless Steel Case)",
-  vendor: { name: "Master & Dynamic", link: "#" },
-  price: "249.00",
-  images: [
-    "/images/mw07-featured-1.png",
-    "/images/mw07-featured-2.png",
-    "/images/mw07-featured-3.png",
-    "/images/mw07-featured-4.png",
-    "/images/mw07-featured-5.png",
-    "/images/mw07-featured-6.png",
-  ],
-  colors: ["Tortoiseshell / Stainless Steel Case"],
-  link: "#",
-  rating: "4.5",
-  styles: {
-    selectColorButton: {
-      "Tortoiseshell / Stainless Steel Case": "bg-[linear-gradient(120deg,black_20%,red)]",
-    } as Record<string, string>,
-  },
-};
+// const FEATURED_PRODUCT = {
+//   name: "MW07 Plus (Tortoiseshell / Stainless Steel Case)",
+//   vendor: { name: "Master & Dynamic", link: "#" },
+//   price: "249.00",
+//   images: [
+//     "/images/mw07-featured-1.png",
+//     "/images/mw07-featured-2.png",
+//     "/images/mw07-featured-3.png",
+//     "/images/mw07-featured-4.png",
+//     "/images/mw07-featured-5.png",
+//     "/images/mw07-featured-6.png",
+//   ],
+//   colors: ["Tortoiseshell / Stainless Steel Case"],
+//   link: "#",
+//   rating: "4.5",
+//   styles: {
+//     selectColorButton: {
+//       "Tortoiseshell / Stainless Steel Case": "bg-[linear-gradient(120deg,black_20%,red)]",
+//     } as Record<string, string>,
+//   },
+// };
 
-export default function FeaturedProduct() {
-  const [currentColor, setCurrentColor] = useState(FEATURED_PRODUCT.colors[0]);
+type Props = {
+  product: Maybe<Product>;
+};
+export default function FeaturedProduct({ product }: Props) {
+  const [currentVariantID, setcurrentVariantID] = useState(product?.variants[0].id);
+
+  if (!product) return null;
+
+  const currentVariant = product.variants.find(({ id }) => id === currentVariantID);
 
   return (
     <section className="md:mx-8 lg:mx-12 md:mb-16 lg:mb-20 lg:p-12 min-[950px]:grid min-[950px]:grid-cols-[11fr_9fr] gap-12 md:rounded-3xl bg-white">
-      <FeaturedProductImages product={FEATURED_PRODUCT} />
+      <FeaturedProductImages product={product} />
 
       <div className="px-5 pb-12 md:px-12 lg:p-0 mt-5 lg:mt-0">
-        <Link href={FEATURED_PRODUCT.vendor.link} className="opacity-70 text-sm md:text-base">
-          {FEATURED_PRODUCT.vendor.name}
+        <Link href="#" className="opacity-70 text-sm md:text-base">
+          {product.vendor}
         </Link>
+
         <h2 className="my-2 md:my-4 font-bold text-[2rem] md:text-[2.5rem] leading-[1.1]">
-          <Link href={FEATURED_PRODUCT.link}>{FEATURED_PRODUCT.name}</Link>
+          <Link href={`/products/${product.handle}`}>{product.title}</Link>
         </h2>
+
         <div className="flex justify-between gap-2 items-center">
-          <p className="text-lg md:text-xl">$ {FEATURED_PRODUCT.price}</p>
-          <span className="text-sm flex gap-1.5 h-fit">
-            <span className="leading-none">{FEATURED_PRODUCT.rating}</span>
-            <StarIcon className="w-3 text-star" />
-          </span>
+          <p className="text-lg md:text-xl flex gap-1">
+            <span>{product.priceRange.maxVariantPrice.currencyCode}</span>
+            <span>{product.priceRange.maxVariantPrice.amount}</span>
+          </p>
         </div>
 
         <hr className="my-6" />
         <div className="mb-2">
-          {FEATURED_PRODUCT.colors.map((color) => (
-            <p key={color} className="flex gap-2 text-sm md:text-base">
-              <span className="text-text/70">Color:</span>
-              <span>{color}</span>
-            </p>
-          ))}
+          <p className="flex gap-2 text-sm md:text-base">
+            <span className="text-text/70">Color:</span>
+            <span>{currentVariant?.title}</span>
+          </p>
         </div>
 
-        <div className="mb-6">
-          {FEATURED_PRODUCT.colors.map((color) => (
+        <div className="mb-6 flex gap-1 items-center">
+          {product.variants.map((variant) => (
             <button
-              key={color}
+              key={variant.id}
               type="button"
-              onClick={() => setCurrentColor(color)}
+              onClick={() => setcurrentVariantID(variant.id)}
               className={clsx(
                 "w-7 h-7 aspect-square rounded-full relative",
-                FEATURED_PRODUCT.styles.selectColorButton[color],
-                currentColor === color &&
+                variant.id === currentVariantID &&
                   "m-1 before:shadow-[0_0_0_2px] before:absolute before:-inset-[3px] before:rounded-full"
               )}
+              style={{
+                background: SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND.get(variant.title),
+              }}
             >
-              <span className="sr-only">Select {FEATURED_PRODUCT.colors}</span>
+              <span className="sr-only">Select {variant.title}</span>
             </button>
           ))}
         </div>
@@ -101,7 +110,7 @@ export default function FeaturedProduct() {
         </p>
 
         <Link
-          href={FEATURED_PRODUCT.link}
+          href={`/products/${product.handle}`}
           className="underline hover:no-underline text-sm md:text-base"
         >
           View full details
@@ -117,7 +126,7 @@ export default function FeaturedProduct() {
 }
 
 type FeaturedProductImagesProps = {
-  product: typeof FEATURED_PRODUCT;
+  product: Product;
 };
 function FeaturedProductImages({ product }: FeaturedProductImagesProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -134,14 +143,20 @@ function FeaturedProductImages({ product }: FeaturedProductImagesProps) {
       <div className="order-1 min-[1200px]:order-none lg:flex min-[1200px]:flex-col gap-2.5 shrink-0 hidden">
         {product.images.map((image, index) => (
           <button
-            key={image}
+            key={image.url}
             onClick={() => handleImageButtonClick(index)}
             className={twMerge(
               "relative after:block after:w-full after:h-0.5 after:bg-black after:mt-1 after:opacity-0",
               index === currentImageIndex && "after:opacity-100"
             )}
           >
-            <Image src={image} width={64} height={64} alt={product.name} className="rounded-md" />
+            <Image
+              src={image.url}
+              width={64}
+              height={64}
+              alt={image.altText}
+              className="rounded-md"
+            />
           </button>
         ))}
       </div>
@@ -150,13 +165,13 @@ function FeaturedProductImages({ product }: FeaturedProductImagesProps) {
         <div className="flex gap-0.5 overflow-x-auto no-scrollbar snap-x snap-mandatory">
           {product.images.map((image, index) => (
             <div
-              key={image}
+              key={image.url}
               className={clsx(
                 "aspect-square w-full shrink-0 relative lg:rounded-xl overflow-hidden snap-center snap-always"
               )}
               ref={(ref) => (imagesRef.current[index] = ref)}
             >
-              <Image src={image} alt={product.name} fill />
+              <Image src={image.url} alt={image.altText} fill />
             </div>
           ))}
         </div>
@@ -165,7 +180,7 @@ function FeaturedProductImages({ product }: FeaturedProductImagesProps) {
         <div className="absolute bottom-4 left-0 right-0 z-10 py-2 px-4 mx-auto w-fit order-1 lg:-order-none flex rounded-full bg-white/70 gap-2.5 lg:hidden">
           {product.images.map((image, index) => (
             <button
-              key={image}
+              key={image.url}
               onClick={() => handleImageButtonClick(index)}
               className={twMerge(
                 "w-1.5 aspect-square bg-current opacity-30 rounded-full",

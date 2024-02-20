@@ -4,6 +4,7 @@ export interface ImageWithAlt extends Image {
   alt?: string;
 }
 
+
 export interface ProductHotspot {
   location: {
     x: `${number}%`;
@@ -107,13 +108,12 @@ export type SanityArrayItem<T> = T & {
 // Add array item metadata to item coming from sanity cms
 export interface SanityArray<T extends Object> extends Array<SanityArrayItem<T>> {}
 
-export interface NavBarData {
+export interface NavBar {
   headphonesLinks: SanityArray<LinkWithIcon>;
   earphonesLinks: SanityArray<LinkWithIcon>;
   collaborationsPromoProducts: SanityArray<ImageLink>;
   shopPromoProducts: SanityArray<ImageLink>;
   newCollaborations: SanityArray<{ name: string; url: string }>;
-  collaborationsFeaturedProduct: Product;
 }
 
 export interface HeroSlide {

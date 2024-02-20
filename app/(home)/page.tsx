@@ -1,7 +1,9 @@
+import { getProducts } from "@/lib/shopify";
 import { client } from "@/sanity/lib/client";
+import { Maybe, Product } from "@/types/shopify";
 import {
   Announcement,
-  NavBarData,
+  NavBar as INavBar,
   HomePage as SanityHomePage,
   SocialLink,
 } from "../../types/sanity";
@@ -28,8 +30,8 @@ import Timeline from "./components/timeline";
 import TwoColumnSpotlight from "./components/two_column_spotlight";
 
 const getData = async () => {
-  const data = await client.fetch<{
-    navBarData: NavBarData;
+  const sanityData = await client.fetch<{
+    navBarData: INavBar;
     announcements: Announcement[];
     homePage: SanityHomePage;
     socialLinks: SocialLink[];
@@ -43,11 +45,23 @@ const getData = async () => {
     }
   `
   );
-  return data;
+
+  const collaborationsFeaturedProduct = (
+    await getProducts({ query: "tag:collaborations-featured-product" })
+  )[0] as Maybe<Product>;
+  const homeFeaturedProduct = (
+    await getProducts({ query: "tag:homepage-featured-product" })
+  )[0] as Maybe<Product>;
+
+  return {
+    ...sanityData,
+    navBarData: { ...sanityData.navBarData, collaborationsFeaturedProduct },
+    homeFeaturedProduct,
+  };
 };
 
 export default async function Home() {
-  const { announcements, navBarData, homePage, socialLinks } = await getData();
+  const { announcements, navBarData, homePage, socialLinks, homeFeaturedProduct } = await getData();
 
   return (
     <>
@@ -67,7 +81,7 @@ export default async function Home() {
       <Hotspots data={homePage.hotspots} />
       <TwoColumnSpotlight data={homePage.twoColumnSpotlight} />
       <TextWithMultipleImages data={homePage.textWithMultipleImages} />
-      <FeaturedProduct />
+      <FeaturedProduct product={homeFeaturedProduct} />
       <CompareProducts data={homePage.featureChart} />
       <ImageReveal data={homePage.revealedImageOnScroll} />
       <div className="bg-main-bg">
