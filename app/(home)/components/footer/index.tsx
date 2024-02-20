@@ -11,8 +11,8 @@ type Props = {
 export default function Footer({ footer, socialLinks }: Props) {
   const { newsletter, copywright, menus } = footer;
   return (
-    <footer className="py-12 px-5 lg:py-16 lg:px-12 bg-white">
-      <div className="flex flex-col lg:flex-row gap-10 md:gap-24 justify-between mb-10 md:mb-24">
+    <footer className="py-12 px-5 lg:py-16 md:px-8 lg:px-12 bg-white">
+      <div className="flex flex-col lg:flex-row gap-10 justify-between mb-10 md:mb-16">
         <NewsletterForm data={newsletter} />
         <Links menus={menus} />
       </div>
@@ -63,7 +63,7 @@ type LinksProps = {
 };
 function Links({ menus }: LinksProps) {
   return (
-    <div className="grid grid-cols-2 gap-10">
+    <div className="grid md:grid-cols-3 grid-cols-2 gap-24">
       {menus.map((menu) => (
         <div key={menu._key} className="last:mr-10 max-w-[250px] text-sm md:text-base">
           <p className="font-bold mb-3 md:mb-6">{menu.title}</p>
