@@ -3,7 +3,7 @@
 import ArrowDownIcon from "@/components/icons/arrow_down_icon";
 import CloseIcon from "@/components/icons/close_icon";
 import { urlForImage } from "@/sanity/lib/image";
-import { LinkWithIcon, NavBarData, SanityArray } from "@/types/sanity";
+import { LinkWithIcon, NavBar, SanityArray } from "@/types/sanity";
 import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,31 +11,8 @@ import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import NavigationPromo from "./nav_promo";
 
-// const EARPHONES_LINKS = [
-//   { name: "MW08 Sport", link: "#", image: "/images/nav-earphones-MW08Sport.png" },
-//   { name: "MW08", link: "#", image: "/images/nav-earphones-MW08BU.png" },
-//   { name: "MW07 Plus", link: "#", image: "/images/nav-earphones-MW07TS.png" },
-//   { name: "MW07 Plus Leica", link: "#", image: "/images/nav-earphones-MW07PlusLeica.png" },
-//   {
-//     name: "MW07 Plus Paris Saint-Germain",
-//     link: "#",
-//     image: "/images/nav-earphones-MW07PlusParis.png",
-//   },
-//   { name: "View all", link: "#", image: "/images/nav-earphones-MW07-LAM2.png" },
-// ];
-
-// const HEADPHONES_LINKS = [
-//   { name: "MW65", link: "#", image: "/images/nav-headphones-MW65.png" },
-//   { name: "MG20", link: "#", image: "/images/nav-headphones-MG20.png" },
-//   { name: "MH40 Wireless", link: "#", image: "/images/nav-headphones-MH40.png" },
-//   { name: "MW50+", link: "#", image: "/images/nav-headphones-MW50.png" },
-//   { name: "View all", link: "#", image: "/images/nav-headphones-MH40WP.png" },
-// ];
-
-// type PanelLinks = typeof EARPHONES_LINKS;
-
 type Props = {
-  data: NavBarData;
+  data: NavBar;
 };
 export default function ShopSubsection({ data }: Props) {
   const [secondPanelState, setSecondPanelState] = useState<{

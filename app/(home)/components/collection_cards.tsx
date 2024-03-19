@@ -2,24 +2,6 @@ import { urlForImage } from "@/sanity/lib/image";
 import { ImageLink, SanityArray } from "@/types/sanity";
 import Image from "next/image";
 
-// const cardInfoList = [
-//   {
-//     text: "Lightweight luxury earphones",
-//     link: "#",
-//     imageLink: "/images/collection-earphones.jpg",
-//   },
-//   {
-//     text: "Upgrade your listening experience",
-//     link: "#",
-//     imageLink: "/images/collection-headphones.jpg",
-//   },
-//   {
-//     text: "Discover exclusive collaborations",
-//     link: "#",
-//     imageLink: "/images/collection-collaborations.jpg",
-//   },
-// ];
-
 type Props = {
   collections: SanityArray<ImageLink>;
 };

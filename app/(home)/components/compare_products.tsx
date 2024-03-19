@@ -3,36 +3,6 @@ import { convertStringToTitleCase } from "@/lib";
 import { FeatureChart } from "@/types/sanity";
 import Link from "next/link";
 
-// const PRODUCT1 = {
-//   name: "MW65 (Silver Metal / Brown Leather)",
-//   price: "499",
-//   color: "Silver Metal / Brown Leather",
-//   image: "/images/mw65-compare.png",
-//   driver: "40mm Beryllium",
-//   weight: "245g",
-//   dimensions: "165mm x 190mm x 66mm",
-//   battery: "24 hours",
-//   link: "#",
-//   styles: {
-//     colorButton: "bg-[linear-gradient(135deg,brown_50%,lightgrey_50%)]",
-//   },
-// };
-
-// const PRODUCT2 = {
-//   name: "MW50+ (Silver Metal / Black Leather)",
-//   price: "299",
-//   color: "Silver Metal / Black Leather",
-//   image: "/images/mw50-compare.png",
-//   driver: "40mm Beryllium",
-//   weight: "205g (On-Ear), 239g (Over-Ear)",
-//   dimensions: "190mm x 155mm x 34mm (On-Ear), 200mm x 165mm x 40mm (Over-Ear)",
-//   battery: "16 hours",
-//   link: "#",
-//   styles: {
-//     colorButton: "bg-[linear-gradient(135deg,black_50%,lightgrey_50%)]",
-//   },
-// };
-
 type Props = {
   data: FeatureChart;
 };

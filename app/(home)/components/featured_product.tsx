@@ -9,28 +9,6 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-// const FEATURED_PRODUCT = {
-//   name: "MW07 Plus (Tortoiseshell / Stainless Steel Case)",
-//   vendor: { name: "Master & Dynamic", link: "#" },
-//   price: "249.00",
-//   images: [
-//     "/images/mw07-featured-1.png",
-//     "/images/mw07-featured-2.png",
-//     "/images/mw07-featured-3.png",
-//     "/images/mw07-featured-4.png",
-//     "/images/mw07-featured-5.png",
-//     "/images/mw07-featured-6.png",
-//   ],
-//   colors: ["Tortoiseshell / Stainless Steel Case"],
-//   link: "#",
-//   rating: "4.5",
-//   styles: {
-//     selectColorButton: {
-//       "Tortoiseshell / Stainless Steel Case": "bg-[linear-gradient(120deg,black_20%,red)]",
-//     } as Record<string, string>,
-//   },
-// };
-
 type Props = {
   product: Maybe<Product>;
 };
