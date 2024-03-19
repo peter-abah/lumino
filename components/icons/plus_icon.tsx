@@ -6,9 +6,8 @@ export default function PlusIcon(props: IconProps) {
       role="presentation"
       focusable="false"
       strokeWidth="2"
-      width="8"
-      height="8"
-      viewBox="0 0 12 12"
+      width="1em"
+      height="1em"
       {...props}
     >
       <path d="M6 0V12" fill="none" stroke="currentColor"></path>

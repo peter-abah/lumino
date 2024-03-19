@@ -5,13 +5,13 @@ import { getProducts } from "@/lib/shopify";
 import { client } from "@/sanity/lib/client";
 import { HomePage as SanityHomePage } from "@/types/sanity";
 import { Maybe, Product } from "@/types/shopify";
+import FeaturedProduct from "../../components/featured_product";
 import Footer from "../../components/footer";
 import FAQ from "./components/FAQ";
 import BestSellers from "./components/best_sellers";
 import CollectionCards from "./components/collection_cards";
 import CompareProducts from "./components/compare_products";
 import CompareSection from "./components/compare_section";
-import FeaturedProduct from "./components/featured_product";
 import Hero from "./components/hero";
 import Hotspots from "./components/hotspots";
 import ImageLinks from "./components/image_links";
@@ -62,7 +62,7 @@ export default async function Home() {
       <Hotspots data={homePage.hotspots} />
       <TwoColumnSpotlight data={homePage.twoColumnSpotlight} />
       <TextWithMultipleImages data={homePage.textWithMultipleImages} />
-      <FeaturedProduct product={homeFeaturedProduct} />
+      {homeFeaturedProduct && <FeaturedProduct product={homeFeaturedProduct} />}
       <CompareProducts data={homePage.featureChart} />
       <ImageReveal data={homePage.revealedImageOnScroll} />
       <div className="bg-main-bg">

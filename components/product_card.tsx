@@ -19,7 +19,7 @@ export default function ProductCard({ product }: Props) {
   return (
     <li className="bg-white snap-start rounded-md">
       <Link
-        href={`products/${product.handle}`}
+        href={`/products/${product.handle}`}
         className="w-[72vw] md:w-[36vw] lg:w-[20vw] rounded-md overflow-hidden inline-block relative aspect-square group"
       >
         <Image

@@ -14,4 +14,7 @@ export const HIDDEN_PRODUCT_TAG = "nextjs-frontend-hidden";
 // TODO: add color options or move to sanity CMS
 export const SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND = new MapWithDefault<string, string>([
   [DEFAULT, "linear-gradient(135deg, black 50%, lightgrey 50%)"],
+  ["Silver Metal / Burgundy Coated Canvas", "#461A1B"],
+  ["Silver Metal / Brown Coated Canvas", "#B87550"],
+  ["Silver Metal / Navy Coated Canvas", "#1C293B"],
 ]);
