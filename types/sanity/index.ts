@@ -4,7 +4,6 @@ export interface ImageWithAlt extends Image {
   alt?: string;
 }
 
-
 export interface ProductHotspot {
   location: {
     x: `${number}%`;
@@ -24,6 +23,14 @@ export interface LinkWithIcon {
   name: string;
   url: string;
   imageIcon: ImageWithAlt;
+}
+
+export interface InfoPanel {
+  infoList: SanityArray<{
+    iconID?: string;
+    heading: string;
+    content: string;
+  }>;
 }
 
 export interface Product {

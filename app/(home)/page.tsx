@@ -1,9 +1,10 @@
 import Announcements from "@/components/announcements";
+import InfoPanel from "@/components/info_panel";
 import NavBar from "@/components/nav_bar";
 import { getProducts } from "@/lib/shopify";
 import { client } from "@/sanity/lib/client";
+import { HomePage as SanityHomePage, SocialLink } from "@/types/sanity";
 import { Maybe, Product } from "@/types/shopify";
-import { HomePage as SanityHomePage, SocialLink } from "../../types/sanity";
 import FAQ from "./components/FAQ";
 import BestSellers from "./components/best_sellers";
 import CollectionCards from "./components/collection_cards";
@@ -19,7 +20,6 @@ import MarqueeText from "./components/marquee_text";
 import MediaGrid from "./components/media_grid";
 import Reviews from "./components/reviews";
 import Spotlight from "./components/spotlight";
-import TextWithIcons from "./components/text_with_icons";
 import TextWithMultipleImages from "./components/text_with_multiple_images";
 import Timeline from "./components/timeline";
 import TwoColumnSpotlight from "./components/two_column_spotlight";
@@ -76,7 +76,7 @@ export default async function Home() {
       <div className="bg-main-bg">
         <Timeline data={homePage.timeline} />
         <FAQ data={homePage.faq} />
-        <TextWithIcons data={homePage.textWithIcons} />
+        <InfoPanel />
       </div>
       <Footer footer={homePage.footer} socialLinks={socialLinks} />
     </>

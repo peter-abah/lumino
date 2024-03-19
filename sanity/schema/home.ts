@@ -367,40 +367,6 @@ const homePage = {
       ],
     },
     {
-      name: "textWithIcons",
-      title: "Text with icons",
-      type: "array",
-      validation: (Rule: Rule) => Rule.required().max(5),
-      of: [
-        {
-          name: "textWithIcon",
-          title: "Text with icon",
-          type: "object",
-          fields: [
-            {
-              name: "iconID",
-              title: "Icon ID",
-              type: "string",
-              description:
-                "Used in code to display appropriate icon, (TODO: include available icon IDs)",
-            },
-            {
-              name: "heading",
-              title: "Heading",
-              type: "string",
-              validation: (Rule: Rule) => Rule.required(),
-            },
-            {
-              name: "content",
-              title: "Content",
-              type: "text",
-              validation: (Rule: Rule) => Rule.required(),
-            },
-          ],
-        },
-      ],
-    },
-    {
       name: "footer",
       title: "Footer",
       type: "object",

@@ -2,17 +2,18 @@
 
 import { IconComponent } from "@/components/icons";
 import DefaultIcon from "@/components/icons/default_icon";
-import { HomePage } from "@/types/sanity";
+import { InfoPanel } from "@/types/sanity";
 import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
-  data: HomePage["textWithIcons"];
+  data: InfoPanel;
 };
 export default function TexWithIcons({ data }: Props) {
   const divRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [currentBenefitIndex, setCurrentBenefitIndex] = useState(0);
 
+  const { infoList } = data;
   const handleBenefitBtnClick = (index: number) => {
     setCurrentBenefitIndex(index);
     divRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -21,7 +22,7 @@ export default function TexWithIcons({ data }: Props) {
   return (
     <section className="px-5 md:px-8 lg:px-12 py-12 md:pt-0 md:pb-16 lg:pb-20 flex flex-col gap-8">
       <div className="grid grid-cols-[repeat(4,100%)] lg:grid-cols-4 gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory">
-        {data.map(({ heading, content, iconID, _key }, index) => (
+        {infoList.map(({ heading, content, iconID, _key }, index) => (
           <div
             key={_key}
             ref={(ref) => (divRefs.current[index] = ref)}
@@ -35,7 +36,7 @@ export default function TexWithIcons({ data }: Props) {
       </div>
 
       <div className="flex gap-4 w-fit mx-auto lg:hidden">
-        {data.map(({ _key }, index) => (
+        {infoList.map(({ _key }, index) => (
           <button
             key={_key}
             className={twMerge(

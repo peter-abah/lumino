@@ -1,6 +1,7 @@
 import { type SchemaTypeDefinition } from "sanity";
 import announcement from "./announcement";
 import homePage from "./home";
+import infoPanel from "./info_panel";
 import navBarData from "./nav_bar";
 import socialLink from "./social_link";
 
@@ -25,6 +26,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     socialLink,
     navBarData,
     homePage,
+    infoPanel,
 
     // Object schemas
     linkWithIcon,
