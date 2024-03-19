@@ -22,15 +22,15 @@ export interface NavBarData extends INavBar {
 
 type Props = {
   data: NavBarData;
+  isTransparent?: boolean;
 };
-export default function NavBar({ data }: Props) {
+export default function NavBar({ data, isTransparent = false }: Props) {
   const [previousObserverTop, setPreviousObserverTop] = useState(0);
   const [isCollabMenuOpen, setIsCollabMenuOpen] = useState(false);
   const [isNavBarSticky, setIsNavBarSticky] = useState(false);
   const isMounted = useIsMounted();
 
   const navRef = useRef<HTMLDivElement>(null);
-  const isHomePage = true; // TODO: This will be changed to a prop
 
   const { ref: stickyObserverRef } = useInView({
     onChange: (inView, entry) => {
@@ -72,7 +72,7 @@ export default function NavBar({ data }: Props) {
       <nav
         className={twMerge(
           "absolute z-50 top-0 w-full grid grid-cols-[1fr_max-content_1fr] items-center p-5 md:p-8 lg:px-12 lg:py-8 bg-main-bg text-text",
-          isHomePage && "bg-opacity-0 text-white",
+          isTransparent && "bg-opacity-0 text-white",
           isNavBarSticky && "fixed bg-opacity-100 text-text"
         )}
         ref={navRef}

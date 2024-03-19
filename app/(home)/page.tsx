@@ -67,7 +67,7 @@ export default async function Home() {
     <>
       <Announcements announcements={announcements} />
       <div className="relative">
-        <NavBar data={navBarData} />
+        <NavBar data={navBarData} isTransparent />
         <Hero slides={homePage.heroSlides} />
       </div>
       <ImageLinks imageLinks={homePage.imageLinks} />
