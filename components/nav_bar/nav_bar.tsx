@@ -1,4 +1,3 @@
-// TODO: Move use client to down to components that actually are (radix ui)
 "use client";
 
 import ArrowDownIcon from "@/components/icons/arrow_down_icon";

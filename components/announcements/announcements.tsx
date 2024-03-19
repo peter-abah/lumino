@@ -3,7 +3,7 @@
 import ArrowRight from "@/components/icons/arrow_right_icon";
 import useSlideShow from "@/lib/hooks/use_slide_show";
 import {
-  Announcement as TAnnouncement
+    Announcement as TAnnouncement
 } from "@/types/sanity";
 import Announcement from "./announcement";
 
