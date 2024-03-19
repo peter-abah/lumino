@@ -2,7 +2,7 @@ import { urlForImage } from "@/sanity/lib/image";
 import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
 import Link from "next/link";
-import { NavBarData } from ".";
+import { NavBarData } from "./nav_bar";
 
 type Props = {
   data: NavBarData;

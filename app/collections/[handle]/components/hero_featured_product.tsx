@@ -8,7 +8,7 @@ type Props = {
 export default function HeroFeaturedProduct({ product }: Props) {
   return (
     <div
-      className="absolute bottom-12 right-12 w-72 text-white"
+      className="absolute bottom-12 right-12 w-72 text-white hidden lg:block"
     >
       <p
         className="absolute z-0 right-0 bottom-full py-1.5 px-4 text-xs font-bold rounded-t bg-text/20 backdrop:blur-3xl"
