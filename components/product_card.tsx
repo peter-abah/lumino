@@ -1,17 +1,20 @@
 "use client";
 
 import { SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND } from "@/lib/constants";
-import { Product, ProductVariant } from "@/types/shopify";
+import { Product, VariantProduct } from "@/types/shopify";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 type Props = {
-  product: Product;
+  product: Product | VariantProduct;
 };
 export default function ProductCard({ product }: Props) {
-  const [currentVariant, setCurrentVariant] = useState<ProductVariant>(product.variants[0]);
+  const [currentVariantIndex, setCurrentVariantIndex] = useState<number>(0);
+
+  const isVariantProduct = "variant" in product;
+  const currentVariant = isVariantProduct ? product.variant : product.variants[currentVariantIndex];
 
   return (
     <li className="bg-white snap-start rounded-md">
@@ -39,11 +42,11 @@ export default function ProductCard({ product }: Props) {
         </p>
 
         <div className="flex items-center gap-1 mt-1">
-          {product.variants.map((variant) => (
+          {(isVariantProduct ? [product.variant] : product.variants).map((variant, index) => (
             <button
               type="button"
               key={variant.id}
-              onClick={() => setCurrentVariant(variant)}
+              onClick={() => setCurrentVariantIndex(index)}
               className={clsx(
                 "w-3.5 h-3.5 aspect-square rounded-full relative",
                 currentVariant.id === variant.id &&

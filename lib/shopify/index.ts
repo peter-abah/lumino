@@ -1,11 +1,15 @@
 import "server-only";
 
 import {
+  Collection,
   Connection,
   Image,
   Product,
   ProductVariant,
+  ShopifyCollection,
+  ShopifyCollectionOperation,
   ShopifyCollectionProductsOperation,
+  ShopifyCollectionsOperation,
   ShopifyProduct,
   ShopifyProductOperation,
   ShopifyProductsOperation,
@@ -17,7 +21,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { ensureStartsWith } from "..";
 import { HIDDEN_PRODUCT_TAG, SHOPIFY_GRAPHQL_API_ENDPOINT, TAGS } from "../constants";
 import { isShopifyError } from "../type_guards";
-import { getCollectionProductsQuery } from "./queries/collection";
+import {
+  getCollectionProductsQuery,
+  getCollectionQuery,
+  getCollectionsQuery,
+} from "./queries/collection";
 import { getProductQuery, getProductsQuery } from "./queries/product";
 
 const domain = process.env.SHOPIFY_STORE_DOMAIN
@@ -201,6 +209,62 @@ const reshapeProducts = (products: ShopifyProduct[]) => {
 
   return reshapedProducts;
 };
+
+const reshapeCollection = (collection: ShopifyCollection): Collection | undefined => {
+  if (!collection) {
+    return undefined;
+  }
+
+  return {
+    ...collection,
+    path: `/collections/${collection.handle}`,
+  };
+};
+
+const reshapeCollections = (collections: ShopifyCollection[]) => {
+  const reshapedCollections = [];
+
+  for (const collection of collections) {
+    if (collection) {
+      const reshapedCollection = reshapeCollection(collection);
+
+      if (reshapedCollection) {
+        reshapedCollections.push(reshapedCollection);
+      }
+    }
+  }
+
+  return reshapedCollections;
+};
+
+export async function getCollection(handle: string): Promise<Collection | undefined> {
+  const res = await shopifyFetch<ShopifyCollectionOperation>({
+    query: getCollectionQuery,
+    tags: [TAGS.collections],
+    variables: {
+      handle,
+    },
+  });
+
+  return reshapeCollection(res.body.data.collection);
+}
+
+export async function getCollections(): Promise<Collection[]> {
+  const res = await shopifyFetch<ShopifyCollectionsOperation>({
+    query: getCollectionsQuery,
+    tags: [TAGS.collections],
+  });
+  const shopifyCollections = removeEdgesAndNodes(res.body?.data?.collections);
+  const collections = [
+    // Filter out the `hidden` collections.
+    // Collections that start with `hidden-*` need to be hidden on the search page.
+    ...reshapeCollections(shopifyCollections).filter(
+      (collection: Collection) => !collection.handle.startsWith("hidden")
+    ),
+  ];
+
+  return collections;
+}
 
 export async function getCollectionProducts({
   collection,
