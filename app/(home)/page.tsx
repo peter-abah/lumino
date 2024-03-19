@@ -47,7 +47,7 @@ export default async function Home() {
       <Announcements />
       <div className="relative">
         <div className="absolute top-0 z-50 w-full">
-          <NavBar isTransparent />
+          <NavBar isTransparent stickyObserverDistanceInPixels={512} />
         </div>
         <Hero slides={homePage.heroSlides} />
       </div>

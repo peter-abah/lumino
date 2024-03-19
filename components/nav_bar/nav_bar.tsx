@@ -22,11 +22,17 @@ export interface NavBarData extends INavBar {
 type Props = {
   data: NavBarData;
   isTransparent?: boolean;
+  // 0 means no sticky observer  and nav bar will be sticky from start
+  stickyObserverDistanceInPixels?: number;
 };
-export default function NavBar({ data, isTransparent = false }: Props) {
+export default function NavBar({
+  data,
+  isTransparent = false,
+  stickyObserverDistanceInPixels = 0,
+}: Props) {
   const [previousObserverTop, setPreviousObserverTop] = useState(0);
   const [isCollabMenuOpen, setIsCollabMenuOpen] = useState(false);
-  const [isNavBarSticky, setIsNavBarSticky] = useState(false);
+  let [isNavBarSticky, setIsNavBarSticky] = useState(false);
   const isMounted = useIsMounted();
 
   const navRef = useRef<HTMLDivElement>(null);
@@ -49,6 +55,9 @@ export default function NavBar({ data, isTransparent = false }: Props) {
     },
   });
 
+  const isStickyFromStart = stickyObserverDistanceInPixels === 0;
+  isNavBarSticky = isStickyFromStart || isNavBarSticky;
+
   const handleCollabMenuChange = (menuVisibility: boolean) => {
     setIsCollabMenuOpen(menuVisibility);
     setIsNavBarSticky(menuVisibility);
@@ -58,11 +67,13 @@ export default function NavBar({ data, isTransparent = false }: Props) {
   return (
     <>
       {isMounted &&
+        stickyObserverDistanceInPixels > 0 &&
         createPortal(
           // Nav becomes sticky when scrolls down past an observer and changes back to normal when the
           // user scrolls up past the observer.
           <div
-            className="absolute top-[32rem] h-4 bg-transparent w-8"
+            className="absolute h-4 bg-transparent w-8"
+            style={{ top: `${stickyObserverDistanceInPixels}px` }}
             aria-hidden
             ref={stickyObserverRef}
           ></div>,
@@ -72,7 +83,8 @@ export default function NavBar({ data, isTransparent = false }: Props) {
         className={twMerge(
           "w-full grid grid-cols-[1fr_max-content_1fr] items-center p-5 md:p-8 lg:px-12 lg:py-8 bg-main-bg text-text",
           isTransparent && "bg-opacity-0 text-white",
-          isNavBarSticky && "fixed z-50 top-0 bg-opacity-100 text-text"
+          isNavBarSticky && "fixed z-50 top-0 bg-opacity-100 text-text",
+          isStickyFromStart && "sticky"
         )}
         ref={navRef}
       >
