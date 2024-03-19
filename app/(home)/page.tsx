@@ -3,15 +3,15 @@ import InfoPanel from "@/components/info_panel";
 import NavBar from "@/components/nav_bar";
 import { getProducts } from "@/lib/shopify";
 import { client } from "@/sanity/lib/client";
-import { HomePage as SanityHomePage, SocialLink } from "@/types/sanity";
+import { HomePage as SanityHomePage } from "@/types/sanity";
 import { Maybe, Product } from "@/types/shopify";
+import Footer from "../../components/footer";
 import FAQ from "./components/FAQ";
 import BestSellers from "./components/best_sellers";
 import CollectionCards from "./components/collection_cards";
 import CompareProducts from "./components/compare_products";
 import CompareSection from "./components/compare_section";
 import FeaturedProduct from "./components/featured_product";
-import Footer from "./components/footer";
 import Hero from "./components/hero";
 import Hotspots from "./components/hotspots";
 import ImageLinks from "./components/image_links";
@@ -25,30 +25,22 @@ import Timeline from "./components/timeline";
 import TwoColumnSpotlight from "./components/two_column_spotlight";
 
 const getData = async () => {
-  const sanityData = await client.fetch<{
+  const { homePage } = await client.fetch<{
     homePage: SanityHomePage;
-    socialLinks: SocialLink[];
-  }>(
-    `
-    {
-      'homePage': *[_type == "homePage"][0],
-      'socialLinks': *[_type == "socialLink"],
-    }
-  `
-  );
+  }>(`{'homePage': *[_type == "homePage"][0]}`);
 
   const homeFeaturedProduct = (
     await getProducts({ query: "tag:homepage-featured-product" })
   )[0] as Maybe<Product>;
 
   return {
-    ...sanityData,
+    homePage,
     homeFeaturedProduct,
   };
 };
 
 export default async function Home() {
-  const { homePage, socialLinks, homeFeaturedProduct } = await getData();
+  const { homePage, homeFeaturedProduct } = await getData();
 
   return (
     <>
@@ -78,7 +70,7 @@ export default async function Home() {
         <FAQ data={homePage.faq} />
         <InfoPanel />
       </div>
-      <Footer footer={homePage.footer} socialLinks={socialLinks} />
+      <Footer />
     </>
   );
 }

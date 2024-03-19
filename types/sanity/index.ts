@@ -188,18 +188,13 @@ export interface HomePage {
       answer: string;
     }>;
   };
-  textWithIcons: SanityArray<{
-    iconID?: string;
-    heading: string;
-    content: string;
-  }>;
-  footer: {
-    newsletter: Newsletter;
-    menus: SanityArray<Menu>;
-    copywright: PortableTextBlock[];
-  };
 }
 
+export interface Footer {
+  newsletter: Newsletter;
+  menus: SanityArray<Menu>;
+  copywright: PortableTextBlock[];
+}
 export interface SocialLink {
   _id: string;
   name: string;
