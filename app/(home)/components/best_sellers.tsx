@@ -1,7 +1,7 @@
 import ArrowRight from "@/components/icons/arrow_right_icon";
+import ProductCard from "@/components/product_card";
 import { getCollectionProducts } from "@/lib/shopify";
 import Link from "next/link";
-import BestSellerItem from "./best_seller_item";
 
 // const BEST_SELLER_ITEMS: TBestSellerItem[] = [
 //   {
@@ -153,7 +153,7 @@ export default async function BestSellers() {
 
       <ul className="flex overflow-auto gap-6 no-scrollbar snap-x snap-mandatory">
         {products.map((product) => (
-          <BestSellerItem key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </ul>
     </section>

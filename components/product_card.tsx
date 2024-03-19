@@ -7,10 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-type BestSellerItemProps = {
+type Props = {
   product: Product;
 };
-export default function BestSellerItem({ product }: BestSellerItemProps) {
+export default function ProductCard({ product }: Props) {
   const [currentVariant, setCurrentVariant] = useState<ProductVariant>(product.variants[0]);
 
   return (
