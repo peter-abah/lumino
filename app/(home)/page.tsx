@@ -3,10 +3,7 @@ import NavBar from "@/components/nav_bar";
 import { getProducts } from "@/lib/shopify";
 import { client } from "@/sanity/lib/client";
 import { Maybe, Product } from "@/types/shopify";
-import {
-  HomePage as SanityHomePage,
-  SocialLink
-} from "../../types/sanity";
+import { HomePage as SanityHomePage, SocialLink } from "../../types/sanity";
 import FAQ from "./components/FAQ";
 import BestSellers from "./components/best_sellers";
 import CollectionCards from "./components/collection_cards";
@@ -57,7 +54,9 @@ export default async function Home() {
     <>
       <Announcements />
       <div className="relative">
-        <NavBar isTransparent />
+        <div className="absolute top-0 z-50 w-full">
+          <NavBar isTransparent />
+        </div>
         <Hero slides={homePage.heroSlides} />
       </div>
       <ImageLinks imageLinks={homePage.imageLinks} />

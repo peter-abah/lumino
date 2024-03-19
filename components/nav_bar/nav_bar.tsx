@@ -70,9 +70,9 @@ export default function NavBar({ data, isTransparent = false }: Props) {
         )}
       <nav
         className={twMerge(
-          "absolute z-50 top-0 w-full grid grid-cols-[1fr_max-content_1fr] items-center p-5 md:p-8 lg:px-12 lg:py-8 bg-main-bg text-text",
+          "w-full grid grid-cols-[1fr_max-content_1fr] items-center p-5 md:p-8 lg:px-12 lg:py-8 bg-main-bg text-text",
           isTransparent && "bg-opacity-0 text-white",
-          isNavBarSticky && "fixed bg-opacity-100 text-text"
+          isNavBarSticky && "fixed z-50 top-0 bg-opacity-100 text-text"
         )}
         ref={navRef}
       >
