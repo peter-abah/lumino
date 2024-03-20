@@ -23,12 +23,12 @@ export default function NavigationPromo({ products }: Props) {
             currentIndex !== index && "hidden"
           )}
         >
-          <span className="text-2xl font-bold max-w-[75%]">{product.name}</span>
+          <span className="text-2xl font-bold max-w-[75%] z-10">{product.name}</span>
           <Image
             src={urlForImage(product.image)}
             fill
             alt=""
-            className="-z-10 group-hover:scale-105 duration-300"
+            className="group-hover:scale-105 duration-300"
             aria-hidden
           />
         </Link>

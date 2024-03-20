@@ -13,6 +13,7 @@ import { createPortal } from "react-dom";
 import { useInView } from "react-intersection-observer";
 import { twMerge } from "tailwind-merge";
 import CollaborationsSubsection from "./collaborations_subsection";
+import MobileNav from "./mobile_nav";
 import ShopSubsection from "./shop_subsection";
 
 export interface NavBarData extends INavBar {
@@ -88,11 +89,18 @@ export default function NavBar({
         )}
         ref={navRef}
       >
-        {/* Mobile Hamburger */}
+        {/* MOBILE HAMBURGER */}
         <div className="flex gap-4 items-center lg:hidden">
-          <button type="button">
-            <Hamburger />
-          </button>
+          <Dialog.Root modal>
+            <Dialog.Trigger asChild>
+              <button type="button">
+                <Hamburger />
+              </button>
+            </Dialog.Trigger>
+            <Dialog.Portal>
+              <MobileNav data={data} />
+            </Dialog.Portal>
+          </Dialog.Root>
 
           <button type="button" className="md:hidden">
             <Search />
