@@ -1,3 +1,6 @@
+import Announcements from "@/components/announcements";
+import Footer from "@/components/footer";
+import InfoPanel from "@/components/info_panel";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -90,7 +93,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={clsx(inter.variable, dinNext.variable)}>
-      <body>{children}</body>
+      <body>
+        <>
+          <Announcements />
+          {children}
+          <InfoPanel />
+          <Footer />
+        </>
+      </body>
     </html>
   );
 }

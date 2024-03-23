@@ -1,12 +1,9 @@
-import Announcements from "@/components/announcements";
-import InfoPanel from "@/components/info_panel";
 import NavBar from "@/components/nav_bar";
 import { getProducts } from "@/lib/shopify";
 import { client } from "@/sanity/lib/client";
 import { HomePage as SanityHomePage } from "@/types/sanity";
 import { Maybe, Product } from "@/types/shopify";
 import FeaturedProduct from "../../components/featured_product";
-import Footer from "../../components/footer";
 import FAQ from "./components/FAQ";
 import BestSellers from "./components/best_sellers";
 import CollectionCards from "./components/collection_cards";
@@ -44,7 +41,6 @@ export default async function Home() {
 
   return (
     <>
-      <Announcements />
       <div className="relative">
         <div className="absolute top-0 z-50 w-full">
           <NavBar isTransparent stickyObserverDistanceInPixels={512} />
@@ -65,12 +61,8 @@ export default async function Home() {
       {homeFeaturedProduct && <FeaturedProduct product={homeFeaturedProduct} />}
       <CompareProducts data={homePage.featureChart} />
       <ImageReveal data={homePage.revealedImageOnScroll} />
-      <div className="bg-main-bg">
-        <Timeline data={homePage.timeline} />
-        <FAQ data={homePage.faq} />
-        <InfoPanel />
-      </div>
-      <Footer />
+      <Timeline data={homePage.timeline} />
+      <FAQ data={homePage.faq} />
     </>
   );
 }
