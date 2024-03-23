@@ -8,7 +8,7 @@ import { NavBar as INavBar } from "@/types/sanity";
 import { Maybe, Product } from "@/types/shopify";
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useInView } from "react-intersection-observer";
 import { twMerge } from "tailwind-merge";
@@ -25,9 +25,11 @@ type Props = {
   isTransparent?: boolean;
   // 0 means no sticky observer  and nav bar will be sticky from start
   stickyObserverDistanceInPixels?: number;
+  cartComponent: ReactNode;
 };
 export default function NavBar({
   data,
+  cartComponent,
   isTransparent = false,
   stickyObserverDistanceInPixels = 0,
 }: Props) {
@@ -203,27 +205,7 @@ export default function NavBar({
             </a>
           </li>
 
-          <li>
-            <a href="#" className="hover:scale-105 inline-block">
-              <span className="sr-only">Open Cart</span>
-              <svg
-                role="presentation"
-                strokeWidth="2"
-                focusable="false"
-                width="22"
-                height="22"
-                viewBox="0 0 22 22"
-              >
-                <path
-                  d="M11 7H3.577A2 2 0 0 0 1.64 9.497l2.051 8A2 2 0 0 0 5.63 19H16.37a2 2 0 0 0 1.937-1.503l2.052-8A2 2 0 0 0 18.422 7H11Zm0 0V1"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-              </svg>
-            </a>
-          </li>
+          <li>{cartComponent}</li>
         </ul>
       </nav>
     </>

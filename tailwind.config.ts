@@ -29,12 +29,18 @@ const config: Config = {
           height: "0",
         },
       },
+      blink: {
+        "0%": { opacity: "0.2" },
+        "20%": { opacity: "1" },
+        "100% ": { opacity: "0.2" },
+      },
     },
     extend: {
       animation: {
         ping: "2s ease-in-out infinite alternate ping",
         slideDown: "300ms slideDown ease-in-out",
         slideUp: "300ms slideUp ease-in-out",
+        blink: "blink 1.4s both infinite",
       },
       boxShadow: {
         overlay: "0 9999px 0 9999px #0006",

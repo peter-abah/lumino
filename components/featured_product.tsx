@@ -1,5 +1,8 @@
 "use client";
 
+import AddToCart from "@/components/cart/add_to_cart";
+import MinusIcon from "@/components/icons/minus_icon";
+import PlusIcon from "@/components/icons/plus_icon";
 import Share from "@/components/icons/share";
 import { SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND } from "@/lib/constants";
 import { Product } from "@/types/shopify";
@@ -7,8 +10,6 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import MinusIcon from "./icons/minus_icon";
-import PlusIcon from "./icons/plus_icon";
 
 type Props = {
   product: Product;
@@ -17,7 +18,7 @@ export default function FeaturedProduct({ product }: Props) {
   const [currentVariantIndex, setcurrentVariantIndex] = useState(0);
   const [productQuantity, setProductQuantity] = useState(1);
 
-  const { variants, vendor, title, handle } = product;
+  const { variants, vendor, title, availableForSale } = product;
 
   const currentVariant = variants[currentVariantIndex];
 
@@ -32,7 +33,7 @@ export default function FeaturedProduct({ product }: Props) {
   };
 
   return (
-    <section className="md:mx-8 lg:mx-12 md:mb-16 lg:mb-20 lg:p-12 min-[950px]:grid min-[950px]:grid-cols-[11fr_9fr] gap-12 md:rounded-3xl bg-white">
+    <section className="md:mx-8 lg:mx-12 md:mb-16 lg:mb-20 lg:p-12 lg:grid lg:grid-cols-[11fr_9fr] gap-12 md:rounded-3xl bg-white">
       <FeaturedProductImages product={product} />
 
       <div className="px-5 pb-12 md:px-12 lg:p-0 mt-5 lg:mt-0">
@@ -100,18 +101,13 @@ export default function FeaturedProduct({ product }: Props) {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-2 md:gap-4">
-          <button
-            type="button"
-            className="px-8 md:px-10 py-4 md:py-4.5 rounded-button grid place-items-center text-white w-full font-bold text-sm md:text-base"
-            style={{
-              background: SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND.get(
-                variants[currentVariantIndex].title
-              ),
-            }}
-          >
-            Add to cart
-          </button>
+        <div className="flex flex-col md:grid md:grid-cols-2 lg:flex xl:grid gap-2 md:gap-4">
+          <AddToCart
+            availableForSale={availableForSale}
+            selectedVariantID={currentVariant.id}
+            quantity={productQuantity}
+            variants={variants}
+          />
           <button
             type="button"
             className="px-8 md:px-10 py-4 md:py-4.5 rounded-button bg-black grid place-items-center text-white w-full font-bold text-sm md:text-base"
@@ -149,9 +145,9 @@ function FeaturedProductImages({ product }: FeaturedProductImagesProps) {
   };
 
   return (
-    <div className="relative flex flex-col min-[1200px]:flex-row gap-12 h-fit">
+    <div className="relative flex flex-col xl:flex-row gap-12 h-fit">
       {/* THumbnails button for product images,, shows on desktop */}
-      <div className="order-1 min-[1200px]:order-none lg:flex min-[1200px]:flex-col gap-2.5 shrink-0 hidden">
+      <div className="order-1 xl:order-none lg:flex xl:flex-col gap-2.5 shrink-0 hidden">
         {images.map((image, index) => (
           <button
             key={image.url}

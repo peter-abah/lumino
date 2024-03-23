@@ -2,7 +2,9 @@ import { getProducts } from "@/lib/shopify";
 import { client } from "@/sanity/lib/client";
 import { type NavBar as INavBar } from "@/types/sanity";
 import { Maybe, Product } from "@/types/shopify";
-import { ComponentProps } from "react";
+import { ComponentProps, Suspense } from "react";
+import Cart from "../cart";
+import CartButton from "../cart/cart_button";
 import NavBar from "./nav_bar";
 
 async function getNavBarData() {
@@ -25,9 +27,19 @@ async function getNavBarData() {
   };
 }
 
-type Props = Omit<ComponentProps<typeof NavBar>, "data">;
+type Props = Omit<ComponentProps<typeof NavBar>, "data" | "cartComponent">;
 export default async function NavBarWrapper(props: Props) {
   const { navBarData } = await getNavBarData();
 
-  return <NavBar data={navBarData} {...props} />;
+  return (
+    <NavBar
+      data={navBarData}
+      {...props}
+      cartComponent={
+        <Suspense fallback={<CartButton />}>
+          <Cart />
+        </Suspense>
+      }
+    />
+  );
 }

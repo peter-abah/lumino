@@ -11,3 +11,12 @@ export function nullFunction() {
 
 export const ensureStartsWith = (stringToCheck: string, startsWith: string) =>
   stringToCheck.startsWith(startsWith) ? stringToCheck : `${startsWith}${stringToCheck}`;
+
+export function formatPriceToUserLocale(priceString: string) {
+  const priceNumber = parseFloat(priceString);
+
+  // Format the number according to the user's locale
+  const formattedPrice = priceNumber.toLocaleString();
+
+  return formattedPrice;
+}
