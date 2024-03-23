@@ -86,7 +86,10 @@ const dinNext = localFont({
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Lumino",
+  title: {
+    template: "%s | Lumino",
+    default: "Lumino",
+  },
   description: "Lumino eccomerce store",
 };
 
