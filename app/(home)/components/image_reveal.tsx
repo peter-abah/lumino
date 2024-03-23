@@ -14,10 +14,12 @@ export default function ImageReveal({ data }: Props) {
           background: `#000 url(${urlForImage(image)}) no-repeat fixed center/cover`,
         } as CSSProperties
       }
-      className="h-[calc(100vh_-_6rem)] sticky top-[6rem] bg-fixed bg-cover bg-center text-white flex flex-col items-center justify-center  text-center p-12 -z-10"
+      className="bg-fixed bg-cover bg-center text-white text-center px-12"
     >
-      <p className="font-bold text-sm md:text-base">{subheading}</p>
-      <p className="text-[3rem] lg:text-[4rem] leading-none font-bold mt-4 md:mt-8">{heading}</p>
+      <div className="sticky py-[50vh] top-[50vh]">
+        <p className="font-bold text-sm md:text-base">{subheading}</p>
+        <p className="text-[3rem] lg:text-[4rem] leading-none font-bold mt-4 md:mt-8">{heading}</p>
+      </div>
     </section>
   );
 }
