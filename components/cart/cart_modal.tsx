@@ -36,7 +36,7 @@ export default function CartModal({ cart }: Props) {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <CartButton />
+        <CartButton quantity={quantityRef.current} />
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="bg-black/60 z-50 fixed inset-0 h-screen" />
