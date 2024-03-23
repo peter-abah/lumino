@@ -16,7 +16,7 @@ export default function Reviews({ data }: Props) {
 
   return (
     <section className="px-5 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20 mx-auto">
-      <ul>
+      <ul id="reviews-list">
         {data.map((review, index) => (
           <li
             key={review._key}
@@ -24,6 +24,7 @@ export default function Reviews({ data }: Props) {
               "text-center max-w-[62.5rem] md:px-8 mx-auto",
               index !== currentIndex && "hidden"
             )}
+            aria-label={`Review ${index + 1} of ${data.length}`}
           >
             <blockquote className="text-2xl md:text-[2rem] leading-tight font-bold mb-8 md:mb-10">
               {review.quote}
@@ -44,6 +45,7 @@ export default function Reviews({ data }: Props) {
           <button
             type="button"
             onClick={goToPrev}
+            aria-controls="reviews-list"
             className="w-12 h-12 rounded-full border grid place-items-center group hover:bg-text/5 transition-all duration-300"
           >
             <ArrowRightIcon className="w-2 h-auto rotate-180 group-hover:scale-110" />
@@ -73,6 +75,7 @@ export default function Reviews({ data }: Props) {
             type="button"
             onClick={goToNext}
             className="w-12 h-12 rounded-full border grid place-items-center group hover:bg-text/5 transition-all duration-300"
+            aria-controls="reviews-list"
           >
             <ArrowRightIcon className="w-2 h-auto group-hover:scale-110" />
             <span className="sr-only">Next review</span>
