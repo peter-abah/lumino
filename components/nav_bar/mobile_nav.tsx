@@ -196,7 +196,7 @@ export default function MobileNav({ data }: Props) {
                 ))}
                 <li>
                   <Link
-                    href="#"
+                    href="/collections/all"
                     className="relative before:h-0.5 before:absolute before:bottom-0 before:bg-text hover:before:w-full hover:before:scale-x-100 before:scale-x-0 before:origin-left"
                   >
                     View all

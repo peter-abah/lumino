@@ -7,7 +7,7 @@ export default function NotFound() {
       <NavBar />
       <div className="py-40 md:py-80 flex flex-col items-center relative">
         <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8">Page not found</h2>
-        <Link href="/" className="font-bold bg-black text-white px-10 py-4.5 rounded-button">
+        <Link href="/collections/all" className="font-bold bg-black text-white px-10 py-4.5 rounded-button">
           Continue Shopping
         </Link>
         <p

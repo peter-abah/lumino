@@ -23,7 +23,7 @@ export default async function Products({ products }: Props) {
           <p className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center">
             No products available at the moment
           </p>
-          <Link href="/" className="font-bold bg-black text-white px-10 py-4.5 rounded-button">
+          <Link href="/collections/all" className="font-bold bg-black text-white px-10 py-4.5 rounded-button">
             Continue Shopping
           </Link>
         </div>

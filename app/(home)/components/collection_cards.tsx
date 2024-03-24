@@ -8,7 +8,6 @@ type Props = {
   collections: SanityArray<ImageLink>;
 };
 
-// TODO: Show arrow on hover
 export default function CollectionCards({ collections }: Props) {
   return (
     <section className="px-5 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-20 ">

@@ -10,9 +10,9 @@ import { NavBarData } from "./nav_bar";
 type Props = {
   data: NavBarData;
   handleMenuChange: (open: boolean) => void;
-  navRef: RefObject<HTMLDivElement>;
+  containerRef: RefObject<HTMLDivElement>;
 };
-export default function CollaborationsSubsection({ data, handleMenuChange, navRef }: Props) {
+export default function CollaborationsSubsection({ data, handleMenuChange, containerRef }: Props) {
   const { newCollaborations, collaborationsPromoProducts, collaborationsFeaturedProduct } = data;
 
   return (
@@ -22,7 +22,7 @@ export default function CollaborationsSubsection({ data, handleMenuChange, navRe
           Collaboration <ArrowDownIcon />
         </button>
       </Dialog.Trigger>
-      <Dialog.Portal container={navRef.current}>
+      <Dialog.Portal container={containerRef.current}>
         <Dialog.Content className="absolute top-full w-full z-50 border-t-[1px] py-10 shadow-overlay bg-main-bg text-text flex gap-12 px-12 max-h-[calc(100vh_-_96px_-_20px)] justify-between overflow-y-auto overflow-x-hidden data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut">
           {/* New Collaborations */}
           <div className="min-w-[240px]">
@@ -39,7 +39,7 @@ export default function CollaborationsSubsection({ data, handleMenuChange, navRe
                 </li>
               ))}
               <li>
-                <Link href="#" className="font-bold text-xl fancy-hover-underline">
+                <Link href="/collections/all" className="font-bold text-xl fancy-hover-underline">
                   View all
                 </Link>
               </li>
