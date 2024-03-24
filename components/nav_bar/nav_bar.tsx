@@ -3,6 +3,7 @@
 import ArrowDownIcon from "@/components/icons/arrow_down_icon";
 import Hamburger from "@/components/icons/hamburger";
 import Search from "@/components/icons/search";
+import useInitialBoundingRect from "@/lib/hooks/use_initial_bounding_rect";
 import useIsMounted from "@/lib/hooks/use_is_mounted";
 import { NavBar as INavBar } from "@/types/sanity";
 import { Maybe, Product } from "@/types/shopify";
@@ -23,10 +24,11 @@ export interface NavBarData extends INavBar {
 type Props = {
   data: NavBarData;
   isTransparent?: boolean;
-  // 0 means no sticky observer  and nav bar will be sticky from start
+  // No value means nav bar will be sticky from start
   stickyObserverDistanceInPixels?: number;
   cartComponent: ReactNode;
 };
+
 export default function NavBar({
   data,
   cartComponent,
@@ -35,17 +37,13 @@ export default function NavBar({
 }: Props) {
   const [previousObserverTop, setPreviousObserverTop] = useState(0);
   const [isCollabMenuOpen, setIsCollabMenuOpen] = useState(false);
-  let [isNavBarSticky, setIsNavBarSticky] = useState(false);
+  const [isNavBarSticky, setIsNavBarSticky] = useState(false);
   const isMounted = useIsMounted();
-
   const navRef = useRef<HTMLDivElement>(null);
+  const initialBoundingRect = useInitialBoundingRect(navRef);
 
   const { ref: stickyObserverRef } = useInView({
     onChange: (inView, entry) => {
-      // Prevent change in nav sticky position when collab menu is open
-      // Collab menu handler will handle sticky value
-      if (isCollabMenuOpen) return;
-
       if (entry.boundingClientRect.top < previousObserverTop && !inView) {
         // When User scrolls down and observer is hidden
         setIsNavBarSticky(true);
@@ -58,25 +56,27 @@ export default function NavBar({
     },
   });
 
-  const isStickyFromStart = stickyObserverDistanceInPixels === 0;
-  isNavBarSticky = isStickyFromStart || isNavBarSticky;
-
   const handleCollabMenuChange = (menuVisibility: boolean) => {
     setIsCollabMenuOpen(menuVisibility);
-    setIsNavBarSticky(menuVisibility);
   };
 
-  // TODO: nav sticky still has some issues
+  const { top = 0 } = initialBoundingRect || {};
+
+  // Nav bar background loses opacity if it becomes sticky or collab menu opens
+  if (isNavBarSticky || isCollabMenuOpen) isTransparent = false;
+
+  if (isCollabMenuOpen) stickyObserverDistanceInPixels = 0;
+
   return (
     <>
       {isMounted &&
-        stickyObserverDistanceInPixels > 0 &&
         createPortal(
           // Nav becomes sticky when scrolls down past an observer and changes back to normal when the
           // user scrolls up past the observer.
           <div
-            className="absolute h-4 bg-transparent w-8"
-            style={{ top: `${stickyObserverDistanceInPixels}px` }}
+            id="navstickyObserver"
+            className="absolute h-px bg-transparent w-px"
+            style={{ top: `${stickyObserverDistanceInPixels + top}px` }}
             aria-hidden
             ref={stickyObserverRef}
           ></div>,
@@ -84,10 +84,9 @@ export default function NavBar({
         )}
       <nav
         className={twMerge(
-          "w-full grid grid-cols-[1fr_max-content_1fr] items-center p-5 md:p-8 lg:px-12 lg:py-8 bg-main-bg text-text",
+          "w-full grid grid-cols-[1fr_max-content_1fr] items-center p-5 md:p-8 lg:px-12 lg:py-8 bg-main-bg text-text relative",
           isTransparent && "bg-opacity-0 text-white",
-          isNavBarSticky && "fixed z-50 top-0 bg-opacity-100 text-text",
-          isStickyFromStart && "sticky"
+          isNavBarSticky && "fixed z-50 top-0 text-text"
         )}
         ref={navRef}
       >
@@ -131,7 +130,7 @@ export default function NavBar({
             <li>
               <CollaborationsSubsection
                 data={data}
-                navRef={navRef}
+                containerRef={navRef}
                 handleMenuChange={handleCollabMenuChange}
               />
             </li>
@@ -158,7 +157,7 @@ export default function NavBar({
         <ul className="flex gap-6 w-full justify-end items-center">
           <li className="hidden lg:list-item">
             <button type="button" className="font-bold flex gap-2">
-              <span className="text-sm">USD $</span>
+              <span className="text-sm">NGN ₦</span>
               <ArrowDownIcon className="mt-1 inline-block" />
             </button>
           </li>
