@@ -2,6 +2,7 @@
 
 import ArrowDownIcon from "@/components/icons/arrow_down_icon";
 import CloseIcon from "@/components/icons/close_icon";
+import { BLUR_DATA_URL } from "@/lib/constants";
 import { urlForImage } from "@/sanity/lib/image";
 import { NavBar } from "@/types/sanity";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -129,6 +130,8 @@ export default function ShopSubsection({ data }: Props) {
                         width={60}
                         height={60}
                         aria-hidden
+                        blurDataURL={BLUR_DATA_URL}
+                        placeholder="blur"
                       />
                       <span className="text-xl font-bold fancy-hover-underline">{link.name}</span>
                     </Link>
@@ -152,6 +155,8 @@ export default function ShopSubsection({ data }: Props) {
                         width={60}
                         height={60}
                         aria-hidden
+                        blurDataURL={BLUR_DATA_URL}
+                        placeholder="blur"
                       />
                       <span className="text-xl font-bold fancy-hover-underline">{link.name}</span>
                     </Link>

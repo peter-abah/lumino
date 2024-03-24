@@ -1,3 +1,4 @@
+import { BLUR_DATA_URL } from "@/lib/constants";
 import { Product } from "@/types/shopify";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,6 +23,8 @@ export default function HeroFeaturedProduct({ product }: Props) {
           width={64}
           height={64}
           alt={product.featuredImage.altText}
+          blurDataURL={BLUR_DATA_URL}
+          placeholder="blur"
         />
         <div className="text-sm flex flex-col gap-0.5">
           <p className="font-bold">

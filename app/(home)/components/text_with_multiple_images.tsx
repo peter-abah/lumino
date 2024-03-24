@@ -1,6 +1,7 @@
 "use client";
 
 import ArrowRightIcon from "@/components/icons/arrow_right_icon";
+import { BLUR_DATA_URL } from "@/lib/constants";
 import useSlideShow from "@/lib/hooks/use_slide_show";
 import { urlForImage } from "@/sanity/lib/image";
 import { HomePage } from "@/types/sanity";
@@ -33,6 +34,8 @@ export default function TextWithMultipleImages({ data }: Props) {
               alt=""
               width={500}
               height={600}
+              blurDataURL={BLUR_DATA_URL}
+              placeholder="blur"
               className={clsx("w-full h-auto rounded-md z-10 max-w-[500px]", {
                 "col-start-2 row-start-1 row-span-2": data.length === 3 && index === 0,
                 "-rotate-[2deg]": index === 0,

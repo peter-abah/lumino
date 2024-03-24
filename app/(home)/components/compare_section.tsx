@@ -1,3 +1,4 @@
+import { BLUR_DATA_URL } from "@/lib/constants";
 import { urlForImage } from "@/sanity/lib/image";
 import { HomePage } from "@/types/sanity";
 import Image from "next/image";
@@ -24,6 +25,8 @@ export default function CompareSection({ data }: Props) {
               src={urlForImage(data.beforeImage)}
               alt=""
               fill
+              blurDataURL={BLUR_DATA_URL}
+              placeholder="blur"
               draggable={false}
               className="select-none pointer-events-none object-cover object-center"
             />
@@ -37,6 +40,8 @@ export default function CompareSection({ data }: Props) {
               alt=""
               fill
               draggable={false}
+              blurDataURL={BLUR_DATA_URL}
+              placeholder="blur"
               className="select-none pointer-events-none object-cover object-center"
             />
             <span className="font-bold text-white text-lg md:text-xl relative">

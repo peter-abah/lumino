@@ -1,4 +1,5 @@
 import ArrowRight from "@/components/icons/arrow_right_icon";
+import { BLUR_DATA_URL } from "@/lib/constants";
 import useSlideShow from "@/lib/hooks/use_slide_show";
 import { urlForImage } from "@/sanity/lib/image";
 import { ImageLink, SanityArray } from "@/types/sanity";
@@ -30,6 +31,8 @@ export default function NavigationPromo({ products }: Props) {
             alt=""
             className="group-hover:scale-105 duration-300"
             aria-hidden
+            blurDataURL={BLUR_DATA_URL}
+            placeholder="blur"
           />
         </Link>
       ))}

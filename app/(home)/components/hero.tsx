@@ -1,5 +1,6 @@
 "use client";
 
+import { BLUR_DATA_URL } from "@/lib/constants";
 import { urlForImage } from "@/sanity/lib/image";
 import { HeroSlide, SanityArray } from "@/types/sanity";
 import clsx from "clsx";
@@ -43,6 +44,8 @@ export default function Hero({ slides }: Props) {
               src={urlForImage(slide.image)}
               fill
               alt=""
+              blurDataURL={BLUR_DATA_URL}
+              placeholder="blur"
               className="object-center object-cover"
             />
             <div className={clsx("max-w-[40rem] z-10 flex flex-col items-start")}>

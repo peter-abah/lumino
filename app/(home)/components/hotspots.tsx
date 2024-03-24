@@ -1,10 +1,10 @@
+import { BLUR_DATA_URL } from "@/lib/constants";
 import { parseAssetID } from "@/lib/sanity";
 import { urlForImage } from "@/sanity/lib/image";
 import { HomePage } from "@/types/sanity";
 import Image from "next/image";
 import Link from "next/link";
 import ShowcaseHotspot from "./showcase_hotspot";
-
 
 type Props = {
   data: HomePage["hotspots"];
@@ -33,7 +33,8 @@ export default function Hotspots({ data }: Props) {
           <div className="max-w-[330px] hidden lg:block absolute top-12 left-12">
             <h3 className="font-bold text-[2.5rem] mb-6 leading-none">{data.heading}</h3>
             <p className="mb-8">{data.content}</p>
-            <Link              href={data.buttonURL}
+            <Link
+              href={data.buttonURL}
               className="px-8 py-3.5 bg-white text-[rgb(77_82_60)] rounded-button font-bold"
             >
               {data.buttonText}
@@ -43,6 +44,8 @@ export default function Hotspots({ data }: Props) {
           <Image
             src={urlForImage(data.image)}
             alt={data.image.alt || ""}
+            blurDataURL={BLUR_DATA_URL}
+            placeholder="blur"
             width={imageData.width}
             height={imageData.height}
             className="object-contain object-center hidden lg:block"
@@ -52,6 +55,8 @@ export default function Hotspots({ data }: Props) {
             alt={data.image.alt || ""}
             width={mobileImageData.width}
             height={mobileImageData.height}
+            blurDataURL={BLUR_DATA_URL}
+            placeholder="blur"
             className="object-contain object-center lg:hidden"
           />
 

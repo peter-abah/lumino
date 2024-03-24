@@ -1,3 +1,4 @@
+import { BLUR_DATA_URL } from "@/lib/constants";
 import { urlForImage } from "@/sanity/lib/image";
 import { ImageLink, SanityArray } from "@/types/sanity";
 import clsx from "clsx";
@@ -26,6 +27,8 @@ export default function MediaGrid({ gridItems }: Props) {
             src={urlForImage(gridItem.image)}
             alt=""
             fill
+            blurDataURL={BLUR_DATA_URL}
+            placeholder="blur"
             className="object-cover object-center group-hover:scale-105 duration-[1.5s]"
           />
           <span

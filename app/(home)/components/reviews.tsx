@@ -1,6 +1,7 @@
 "use client";
 
 import ArrowRightIcon from "@/components/icons/arrow_right_icon";
+import { BLUR_DATA_URL } from "@/lib/constants";
 import useSlideShow from "@/lib/hooks/use_slide_show";
 import { urlForImage } from "@/sanity/lib/image";
 import { Quote, SanityArray } from "@/types/sanity";
@@ -34,6 +35,8 @@ export default function Reviews({ data }: Props) {
                 src={urlForImage(review.logo)}
                 alt={review.logo.alt || ""}
                 fill
+                blurDataURL={BLUR_DATA_URL}
+                placeholder="blur"
                 className="object-contain object-center"
               />
             </div>

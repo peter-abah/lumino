@@ -1,11 +1,10 @@
 import ArrowLeftCircleIcon from "@/components/icons/arrow_left_circle_icon";
+import { BLUR_DATA_URL } from "@/lib/constants";
 import { urlForImage } from "@/sanity/lib/image";
 import { ImageLink, SanityArray } from "@/types/sanity";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-
-const DEFAULT_BACKGROUND = "#004";
 
 type Props = {
   imageLinks: SanityArray<ImageLink>;
@@ -19,16 +18,15 @@ export default function ImageLinks({ imageLinks }: Props) {
           <li key={imageLink.name} className="snap-start">
             <Link
               href={imageLink.url}
-              className="inline-block relative md:w-[20vw] aspect-square rounded-lg overflow-hidden group"
-              style={{
-                background: imageLink.colors?.background || DEFAULT_BACKGROUND,
-              }}
+              className="inline-block relative md:w-[20vw] aspect-square rounded-lg overflow-hidden group"            
             >
               <Image
                 src={urlForImage(imageLink.image)}
                 className="hover:scale-105 duration-[500ms]"
                 alt=""
                 fill
+                blurDataURL={BLUR_DATA_URL}
+                placeholder="blur"
                 aria-hidden
               />
 

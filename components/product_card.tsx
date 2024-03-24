@@ -1,6 +1,6 @@
 "use client";
 
-import { SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND } from "@/lib/constants";
+import { BLUR_DATA_URL, SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND } from "@/lib/constants";
 import { Product, VariantProduct } from "@/types/shopify";
 import clsx from "clsx";
 import Image from "next/image";
@@ -26,6 +26,8 @@ export default function ProductCard({ product }: Props) {
           src={currentVariant.image?.url || product.featuredImage.url}
           fill
           alt={currentVariant.image?.altText || product.featuredImage.altText}
+          blurDataURL={BLUR_DATA_URL}
+          placeholder="blur"
           className="group-hover:scale-105 duration-[1s]"
         />
       </Link>

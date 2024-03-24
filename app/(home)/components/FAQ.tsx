@@ -1,4 +1,5 @@
 import Accordion from "@/components/accordion";
+import { BLUR_DATA_URL } from "@/lib/constants";
 import { urlForImage } from "@/sanity/lib/image";
 import { HomePage } from "@/types/sanity";
 import Image from "next/image";
@@ -18,7 +19,7 @@ export default function FAQ({ data }: Props) {
   const accordionItems = questions.map(({ question, answer, _key }) => ({
     heading: question,
     text: answer,
-    key: _key
+    key: _key,
   }));
 
   return (
@@ -30,7 +31,14 @@ export default function FAQ({ data }: Props) {
         </div>
 
         <div className="hidden lg:block">
-          <Image src={urlForImage(teamAvatar)} alt="" width={160} height={44} />
+          <Image
+            src={urlForImage(teamAvatar)}
+            alt=""
+            width={160}
+            height={44}
+            blurDataURL={BLUR_DATA_URL}
+            placeholder="blur"
+          />
           <p className="mt-4">{supportOperatingHoursText}</p>
           <p className="text-text/70">{avgResponseTimeText}</p>
         </div>
@@ -41,7 +49,14 @@ export default function FAQ({ data }: Props) {
       </div>
 
       <div className="lg:hidden flex flex-col items-center text-center lg:text-left text-sm md:text-base">
-        <Image src={urlForImage(teamAvatar)} alt="" width={160} height={44} />
+        <Image
+          src={urlForImage(teamAvatar)}
+          alt=""
+          width={160}
+          height={44}
+          blurDataURL={BLUR_DATA_URL}
+          placeholder="blur"
+        />
         <p className="mt-4">{supportOperatingHoursText}</p>
         <p className="text-text/70">{avgResponseTimeText}</p>
       </div>

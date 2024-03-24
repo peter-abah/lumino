@@ -4,7 +4,7 @@ import AddToCart from "@/components/cart/add_to_cart";
 import MinusIcon from "@/components/icons/minus_icon";
 import PlusIcon from "@/components/icons/plus_icon";
 import Share from "@/components/icons/share";
-import { SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND } from "@/lib/constants";
+import { BLUR_DATA_URL, SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND } from "@/lib/constants";
 import { Product } from "@/types/shopify";
 import clsx from "clsx";
 import Image from "next/image";
@@ -154,6 +154,8 @@ function FeaturedProductImages({ product }: FeaturedProductImagesProps) {
               width={64}
               height={64}
               alt={image.altText}
+              blurDataURL={BLUR_DATA_URL}
+              placeholder="blur"
               className="rounded-md"
             />
           </button>
@@ -170,7 +172,13 @@ function FeaturedProductImages({ product }: FeaturedProductImagesProps) {
               )}
               ref={(ref) => (imagesRef.current[index] = ref)}
             >
-              <Image src={image.url} alt={image.altText} fill />
+              <Image
+                src={image.url}
+                alt={image.altText}
+                fill
+                blurDataURL={BLUR_DATA_URL}
+                placeholder="blur"
+              />
             </div>
           ))}
         </div>

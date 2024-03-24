@@ -1,3 +1,4 @@
+import { BLUR_DATA_URL } from "@/lib/constants";
 import { urlForImage } from "@/sanity/lib/image";
 import { Spotlight as ISpotlight } from "@/types/sanity";
 import Image from "next/image";
@@ -38,10 +39,24 @@ export default function Spotlight({ spotlight }: Props) {
       </div>
 
       <div className="w-full aspect-[2/1] md:aspect-[13/4] relative">
-        <Image src={urlForImage(spotlight.image)} alt="" fill className="hidden md:block" />
+        <Image
+          src={urlForImage(spotlight.image)}
+          alt=""
+          fill
+          blurDataURL={BLUR_DATA_URL}
+          placeholder="blur"
+          className="hidden md:block"
+        />
 
         {/* image for mobile, add mobile image to sanity schema */}
-        <Image src={urlForImage(spotlight.image)} alt="" fill className="md:hidden" />
+        <Image
+          src={urlForImage(spotlight.image)}
+          alt=""
+          fill
+          blurDataURL={BLUR_DATA_URL}
+          placeholder="blur"
+          className="md:hidden"
+        />
       </div>
     </section>
   );

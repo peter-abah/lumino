@@ -1,3 +1,4 @@
+import { BLUR_DATA_URL } from "@/lib/constants";
 import { urlForImage } from "@/sanity/lib/image";
 import * as Dialog from "@radix-ui/react-dialog";
 import clsx from "clsx";
@@ -217,6 +218,8 @@ export default function MobileNav({ data }: Props) {
                       fill
                       alt=""
                       aria-hidden
+                      blurDataURL={BLUR_DATA_URL}
+                      placeholder="blur"
                       className="group-hover:scale-110"
                     />
                   </Link>
@@ -232,6 +235,8 @@ export default function MobileNav({ data }: Props) {
                         width={160}
                         height={160}
                         aria-hidden
+                        blurDataURL={BLUR_DATA_URL}
+                        placeholder="blur"
                       />
                     </Link>
                     <div className="flex flex-col gap-0.5 text-center">
@@ -279,6 +284,8 @@ export default function MobileNav({ data }: Props) {
                       width={48}
                       height={48}
                       aria-hidden
+                      blurDataURL={BLUR_DATA_URL}
+                      placeholder="blur"
                     />
                     <span className="text-xl font-bold fancy-hover-underline">{link.name}</span>
                   </Link>
@@ -310,6 +317,8 @@ export default function MobileNav({ data }: Props) {
                       width={48}
                       height={48}
                       aria-hidden
+                      blurDataURL={BLUR_DATA_URL}
+                      placeholder="blur"
                     />
                     <span className="text-xl font-bold fancy-hover-underline">{link.name}</span>
                   </Link>

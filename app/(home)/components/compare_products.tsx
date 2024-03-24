@@ -27,45 +27,6 @@ export default function CompareProducts({ data }: Props) {
 
       <div className="overflow-x-auto">
         <FeatureTable.Root className="rounded-none px-5 md:px-12 py-4 md:rounded-xl">
-          {/* <FeatureTable.Row className="grid-rows-1">
-            <FeatureTable.Column className="hidden md:block" />
-            {[PRODUCT1, PRODUCT2].map((product) => (
-              <FeatureTable.Column key={product.name}>
-                <div className="max-w-[260px]">
-                  <div className="relative w-20 lg:w-[150px] aspect-square mb-5">
-                    <Image
-                      src={product.image}
-                      fill
-                      alt={product.name}
-                      className="object-cover object-center"
-                    />
-                  </div>
-                  <Link href={product.link} className="font-bold text-text inline-block mb-0.5">
-                    {product.name}
-                  </Link>
-                  <p className="mb-2">${product.price}</p>
-                  <div>
-                    <Link
-                      href="#"
-                      className={clsx(
-                        "w-3.5 aspect-square rounded-full inline-block",
-                        product.styles.colorButton
-                      )}
-                    >
-                      <span className="sr-only">{product.color}</span>
-                    </Link>
-                  </div>
-                  <Link
-                    href={product.link}
-                    className="hidden mt-6 md:grid px-6 py-3.5 rounded-button place-items-center bg-text/10 w-fit font-bold text-sm hover:bg-text/5"
-                  >
-                    View
-                  </Link>
-                </div>
-              </FeatureTable.Column>
-            ))}
-          </FeatureTable.Row> */}
-
           {headings.map((column, index) => (
             <FeatureTable.Row key={column}>
               <FeatureTable.Column type="header">

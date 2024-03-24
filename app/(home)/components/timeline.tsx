@@ -1,6 +1,7 @@
 "use client";
 
 import ArrowRightIcon from "@/components/icons/arrow_right_icon";
+import { BLUR_DATA_URL } from "@/lib/constants";
 import useSlideShow from "@/lib/hooks/use_slide_show";
 import { urlForImage } from "@/sanity/lib/image";
 import { Timeline as ISanityTimeline } from "@/types/sanity";
@@ -28,7 +29,13 @@ export default function Timeline({ data }: Props) {
         >
           <div className="max-w-[25rem] lg:max-w-none mx-auto lg:pr-[16.5%] w-full mb-6 lg:mb-0">
             <div className="w-full relative aspect-square rounded-xl overflow-hidden">
-              <Image src={urlForImage(image)} fill alt="" />
+              <Image
+                src={urlForImage(image)}
+                fill
+                blurDataURL={BLUR_DATA_URL}
+                placeholder="blur"
+                alt=""
+              />
             </div>
           </div>
 

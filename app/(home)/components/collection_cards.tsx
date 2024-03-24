@@ -1,4 +1,5 @@
 import ArrowLeftCircleIcon from "@/components/icons/arrow_left_circle_icon";
+import { BLUR_DATA_URL } from "@/lib/constants";
 import { urlForImage } from "@/sanity/lib/image";
 import { ImageLink, SanityArray } from "@/types/sanity";
 import Image from "next/image";
@@ -26,6 +27,8 @@ export default function CollectionCards({ collections }: Props) {
                   src={urlForImage(collection.image)}
                   alt=""
                   aria-hidden
+                  blurDataURL={BLUR_DATA_URL}
+                  placeholder="blur"
                   fill
                   className="group-hover:scale-105 duration-500 ease-out"
                 />

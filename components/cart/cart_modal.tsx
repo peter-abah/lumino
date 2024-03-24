@@ -1,6 +1,7 @@
 "use client";
 
 import { formatPriceToUserLocale } from "@/lib";
+import { BLUR_DATA_URL } from "@/lib/constants";
 import { Cart, CartItem as ICartItem } from "@/types/shopify";
 import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
@@ -99,7 +100,13 @@ function CartItem({ cartItem }: { cartItem: ICartItem }) {
   return (
     <li className="flex items-center gap-5 pt-6">
       <div className="w-24 relative h-24">
-        <Image src={image.url} alt={image.altText} fill />
+        <Image
+          src={image.url}
+          alt={image.altText}
+          fill
+          blurDataURL={BLUR_DATA_URL}
+          placeholder="blur"
+        />
       </div>
 
       <div className="grow">
