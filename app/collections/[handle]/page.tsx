@@ -1,9 +1,9 @@
 import NavBar from "@/components/nav_bar";
-import { getCollection } from "@/lib/shopify";
+import Products from "@/components/products";
+import { getCollection, getCollectionProducts } from "@/lib/shopify";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import CollectionProducts from "./components/collection_products";
-import Hero from "./components/hero";
+import Hero from "../components/hero";
 
 type Props = {
   params: {
@@ -15,11 +15,13 @@ export default async function Page({ params }: Props) {
   const collection = await getCollection(handle);
   if (!collection) return notFound();
 
+  const products = await getCollectionProducts({ collection: collection.handle });
+
   return (
     <>
       <NavBar />
       <Hero collection={collection} />
-      <CollectionProducts collection={collection} />
+      <Products products={products} />
     </>
   );
 }

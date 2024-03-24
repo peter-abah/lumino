@@ -1,14 +1,13 @@
 import ProductCard from "@/components/product_card";
-import { getCollectionProducts, reshapeProductsToVariantProducts } from "@/lib/shopify";
-import { Collection } from "@/types/shopify";
+import { reshapeProductsToVariantProducts } from "@/lib/shopify";
+import { Product } from "@/types/shopify";
 import Link from "next/link";
 
 type Props = {
-  collection: Collection;
+  products: Product[];
 };
 
-export default async function CollectionProducts({ collection }: Props) {
-  const products = await getCollectionProducts({ collection: collection.handle });
+export default async function Products({ products }: Props) {
   const variantProducts = reshapeProductsToVariantProducts(products);
 
   return (

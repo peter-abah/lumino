@@ -17,7 +17,7 @@ const CartButton = forwardRef<HTMLButtonElement, Props>(function CartButton(
       ref={ref}
     >
       <CartIcon />
-      {quantity && (
+      {quantity != undefined && quantity > 1 && (
         <span className="absolute -top-2 -right-2 w-4 h-4 bg-black text-white text-[9px] font-bold grid place-items-center rounded-full">
           {quantity}
         </span>
