@@ -7,15 +7,23 @@ type Props = {
   isVisible: boolean;
 };
 export default function Announcement({ announcement, isVisible }: Props) {
+  const classNames =
+    "text-xs font-bold text-center w-full opacity-0 invisible row-start-1 row-span-1 col-start-1 col-span-1 transition-all duration-1000 -translate-3";
+
+  if (announcement.link) {
+    return (
+      <Link
+        href={announcement.link}
+        className={twMerge(classNames, isVisible && "opacity-100 visible translate-y-0")}
+      >
+        {announcement.text}
+      </Link>
+    );
+  }
+
   return (
-    <Link
-      href={announcement.link}
-      className={twMerge(
-        "text-xs font-bold text-center w-full opacity-0 invisible row-start-1 row-span-1 col-start-1 col-span-1 transition-all duration-1000 -translate-3",
-        isVisible && "opacity-100 visible translate-y-0"
-      )}
-    >
+    <p className={twMerge(classNames, isVisible && "opacity-100 visible translate-y-0")}>
       {announcement.text}
-    </Link>
+    </p>
   );
 }

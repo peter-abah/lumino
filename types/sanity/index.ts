@@ -15,7 +15,7 @@ export interface ProductHotspot {
 
 export interface Announcement {
   text: string;
-  link: string;
+  link?: string;
   _id: string;
 }
 

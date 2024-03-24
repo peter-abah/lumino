@@ -15,7 +15,6 @@ const announcement = {
       name: "url",
       type: "string",
       title: "URL",
-      validation: (Rule: Rule) => Rule.required(),
     },
   ],
 };
