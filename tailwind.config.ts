@@ -29,6 +29,38 @@ const config: Config = {
           height: "0",
         },
       },
+      scaleXOpen: {
+        from: {
+          transform: "scaleX(0)",
+        },
+        to: {
+          transform: "scaleX(1)",
+        },
+      },
+      scaleXClose: {
+        from: {
+          transform: "scaleX(1)",
+        },
+        to: {
+          transform: "scaleX(0)",
+        },
+      },
+      fadeIn: {
+        from: {
+          opacity: "0",
+        },
+        to: {
+          opacity: "1",
+        },
+      },
+      fadeOut: {
+        from: {
+          opacity: "1",
+        },
+        to: {
+          opacity: "0",
+        },
+      },
       blink: {
         "0%": { opacity: "0.2" },
         "20%": { opacity: "1" },
@@ -41,6 +73,10 @@ const config: Config = {
         slideDown: "300ms slideDown ease-in-out",
         slideUp: "300ms slideUp ease-in-out",
         blink: "blink 1.4s both infinite",
+        scaleXOpen: "scaleXOpen 500ms var(--ease-out-sine)",
+        scaleXClose: "scaleXClose 500ms var(--ease-out-sine)",
+        fadeIn: "fadeIn 500ms var(--ease-out-sine)",
+        fadeOut: "fadeOut 500ms var(--ease-out-sine)",
       },
       boxShadow: {
         overlay: "0 9999px 0 9999px #0006",

@@ -29,7 +29,7 @@ export default function Spotlight({ spotlight }: Props) {
           {spotlight.buttonURL && (
             <Link
               href={spotlight.buttonURL}
-              className="inline-block px-8 md:px-10 py-4 md:py-4.5 rounded-button bg-button-bg text-white font-bold "
+              className="inline-block px-8 md:px-10 py-4 md:py-4.5 rounded-button bg-button-bg text-white font-bold hover:opacity-80 transition-opacity duration-300"
             >
               {spotlight.buttonText}
             </Link>

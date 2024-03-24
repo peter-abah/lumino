@@ -20,7 +20,7 @@ function SubmitButton() {
       {pending ? (
         <LoadingDots className="bg-black" />
       ) : (
-        <span className="underline text-sm">Remove</span>
+        <span className="underline hover:no-underline text-sm">Remove</span>
       )}
     </button>
   );

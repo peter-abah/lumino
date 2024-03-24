@@ -3,7 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import ArrowDownIcon from "../icons/arrow_down_icon";
 import ArrowLeft from "../icons/arrow_left";
 import CloseIcon from "../icons/close_icon";
@@ -27,16 +27,12 @@ const PANELS: Panel[] = [
   { id: "earphones", parentID: "shop" },
 ];
 
-export default function MobileNav({ data }: Props) {
-  const panelMap = useMemo(
-    () =>
-      PANELS.reduce((map, panel) => {
-        map[panel.id] = panel;
-        return map;
-      }, {} as Record<Panel["id"], Panel>),
-    []
-  );
+const panelMap = PANELS.reduce((map, panel) => {
+  map[panel.id] = panel;
+  return map;
+}, {} as Record<Panel["id"], Panel>);
 
+export default function MobileNav({ data }: Props) {
   const [currentPanelID, setCurrentPanelID] = useState<Panel["id"]>("nav");
   const currentPanel = panelMap[currentPanelID];
 

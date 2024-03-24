@@ -101,20 +101,12 @@ export default function FeaturedProduct({ product }: Props) {
           </div>
         </div>
 
-        <div className="flex flex-col md:grid md:grid-cols-2 lg:flex xl:grid gap-2 md:gap-4">
-          <AddToCart
-            availableForSale={availableForSale}
-            selectedVariantID={currentVariant.id}
-            quantity={productQuantity}
-            variants={variants}
-          />
-          <button
-            type="button"
-            className="px-8 md:px-10 py-4 md:py-4.5 rounded-button bg-black grid place-items-center text-white w-full font-bold text-sm md:text-base"
-          >
-            Buy it now
-          </button>
-        </div>
+        <AddToCart
+          availableForSale={availableForSale}
+          selectedVariantID={currentVariant.id}
+          quantity={productQuantity}
+          variants={variants}
+        />
 
         <p className="p-5 flex flex-col gap-2 text-xs md:text-sm text-center bg-[rgb(240_240_240)] rounded-md my-6">
           <span className="font-bold">Fast shipping</span>

@@ -8,7 +8,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-
 type Props = {
   slides: SanityArray<HeroSlide>;
 };
@@ -21,7 +20,6 @@ export default function Hero({ slides }: Props) {
   };
 
   return (
-    // TODO: Move arbitary values to tailwind config
     <div className="relative">
       {slides.map((slide, slideIndex) => (
         <section
@@ -47,18 +45,14 @@ export default function Hero({ slides }: Props) {
               alt=""
               className="object-center object-cover"
             />
-            <div
-              className={clsx("max-w-[40rem] z-10 flex flex-col items-start")}
-            >
-              <p className="font-bold text-sm lg:text-base">
-                {slide.subheading}
-              </p>
+            <div className={clsx("max-w-[40rem] z-10 flex flex-col items-start")}>
+              <p className="font-bold text-sm lg:text-base">{slide.subheading}</p>
               <h1 className="lg:my-8 mt-4 mb-6 lg:text-5xl text-[40px] leading-[1.1] font-bold">
                 {slide.heading}
               </h1>
               <Link
                 className={clsx(
-                  "inline-block w-fit rounded-button px-8 lg:px-10 py-4 text-sm lg:text-base font-bold hover:bg-opacity-80 text-text"
+                  "inline-block w-fit rounded-button px-8 lg:px-10 py-4 text-sm lg:text-base font-bold hover:opacity-80 text-text transition-opacity duration-500ms"
                 )}
                 style={{
                   color: slide.colors.buttonTextColor,
@@ -87,11 +81,7 @@ type SlideButtonsProps = {
   currentSlideIndex: number;
   onButtonClick: (slideIndex: number) => void;
 };
-function SlidesButtons({
-  slidesNo,
-  currentSlideIndex,
-  onButtonClick,
-}: SlideButtonsProps) {
+function SlidesButtons({ slidesNo, currentSlideIndex, onButtonClick }: SlideButtonsProps) {
   const createButtons = () => {
     const buttons = [];
     for (let i = 0; i < slidesNo; i++) {
@@ -101,7 +91,7 @@ function SlidesButtons({
           type="button"
           onClick={() => onButtonClick(i)}
           className={twMerge(
-            "w-7.5 h-7.5 rounded-full border-2 border-white/50 text-white/50 grid place-items-center font-bold",
+            "w-7.5 h-7.5 rounded-full border-4 border-white/50 text-white/50 grid place-items-center font-bold",
             i === currentSlideIndex && "border-white text-white"
           )}
         >

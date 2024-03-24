@@ -125,29 +125,15 @@ export default function NavBar({
         <nav className="relative hidden lg:block">
           <ul className="flex gap-6 font-bold">
             <li>
-              <Dialog.Root modal>
-                <Dialog.Trigger asChild>
-                  <button type="button" className="flex gap-2.5 items-center hover:opacity-70">
-                    Shop <ArrowDownIcon />
-                  </button>
-                </Dialog.Trigger>
-                <Dialog.Portal>
-                  <ShopSubsection data={data} />
-                </Dialog.Portal>
-              </Dialog.Root>
+              <ShopSubsection data={data} />
             </li>
 
             <li>
-              <Dialog.Root modal onOpenChange={handleCollabMenuChange}>
-                <Dialog.Trigger asChild>
-                  <button type="button" className="flex gap-2.5 items-center hover:opacity-70">
-                    Collaboration <ArrowDownIcon />
-                  </button>
-                </Dialog.Trigger>
-                <Dialog.Portal container={navRef.current}>
-                  <CollaborationsSubsection data={data} />
-                </Dialog.Portal>
-              </Dialog.Root>
+              <CollaborationsSubsection
+                data={data}
+                navRef={navRef}
+                handleMenuChange={handleCollabMenuChange}
+              />
             </li>
 
             <li>

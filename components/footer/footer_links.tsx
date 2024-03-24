@@ -11,10 +11,10 @@ export default function FooterLinks({ menus }: Props) {
         <div key={menu._key} className="last:mr-10 max-w-[250px] text-sm md:text-base">
           <p className="font-bold mb-3 md:mb-6">{menu.title}</p>
 
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-3 last:mr-10">
             {menu.links.map((link) => (
               <li key={link._key}>
-                <Link href={link.url} className="opacity-70">
+                <Link href={link.url} className="opacity-70 hover:opacity-100 transition-opacity">
                   {link.name}
                 </Link>
               </li>

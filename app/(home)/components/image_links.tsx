@@ -1,3 +1,4 @@
+import ArrowLeftCircleIcon from "@/components/icons/arrow_left_circle_icon";
 import { urlForImage } from "@/sanity/lib/image";
 import { ImageLink, SanityArray } from "@/types/sanity";
 import clsx from "clsx";
@@ -16,29 +17,30 @@ export default function ImageLinks({ imageLinks }: Props) {
       <ul className="flex overflow-auto gap-2 md:gap-6 no-scrollbar snap-x snap-mandarory">
         {imageLinks.map((imageLink) => (
           <li key={imageLink.name} className="snap-start">
-            {/* TODO: move arbitary values to tailwind config */}
             <Link
               href={imageLink.url}
-              className="inline-block relative w-[48vw] md:w-[26vw] aspect-square rounded-lg overflow-hidden"
+              className="inline-block relative md:w-[20vw] aspect-square rounded-lg overflow-hidden group"
               style={{
                 background: imageLink.colors?.background || DEFAULT_BACKGROUND,
               }}
             >
               <Image
                 src={urlForImage(imageLink.image)}
-                className="hover:scale-105 duration-[1.5s]"
+                className="hover:scale-105 duration-[500ms]"
                 alt=""
                 fill
                 aria-hidden
               />
-              <span
-                className={clsx("text-sm md:text-base absolute bottom-6 left-5 font-bold")}
+
+              <div
+                className="absolute bottom-6 left-5 flex justify-between w-[calc(100%_-_40px)]"
                 style={{
                   color: imageLink.colors?.textColor || "current",
                 }}
               >
-                {imageLink.name}
-              </span>
+                <span className={clsx("text-sm md:text-base font-bold")}>{imageLink.name}</span>
+                <ArrowLeftCircleIcon className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
             </Link>
           </li>
         ))}

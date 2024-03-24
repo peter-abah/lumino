@@ -40,7 +40,7 @@ export default function CartModal({ cart }: Props) {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="bg-black/60 z-50 fixed inset-0 h-screen" />
-        <Dialog.Content className="fixed z-[100] p-4 w-full h-full max-w-[680px] right-0 top-0">
+        <Dialog.Content className="fixed z-[100] p-4 w-full h-full max-w-[680px] right-0 top-0 data-[state=open]:animate-scaleXOpen data-[state=closed]:animate-scaleXClose origin-right">
           <div className="bg-white rounded-md h-full">
             {!cart || cart.totalQuantity === 0 ? (
               <EmptyCart />
@@ -65,7 +65,7 @@ export default function CartModal({ cart }: Props) {
                   </ul>
                 </div>
 
-                <div className="p-10 border-t shrink-0">
+                <div className="p-10 border-t shrink-0 mt-auto">
                   <p className="text-xl font-bold flex justify-between pb-6">
                     <span>Total</span>
                     <span>
@@ -76,7 +76,7 @@ export default function CartModal({ cart }: Props) {
 
                   <a
                     href={cart.checkoutUrl}
-                    className="bg-black text-white font-bold rounded-button px-10 py-4.5 flex justify-center max-w-72 w-full mx-auto"
+                    className="bg-black text-white hover:opacity-70 transition-opacity duration-500 font-bold rounded-button px-10 py-4.5 flex justify-center max-w-72 w-full mx-auto"
                   >
                     Checkout
                   </a>

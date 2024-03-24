@@ -11,6 +11,8 @@ import { useFormState, useFormStatus } from "react-dom";
 function SubmitButton({ type }: { type: "plus" | "minus" }) {
   const { pending } = useFormStatus();
 
+  const buttonClasses =
+    "ease flex h-full min-w-[36px] max-w-[36px] flex-none items-center justify-center rounded-full px-2 transition-all duration-200 hover:border-neutral-800 hover:scale-125";
   return (
     <button
       type="submit"
@@ -19,13 +21,10 @@ function SubmitButton({ type }: { type: "plus" | "minus" }) {
       }}
       aria-label={type === "plus" ? "Increase item quantity" : "Reduce item quantity"}
       aria-disabled={pending}
-      className={clsx(
-        "ease flex h-full min-w-[36px] max-w-[36px] flex-none items-center justify-center rounded-full px-2 transition-all duration-200 hover:border-neutral-800 hover:opacity-80",
-        {
-          "cursor-not-allowed": pending,
-          "ml-auto": type === "minus",
-        }
-      )}
+      className={clsx(buttonClasses, {
+        "cursor-not-allowed": pending,
+        "ml-auto": type === "minus",
+      })}
     >
       {pending ? (
         <LoadingDots className="bg-black" />

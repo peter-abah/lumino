@@ -25,7 +25,7 @@ export default async function Footer() {
   const { newsletter, copywright, menus } = footer;
   return (
     <footer className="py-12 px-5 lg:py-16 md:px-8 lg:px-12 bg-white">
-      <div className="flex flex-col lg:flex-row gap-10 justify-between mb-10 md:mb-16">
+      <div className="flex flex-col lg:flex-row gap-24 justify-between mb-10 md:mb-16">
         <NewsletterForm data={newsletter} />
         <FooterLinks menus={menus} />
       </div>

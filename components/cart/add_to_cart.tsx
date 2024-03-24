@@ -27,7 +27,7 @@ function SubmitButton({
     background: SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND.get(selectedVariant?.title || ""),
   };
   const buttonClasses =
-    "px-8 md:px-10 py-4 md:py-4.5 rounded-button grid place-items-center text-white bg-black w-full font-bold text-sm md:text-base";
+    "px-8 md:px-10 py-4 md:py-4.5 w-full max-w-72 mx-auto rounded-button grid place-items-center text-white bg-black w-full font-bold text-sm md:text-base";
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
 
   if (!availableForSale) {
@@ -85,7 +85,7 @@ export default function AddToCart({
   const actionWithVariant = formAction.bind(null, [selectedVariantID, quantity]);
 
   return (
-    <form action={actionWithVariant}>
+    <form action={actionWithVariant} className="w-full">
       <SubmitButton availableForSale={availableForSale} selectedVariantId={selectedVariantID} variants={variants} />
       <p aria-live="polite" className="sr-only" role="status">
         {message}

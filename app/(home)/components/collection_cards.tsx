@@ -1,3 +1,4 @@
+import ArrowLeftCircleIcon from "@/components/icons/arrow_left_circle_icon";
 import { urlForImage } from "@/sanity/lib/image";
 import { ImageLink, SanityArray } from "@/types/sanity";
 import Image from "next/image";
@@ -19,18 +20,20 @@ export default function CollectionCards({ collections }: Props) {
             >
               <a
                 href={collection.url}
-                className=" h-full text-white text-2xl md:text-[2rem] font-bold p-5 lg:p-12 flex flex-col justify-end"
+                className=" h-full text-white text-2xl md:text-[2rem] font-bold p-5 lg:p-12 flex flex-col justify-end group"
               >
                 <Image
                   src={urlForImage(collection.image)}
                   alt=""
                   aria-hidden
                   fill
-                  className="hover:scale-105 duration-[1.5s] ease-out"
+                  className="group-hover:scale-105 duration-500 ease-out"
                 />
-                <span className="z-10 relative leading-tight">
-                  {collection.name}
-                </span>
+
+                <div className="flex flex-col gap-3 z-10">
+                  <ArrowLeftCircleIcon className="w-10 h-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <span className="relative leading-tight">{collection.name}</span>
+                </div>
               </a>
             </li>
           ))}
