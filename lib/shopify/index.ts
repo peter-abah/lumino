@@ -28,7 +28,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { ensureStartsWith } from "..";
 import { HIDDEN_PRODUCT_TAG, SHOPIFY_GRAPHQL_API_ENDPOINT, TAGS } from "../constants";
 import { isShopifyError } from "../type_guards";
-import { addToCartMutation, createCartMutation, editCartItemsMutation, removeFromCartMutation } from "./mutations/cart";
+import {
+  addToCartMutation,
+  createCartMutation,
+  editCartItemsMutation,
+  removeFromCartMutation,
+} from "./mutations/cart";
 import { getCartQuery } from "./queries/cart";
 import {
   getCollectionProductsQuery,
@@ -372,7 +377,7 @@ export async function getCart(cartId: string): Promise<Cart | undefined> {
 export async function createCart(): Promise<Cart> {
   const res = await shopifyFetch<ShopifyCreateCartOperation>({
     query: createCartMutation,
-    cache: 'no-store'
+    cache: "no-store",
   });
 
   return reshapeCart(res.body.data.cartCreate.cart);
@@ -386,9 +391,9 @@ export async function addToCart(
     query: addToCartMutation,
     variables: {
       cartId,
-      lines
+      lines,
     },
-    cache: 'no-store'
+    cache: "no-store",
   });
   return reshapeCart(res.body.data.cartLinesAdd.cart);
 }
@@ -398,9 +403,9 @@ export async function removeFromCart(cartId: string, lineIds: string[]): Promise
     query: removeFromCartMutation,
     variables: {
       cartId,
-      lineIds
+      lineIds,
     },
-    cache: 'no-store'
+    cache: "no-store",
   });
 
   return reshapeCart(res.body.data.cartLinesRemove.cart);
@@ -414,9 +419,9 @@ export async function updateCart(
     query: editCartItemsMutation,
     variables: {
       cartId,
-      lines
+      lines,
     },
-    cache: 'no-store'
+    cache: "no-store",
   });
 
   return reshapeCart(res.body.data.cartLinesUpdate.cart);

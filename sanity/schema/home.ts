@@ -366,31 +366,6 @@ const homePage = {
         },
       ],
     },
-    {
-      name: "footer",
-      title: "Footer",
-      type: "object",
-      fields: [
-        {
-          name: "newsletter",
-          title: "Newsletter",
-          type: "newsletter",
-        },
-        {
-          name: "menus",
-          title: "Menus",
-          type: "array",
-          of: [{ type: "menu" }],
-        },
-        {
-          name: "copywright",
-          title: "Copywright",
-          type: "array",
-          validation: (Rule: Rule) => Rule.required(),
-          of: [{ type: "block" }],
-        },
-      ],
-    },
   ],
   initialValue: {
     name: "Home Page",

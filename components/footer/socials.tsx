@@ -9,9 +9,9 @@ export default function Socials({ links }: Props) {
     <ul className="flex gap-6 items-center">
       {links.map((link) => (
         <li key={link._id}>
-          <a href="#">
+          <a href={link.url} target="_blank">
             <span className="sr-only">{link.name}</span>
-            <IconComponent name={link.iconID} />
+            <IconComponent name={link.iconID} useDefaultIcon />
           </a>
         </li>
       ))}

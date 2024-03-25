@@ -13,7 +13,7 @@ export default async function Products({ products }: Props) {
   return (
     <section className="px-12 mb-20 mt-12 flex flex-col justify-center">
       {variantProducts.length > 0 ? (
-        <ul className="flex flex-wrap gap-x-6 gap-y-12">
+        <ul className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12">
           {variantProducts.map((product) => (
             <ProductCard key={product.handle + product.variant.id} product={product} />
           ))}

@@ -84,7 +84,7 @@ export default function NavBar({
         )}
       <nav
         className={twMerge(
-          "w-full grid grid-cols-[1fr_max-content_1fr] items-center p-5 md:p-8 lg:px-12 lg:py-8 bg-main-bg text-text relative",
+          "w-full max-w-screen-2xl mx-auto grid grid-cols-[1fr_max-content_1fr] items-center p-5 md:p-8 lg:px-12 lg:py-8 bg-main-bg text-text relative",
           isTransparent && "bg-opacity-0 text-white",
           isNavBarSticky && "fixed z-50 top-0 text-text"
         )}

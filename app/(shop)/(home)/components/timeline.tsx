@@ -21,7 +21,7 @@ export default function Timeline({ data }: Props) {
   } = useSlideShow(data.length);
 
   return (
-    <section className="px-5 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20">
+    <section className="px-5 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20" id="story">
       {data.map(({ _key, heading, subheading, image }, index) => (
         <div
           key={_key}

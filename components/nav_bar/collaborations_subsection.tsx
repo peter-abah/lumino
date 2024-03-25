@@ -1,3 +1,4 @@
+import { formatPriceToUserLocale } from "@/lib";
 import { BLUR_DATA_URL } from "@/lib/constants";
 import { urlForImage } from "@/sanity/lib/image";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -71,7 +72,10 @@ export default function CollaborationsSubsection({ data, handleMenuChange, conta
               {/* Product card */}
               {collaborationsFeaturedProduct && (
                 <div className="rounded-md p-8 bg-white">
-                  <Link href="#" className="flex justify-center mx-9 mb-4">
+                  <Link
+                    href={`/products/${collaborationsFeaturedProduct.handle}`}
+                    className="flex justify-center mx-9 mb-4"
+                  >
                     <Image
                       src={collaborationsFeaturedProduct.featuredImage.url}
                       alt={collaborationsFeaturedProduct.featuredImage.altText}
@@ -93,7 +97,11 @@ export default function CollaborationsSubsection({ data, handleMenuChange, conta
                       <span>
                         {collaborationsFeaturedProduct.priceRange.maxVariantPrice.currencyCode}
                       </span>
-                      <span>{collaborationsFeaturedProduct.priceRange.maxVariantPrice.amount}</span>
+                      <span>
+                        {formatPriceToUserLocale(
+                          collaborationsFeaturedProduct.priceRange.maxVariantPrice.amount
+                        )}
+                      </span>
                     </span>
                   </div>
                 </div>

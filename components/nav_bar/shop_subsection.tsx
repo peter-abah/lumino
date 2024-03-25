@@ -27,16 +27,6 @@ const PANELS: Record<string, Panel> = {
 };
 
 export default function ShopSubsection({ data }: Props) {
-  // const [secondPanelState, setSecondPanelState] = useState<{
-  //   isOpen: boolean;
-  //   links: SanityArray<LinkWithIcon>;
-  //   heading: string;
-  // }>({
-  //   isOpen: false,
-  //   links: [],
-  //   heading: "",
-  // });
-
   const [currentSecondPanelID, setCurrentSecondPanelID] = useState<string | null>(null);
 
   const handleOpen = (isOpen: boolean) => {
@@ -54,10 +44,10 @@ export default function ShopSubsection({ data }: Props) {
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="bg-black/60 fixed inset-0 h-screen" />
+        <Dialog.Overlay className="bg-black/60 z-50 fixed inset-0 h-screen" />
         <Dialog.Content
           className={twMerge(
-            "absolute top-4 left-4 h-[calc(100vh_-_2rem)] grid grid-cols-[repeat(2,440px)] w-[440px] grid-rows-1 rounded-md z-50 overflow-hidden data-[state=open]:animate-scaleXOpen data-[state=closed]:animate-scaleXClose origin-left",
+            "fixed top-4 left-4 h-[calc(100vh_-_2rem)] grid grid-cols-[repeat(2,440px)] w-[440px] grid-rows-1 rounded-md z-50 overflow-hidden data-[state=open]:animate-scaleXOpen data-[state=closed]:animate-scaleXClose origin-left",
             currentSecondPanelID && "w-[880px]"
           )}
         >

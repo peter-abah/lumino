@@ -4,6 +4,7 @@ import AddToCart from "@/components/cart/add_to_cart";
 import MinusIcon from "@/components/icons/minus_icon";
 import PlusIcon from "@/components/icons/plus_icon";
 import Share from "@/components/icons/share";
+import { getVariantOption } from "@/lib";
 import { BLUR_DATA_URL, SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND } from "@/lib/constants";
 import { Product } from "@/types/shopify";
 import clsx from "clsx";
@@ -51,32 +52,41 @@ export default function FeaturedProduct({ product }: Props) {
         </div>
 
         <hr className="my-6" />
-        <div className="mb-2">
-          <p className="flex gap-2 text-sm md:text-base">
-            <span className="text-text/70">Color:</span>
-            <span>{currentVariant?.title}</span>
-          </p>
-        </div>
+        {variants.length > 1 && (
+          <>
+            <div className="mb-2">
+              <p className="flex gap-2 text-sm md:text-base">
+                <span className="text-text/70">Color:</span>
+                <span>{currentVariant?.title}</span>
+              </p>
+            </div>
 
-        <div className="mb-6 flex gap-1 items-center">
-          {variants.map((variant, index) => (
-            <button
-              key={variant.id}
-              type="button"
-              onClick={() => setcurrentVariantIndex(index)}
-              className={clsx(
-                "w-7 h-7 aspect-square rounded-full relative",
-                index === currentVariantIndex &&
-                  "m-1 before:shadow-[0_0_0_2px] before:absolute before:-inset-[3px] before:rounded-full"
-              )}
-              style={{
-                background: SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND.get(variant.title),
-              }}
-            >
-              <span className="sr-only">Select {variant.title}</span>
-            </button>
-          ))}
-        </div>
+            <div className="mb-6 flex gap-1 items-center">
+              {variants.map((variant, index) => {
+                const colorOption = getVariantOption(variant, "Color");
+                if (!colorOption) return;
+
+                return (
+                  <button
+                    key={variant.id}
+                    type="button"
+                    onClick={() => setcurrentVariantIndex(index)}
+                    className={clsx(
+                      "w-7 h-7 aspect-square rounded-full relative",
+                      index === currentVariantIndex &&
+                        "m-1 before:shadow-[0_0_0_2px] before:absolute before:-inset-[3px] before:rounded-full"
+                    )}
+                    style={{
+                      background: SHOPIFY_COLOR_OPTION_T0_CSS_BACKGROUND.get(colorOption.value),
+                    }}
+                  >
+                    <span className="sr-only">Select {variant.title}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </>
+        )}
 
         <div className="py-6">
           <p className="mb-2 text-text/70">Quantity:</p>

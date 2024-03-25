@@ -24,7 +24,9 @@ export default async function BestSellers() {
 
       <ul className="flex overflow-auto gap-6 no-scrollbar snap-x snap-mandatory">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <li key={product.id} className="w-[72vw] md:w-[36vw] lg:w-[20vw] snap-start shrink-0">
+            <ProductCard product={product} />
+          </li>
         ))}
       </ul>
     </section>

@@ -1,3 +1,5 @@
+import { ProductVariant } from "@/types/shopify";
+
 export function convertStringToTitleCase(str: string) {
   return str
     .split(" ")
@@ -19,4 +21,8 @@ export function formatPriceToUserLocale(priceString: string) {
   const formattedPrice = priceNumber.toLocaleString();
 
   return formattedPrice;
+}
+
+export function getVariantOption(variant: ProductVariant, option: string) {
+  return variant.selectedOptions.find(({ name }) => name === option);
 }

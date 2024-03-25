@@ -1,3 +1,4 @@
+import { formatPriceToUserLocale } from "@/lib";
 import { BLUR_DATA_URL } from "@/lib/constants";
 import { urlForImage } from "@/sanity/lib/image";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -150,7 +151,7 @@ export default function MobileNav({ data }: Props) {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/collections/accessories"
                     className="relative before:h-0.5 before:absolute before:bottom-0 before:bg-text hover:before:w-full hover:before:scale-x-100 before:scale-x-0 before:origin-left"
                   >
                     Accessories
@@ -158,10 +159,10 @@ export default function MobileNav({ data }: Props) {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/collections/speakers"
                     className="relative before:h-0.5 before:absolute before:bottom-0 before:bg-text hover:before:w-full hover:before:scale-x-100 before:scale-x-0 before:origin-left"
                   >
-                    Speaker
+                    Speakers
                   </Link>
                 </li>
               </ul>
@@ -228,7 +229,10 @@ export default function MobileNav({ data }: Props) {
                 {/* COllaborations Featured Product */}
                 {collaborationsFeaturedProduct && (
                   <div className="rounded-md p-8 bg-white">
-                    <Link href="#" className="flex justify-center mb-4">
+                    <Link
+                      href={`/products/${collaborationsFeaturedProduct.handle}`}
+                      className="flex justify-center mb-4"
+                    >
                       <Image
                         src={collaborationsFeaturedProduct.featuredImage.url}
                         alt={collaborationsFeaturedProduct.featuredImage.altText}
@@ -251,7 +255,9 @@ export default function MobileNav({ data }: Props) {
                           {collaborationsFeaturedProduct.priceRange.maxVariantPrice.currencyCode}
                         </span>
                         <span>
-                          {collaborationsFeaturedProduct.priceRange.maxVariantPrice.amount}
+                          {formatPriceToUserLocale(
+                            collaborationsFeaturedProduct.priceRange.maxVariantPrice.amount
+                          )}
                         </span>
                       </span>
                     </div>

@@ -13,7 +13,7 @@ async function getFooterData() {
   }>(`
     {
       'footer': *[_type == "footer"][0],
-      'socialLinks': *[_type == "socialLinks"]
+      'socialLinks': *[_type == "socialLink"]
     }
   `);
 
@@ -23,6 +23,7 @@ async function getFooterData() {
 export default async function Footer() {
   const { footer, socialLinks } = await getFooterData();
   const { newsletter, copywright, menus } = footer;
+
   return (
     <footer className="py-12 px-5 lg:py-16 md:px-8 lg:px-12 bg-white">
       <div className="flex flex-col lg:flex-row gap-24 justify-between mb-10 md:mb-16">
