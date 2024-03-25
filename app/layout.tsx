@@ -1,11 +1,8 @@
-import Announcements from "@/components/announcements";
-import Footer from "@/components/footer";
-import InfoPanel from "@/components/info_panel";
+import "@/app/globals.css";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import "./globals.css";
 
 const dinNext = localFont({
   src: [
@@ -96,14 +93,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={clsx(inter.variable, dinNext.variable)}>
-      <body>
-        <>
-          <Announcements />
-          {children}
-          <InfoPanel />
-          <Footer />
-        </>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -3,7 +3,7 @@ import { getProducts } from "@/lib/shopify";
 import { client } from "@/sanity/lib/client";
 import { HomePage as SanityHomePage } from "@/types/sanity";
 import { Maybe, Product } from "@/types/shopify";
-import FeaturedProduct from "../../components/featured_product";
+import FeaturedProduct from "../../../components/featured_product";
 import FAQ from "./components/FAQ";
 import BestSellers from "./components/best_sellers";
 import CollectionCards from "./components/collection_cards";
