@@ -24,7 +24,9 @@ import TwoColumnSpotlight from "./components/two_column_spotlight";
 const getData = async () => {
   const { homePage } = await client.fetch<{
     homePage: SanityHomePage;
-  }>(`{'homePage': *[_type == "homePage"][0]}`);
+  }>(`{
+    'homePage': *[_type == "homePage"][0]
+  }`);
 
   const homeFeaturedProduct = (
     await getProducts({ query: "tag:homepage-featured-product" })
