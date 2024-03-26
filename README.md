@@ -19,6 +19,9 @@ A modern eCommerce website built using Next.js, Sanity, and Shopify, providing a
 
 Check out the live demo of the website [here](https://luminostore.vercel.app).
 
+Since the shopify store is in development mode, you will need the store password to access the checkout page.
+The store password is `luminostpassword`
+
 ## Built With
 
 - Typescript
